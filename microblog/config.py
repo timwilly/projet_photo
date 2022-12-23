@@ -1,6 +1,7 @@
 import os
 basedir = os.path.abspath(os.path.dirname(__file__))
 
+# Jeu d'instruction qui sont défini AVANT que l'app soit en live
 class Config(object):
     # Si l'environnement ne définit pas de variable, le hardcoded string 
     # sera utilisé
@@ -18,4 +19,5 @@ class Config(object):
     MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
     ADMINS = ['your-email@example.com']
+    POSTS_PER_PAGE = 25
     

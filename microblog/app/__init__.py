@@ -1,9 +1,12 @@
 import logging
 import os
-from flask import Flask
 from config import Config
+from flask import Flask, request
+from flask_babel import Babel
+from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from flask_mail import Mail
+from flask_moment import Moment
 from flask_migrate import Migrate
 from flask_login import LoginManager
 from logging.handlers import SMTPHandler, RotatingFileHandler
@@ -17,6 +20,9 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 login = LoginManager(app)
 mail = Mail(app)
+bootstrap = Bootstrap(app)
+moment = Moment(app)
+babel = Babel(app)
 
 # L'url 'login' si n'est pas connecté
 login.login_view = 'login'
@@ -49,6 +55,8 @@ if not app.debug:
 
     app.logger.setLevel(logging.INFO)
     app.logger.info('Microblog startup')
+
+
 
 
 # L'importation de routes ici évite le phénomène d'importations

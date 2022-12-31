@@ -1,5 +1,5 @@
 # Importe l'instance de l'application app
-from app import app, db
+from app import app, db, cli
 from app.models import User, Post
 
 # Crée un contexte shell qui ajoute les instances des données et modèles...

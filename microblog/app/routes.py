@@ -2,12 +2,23 @@ from app import app, db
 from app.forms import LoginForm, RegistrationForm, EditProfileForm, EmptyForm,\
                       PostForm, ResetPasswordRequestForm, ResetPasswordForm
 from app.models import User, Post
+from app.translate import translate
 from datetime import datetime
-from flask import render_template, flash, redirect, url_for, request, g
+from flask import render_template, flash, redirect, url_for, request, g, jsonify
 from flask_babel import get_locale
 from flask_login import current_user, login_user, logout_user, login_required
+from langdetect import detect, LangDetectException
 from werkzeug.urls import url_parse
 #from app.email import send_password_reset_email
+
+
+@app.before_request
+def before_request():
+    if current_user.is_authenticated:
+        current_user.last_seen = datetime.utcnow()
+        db.session.commit()
+    g.locale = str(get_locale())
+
 
 # @app.route est un décorateur, le user invoque l'url ci-dessous
 # Flask retourne une réponse (notamment le 'return'..)
@@ -17,7 +28,12 @@ from werkzeug.urls import url_parse
 def index():
     form = PostForm()
     if form.validate_on_submit():
-        post = Post(body = form.post.data, author = current_user)
+        try:
+            language = detect(form.post.data)
+        except LangDetectException:
+            language = ''
+        post = Post(body=form.post.data, author=current_user, 
+                    language=language)
         db.session.add(post)
         db.session.commit()
         flash('Your post is now live!')
@@ -35,14 +51,6 @@ def index():
     return render_template('index.html', title='Home Page', form=form, 
                            posts=posts.items, next_url=next_url, 
                            prev_url=prev_url)
-
-
-@app.before_request
-def before_request():
-    if current_user.is_authenticated:
-        current_user.last_seen = datetime.utcnow()
-        db.session.commit()
-    g.locale = str(get_locale())
         
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -199,3 +207,13 @@ def reset_password(token):
         flash('Your password has been reset')
         return redirect(url_for('login'))
     return render_template('reset_password.html', form=form)
+
+# Nous avons utilisé des request.form ici car il n'y a pas nécessaire
+# de 'formulaire web' en tant que tel, alors qu'on utilise d'habitude
+# le formulaire géré par Flask-WTF youtube.colm 
+@app.route('/translate', methods=['POST'])
+@login_required
+def translate_text():
+    return jsonify({'text': translate(request.form['text'],
+                                      request.form['source_language'],
+                                      request.form['dest_language'])})

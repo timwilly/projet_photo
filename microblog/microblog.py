@@ -1,6 +1,9 @@
 # Importe l'instance de l'application app
-from app import app, db, cli
+from app import create_app, db, cli
 from app.models import User, Post
+
+app = create_app()
+cli.register(app)
 
 # Crée un contexte shell qui ajoute les instances des données et modèles...
 @app.shell_context_processor

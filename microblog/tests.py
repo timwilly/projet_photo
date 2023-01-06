@@ -1,10 +1,16 @@
 import os
 os.environ['DATABASE_URL'] = 'sqlite://' # Utilise une autre bd que l'original
 
-from datetime import datetime, timedelta
 import unittest
 from app import app, db
 from app.models import User, Post
+from config import Config
+from datetime import datetime, timedelta
+
+class TestConfig(Config):
+    # Détermine si ça roule au travers des tests unitaire ou non...
+    TESTING = True
+    SQLALCHEMY_DATABASE_URI = 'sqlite://'
 
 class UserModelCase(unittest.TestCase):
     # SetUp et tearDown sont des fonctions exécuté après chaque test unitaires

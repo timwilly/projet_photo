@@ -11,58 +11,69 @@ from flask_migrate import Migrate
 from flask_login import LoginManager
 from logging.handlers import SMTPHandler, RotatingFileHandler
 
-# Ici on retrouve les objets qui représente les extensions !
-# __name__ : nom du module qui est 'app'. 'app' ici est une instance 
-# de la classe Flask qui créer l'application simplement
-app = Flask(__name__)
-app.config.from_object(Config)
-db = SQLAlchemy(app)
-migrate = Migrate(app, db)
-login = LoginManager(app)
-mail = Mail(app)
-bootstrap = Bootstrap(app)
-moment = Moment(app)
-babel = Babel(app)
 
-# L'url 'login' si n'est pas connecté
-login.login_view = 'login'
-login.login_message = _l('Please log in to access this page.')
-
-if not app.debug:
-    if app.config['MAIL_SERVER']:
-        auth = None
-        if app.config['MAIL_USERNAME'] or app.config['MAIL_PASSWORD']:
-            auth = (app.config['MAIL_USERNAME'], app.config['MAIL_PASSWORD'])
-        secure = None
-        if app.config['MAIL_USE_TLS']:
-            secure = ()
-        mail_handler = SMTPHandler(
-            mailhost = (app.config['MAIL_SERVER'], app.config['MAIL_PORT']),
-            fromaddr = 'no-reply@' + app.config['MAIL_SERVER'],
-            toaddrs = app.config['ADMINS'], subject='Microblog Failure',
-            credentials = auth, secure = secure
-        )
-        mail_handler.setLevel(logging.ERROR)
-        app.logger.addHandler(mail_handler)
+def create_app(config_class=Config):
+    # __name__ : nom du module qui est 'app'. 'app' ici est une instance 
+    # de la classe Flask qui créer l'application simplement
+    app = Flask(__name__)
+    app.config.from_object(Config)
     
-    if not os.path.exists('logs'):
-        os.mkdir('logs')
-    file_handler = RotatingFileHandler('logs/microblog.log', maxBytes=10240,
-                                       backupCount=10)
-    file_handler.setFormatter(logging.Formatter(
-        '%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]'))
-    file_handler.setLevel(logging.INFO)
-    app.logger.addHandler(file_handler)
+    # Ici on retrouve les objets qui représente les extensions !
+    db = SQLAlchemy(app)
+    migrate = Migrate(app, db)
+    login = LoginManager(app)
+    mail = Mail(app)
+    bootstrap = Bootstrap(app)
+    moment = Moment(app)
+    babel = Babel(app)    
 
-    app.logger.setLevel(logging.INFO)
-    app.logger.info('Microblog startup')
+    # Quand un blueprint est enregistré, ceci est connecté avec l'application...
+    # L'importation est fait juste en haut de 'app.register_blueprint() pour 
+    # éviter la dépendance circulaire
+    from app.errors import bp as errors_bp
+    app.register_blueprint(errors_bp)
 
+    from app.auth import bp as auth_bp
+    app.register_blueprint(auth_bp, url_prefix='/auth')
 
-@babel.localeselector
-def get_locale():
-    return request.accept_languages.best_match(app.config['LANGUAGES'])
+    # L'url 'login' si n'est pas connecté
+    login.login_view = 'login'
+    login.login_message = _l('Please log in to access this page.')
+
+    if not app.debug and not app.testing:
+        if app.config['MAIL_SERVER']:
+            auth = None
+            if app.config['MAIL_USERNAME'] or app.config['MAIL_PASSWORD']:
+                auth = (app.config['MAIL_USERNAME'], app.config['MAIL_PASSWORD'])
+            secure = None
+            if app.config['MAIL_USE_TLS']:
+                secure = ()
+            mail_handler = SMTPHandler(
+                mailhost = (app.config['MAIL_SERVER'], app.config['MAIL_PORT']),
+                fromaddr = 'no-reply@' + app.config['MAIL_SERVER'],
+                toaddrs = app.config['ADMINS'], subject='Microblog Failure',
+                credentials = auth, secure = secure
+            )
+            mail_handler.setLevel(logging.ERROR)
+            app.logger.addHandler(mail_handler)
+        
+        if not os.path.exists('logs'):
+            os.mkdir('logs')
+        file_handler = RotatingFileHandler('logs/microblog.log', maxBytes=10240,
+                                           backupCount=10)
+        file_handler.setFormatter(logging.Formatter(
+            '%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]'))
+        file_handler.setLevel(logging.INFO)
+        app.logger.addHandler(file_handler)
+
+        app.logger.setLevel(logging.INFO)
+        app.logger.info('Microblog startup')
+
+    @babel.localeselector
+    def get_locale():
+        return request.accept_languages.best_match(app.config['LANGUAGES'])
     
 
 # L'importation de routes ici évite le phénomène d'importations
 # circulaires
-from app import routes, models, errors
+from app import routes, models

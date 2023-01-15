@@ -1,7 +1,8 @@
 import logging
 import os
 from config import Config
-from flask import Flask, request
+from elasticsearch import Elasticsearch
+from flask import Flask, request, current_app
 from flask_babel import Babel, lazy_gettext as _l
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
@@ -11,24 +12,44 @@ from flask_migrate import Migrate
 from flask_login import LoginManager
 from logging.handlers import SMTPHandler, RotatingFileHandler
 
+# Ici on retrouve les objets qui représente les extensions !
+# (Extensions provenant seulement de flask !!)
+# On les instancies ici de sorte que l'on peut créer plusieurs
+# apps avec des configurations différentes pour tester ou autres
+db = SQLAlchemy()
+migrate = Migrate()
+mail = Mail()
+bootstrap = Bootstrap()
+moment = Moment()
+babel = Babel()    
+login = LoginManager()
+# L'url 'login' si n'est pas connecté
+login.login_view = 'auth.login'
+login.login_message = _l('Please log in to access this page.')
 
+# Un contexte d'application doit exister pour utiliser l'application crée
 def create_app(config_class=Config):
     # __name__ : nom du module qui est 'app'. 'app' ici est une instance 
     # de la classe Flask qui créer l'application simplement
     app = Flask(__name__)
-    app.config.from_object(Config)
-    
-    # Ici on retrouve les objets qui représente les extensions !
-    db = SQLAlchemy(app)
-    migrate = Migrate(app, db)
-    login = LoginManager(app)
-    mail = Mail(app)
-    bootstrap = Bootstrap(app)
-    moment = Moment(app)
-    babel = Babel(app)    
+    app.config.from_object(config_class)
+    # Applique l'instance d'extension dans l'application
+    db.init_app(app)
+    migrate.init_app(app, db)
+    mail.init_app(app)
+    bootstrap.init_app(app)
+    moment.init_app(app)
+    babel.init_app(app)
+    login.init_app(app)
 
-    # Quand un blueprint est enregistré, ceci est connecté avec l'application...
-    # L'importation est fait juste en haut de 'app.register_blueprint() pour 
+    # Instancie elasticsearch ici car ce n'est pas une extension flask
+    # et nous avons besoin de l'app.config pour pouvoir l'initialiser
+    # L'argument permet d'établir la connection...
+    app.elasticsearch = Elasticsearch([app.config['ELASTICSEARCH_URL']]) \
+        if app.config['ELASTICSEARCH_URL'] else None
+
+    # Quand un blueprint est enregistré, ceci est connecté avec l'application..
+    # L'importation est fait juste en haut de 'app.register_blueprint()' pour 
     # éviter la dépendance circulaire
     from app.errors import bp as errors_bp
     app.register_blueprint(errors_bp)
@@ -36,9 +57,8 @@ def create_app(config_class=Config):
     from app.auth import bp as auth_bp
     app.register_blueprint(auth_bp, url_prefix='/auth')
 
-    # L'url 'login' si n'est pas connecté
-    login.login_view = 'login'
-    login.login_message = _l('Please log in to access this page.')
+    from app.main import bp as main_bp
+    app.register_blueprint(main_bp)
 
     if not app.debug and not app.testing:
         if app.config['MAIL_SERVER']:
@@ -69,11 +89,14 @@ def create_app(config_class=Config):
         app.logger.setLevel(logging.INFO)
         app.logger.info('Microblog startup')
 
-    @babel.localeselector
-    def get_locale():
-        return request.accept_languages.best_match(app.config['LANGUAGES'])
+    return app
+
+
+@babel.localeselector
+def get_locale():
+    return request.accept_languages.best_match(current_app.config['LANGUAGES'])
     
 
-# L'importation de routes ici évite le phénomène d'importations
+# L'importation de models ici évite le phénomène d'importations
 # circulaires
-from app import routes, models
+from app import models

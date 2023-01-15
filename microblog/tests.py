@@ -2,27 +2,31 @@ import os
 os.environ['DATABASE_URL'] = 'sqlite://' # Utilise une autre bd que l'original
 
 import unittest
-from app import app, db
+from app import create_app, db
 from app.models import User, Post
 from config import Config
 from datetime import datetime, timedelta
 
 class TestConfig(Config):
-    # Détermine si ça roule au travers des tests unitaire ou non...
+    # TESTING détermine si ça roule au travers des tests unitaire ou non...
     TESTING = True
     SQLALCHEMY_DATABASE_URI = 'sqlite://'
 
 class UserModelCase(unittest.TestCase):
     # SetUp et tearDown sont des fonctions exécuté après chaque test unitaires
     def setUp(self):
-        self.app_context = app.app_context()
-        self.app_context.push()
+        self.app = create_app(TestConfig)
+        # Crée une application contexte pour les tests unitaires pour que 
+        # db.create_all() puisse utiliser current_app.config pour trouver
+        # où se trouve la db
+        self.app_context = self.app.app_context()   # Établit un context
+        self.app_context.push()                     # Push context dans stack
         db.create_all()
     
     def tearDown(self):
         db.session.remove()
         db.drop_all()
-        self.app_context.pop()
+        self.app_context.pop()                      # Retire le context du stack
     
     def test_password_hashing(self):
         u = User(username = 'susan')

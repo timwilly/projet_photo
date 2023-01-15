@@ -2,12 +2,17 @@ import os
 from dotenv import load_dotenv
 
 basedir = os.path.abspath(os.path.dirname(__file__))
-load_dotenv(os.path.join(basedir, '.env'))           # Charge le fichier .env
+# Charge le fichier .env et on utilise os.getenv('') pour récupérer les 
+# variables
+load_dotenv(os.path.join(basedir, '.env'))
 
 # Jeu d'instruction qui sont défini AVANT que l'app soit en live
+# object est passé ici pour passé de old-style class en new-style class
+# c'était pour la conversion de python2 vers python3 mais nous n'avons
+# plus nécessairement besoin d'adopter cette pratique en python3
 class Config(object):
-    # Si l'environnement ne définit pas de variable, le hardcoded string 
-    # sera utilisé
+    # Si l'environnement ne définit pas de variable (configuré au terminal),
+    # le hardcoded string sera utilisé
     SECRET_KEY = os.environ.get('SECRET_KEY') or \
                  os.getenv('SECRET_KEY')
     
@@ -24,9 +29,10 @@ class Config(object):
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
 
     ADMINS = ['your-email@example.com']
-    POSTS_PER_PAGE = 4
+    POSTS_PER_PAGE = 10
     LANGUAGES = ['en', 'fr', 'es']
 
     MS_TRANSLATOR_KEY = os.environ.get('MS_TRANSLATOR_KEY') or \
                         os.getenv('MS_TRANSLATOR_KEY')
     
+    ELASTICSEARCH_URL = os.getenv('ELASTICSEARCH_URL')

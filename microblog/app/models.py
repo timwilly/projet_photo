@@ -1,10 +1,12 @@
-from werkzeug.security import generate_password_hash, check_password_hash
+from app import db, login
+from app.search import add_to_index, query_index, remove_from_index
 from datetime import datetime
+from flask import current_app
 from flask_login import UserMixin
 from hashlib import md5
 from time import time
+from werkzeug.security import generate_password_hash, check_password_hash
 import jwt
-from app import app, db, login
 
 
 # Table au lieu de Model si many-to-many et pas d'attribut supplémentaire
@@ -66,19 +68,74 @@ class User(UserMixin, db.Model):
     def get_reset_password_token(self, expires_in=600):
         return jwt.encode(
             {'reset_password': self.id, 'exp': time() + expires_in},
-            app.config['SECRET_KEY'], algorithm='HS256')
+            current_app.config['SECRET_KEY'], algorithm='HS256')
     
     @staticmethod
     def verify_reset_password_token(token):
         try:
-            id = jwt.decode(token, app.config['SECRET_KEY'],
+            id = jwt.decode(token, current_app.config['SECRET_KEY'],
                             algorithms=['HS256'])['reset_password']
         except:
             return
         return User.query.get(id)
         
 
-class Post(db.Model):
+class SearchableMixin(object):
+    # classmethod : traite une fonction comme une classe et premier argument
+    # étant la classe dans lequel il est appelé
+    @classmethod
+    def search(cls, expression, page, per_page):
+        ids, total = query_index(cls.__tablename__, expression, page, per_page)
+        if total == 0:
+            return cls.query.filter_by(id=0), 0
+        # Sous forme de tuple, on index les trouvailles car elasticSearch
+        # tri les ids du plus important au moins important donc nous faisons
+        # la même chose
+        when = []
+        for i in range(len(ids)):
+            when.append((ids[i], i))
+        # SELECT id FROM Post WHERE id IN (ids)
+        # Argument optionnel 'value': pour signifier que tout 'id' qu'il 
+        # proviennent de 'post.id'
+        # Ex de when: [(22, 0), (23, 1)]
+        #             case post.id
+        #             when '22' then 0
+        #             when '23' then 1
+        return cls.query.filter(cls.id.in_(ids)).order_by(
+            db.case(when, value=cls.id)), total
+    
+    @classmethod
+    def before_commit(cls, session):
+        print(session.new)
+        print(session.dirty)
+        print(session.deleted)
+        session._changes = {
+            'add': list(session.new),       # pending object
+            'update': list(session.dirty),  # changes detect
+            'delete': list(session.deleted) # mark as delete
+        }
+
+    @classmethod
+    def after_commit(cls, session):
+        for obj in session._changes['add']:
+            if isinstance(obj, SearchableMixin):
+                add_to_index(obj.__tablename__, obj)
+        for obj in session._changes['update']:
+            if isinstance(obj, SearchableMixin):
+                add_to_index(obj.__tablename__, obj)
+        for obj in session._changes['delete']:
+            if isinstance(obj, SearchableMixin):
+                remove_from_index(obj.__tablename__, obj)
+        session._changes = None
+
+    @classmethod
+    def reindex(cls):
+        for obj in cls.query:
+            add_to_index(cls.__tablename__, obj)
+
+
+class Post(SearchableMixin, db.Model):
+    __searchable__ = ['body']
     id = db.Column(db.Integer, primary_key=True)
     body = db.Column(db.String(140))
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
@@ -86,7 +143,12 @@ class Post(db.Model):
     language = db.Column(db.String(5))
 
     def __repr__(self):
-        return '<User {}>'.format(self.username)
+        return '<Post {}>'.format(self.body)
+
+
+db.event.listen(db.session, 'before_commit', SearchableMixin.before_commit)
+db.event.listen(db.session, 'after_commit', SearchableMixin.after_commit)
+
 
 @login.user_loader
 def load_user(id):

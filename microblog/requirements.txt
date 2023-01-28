@@ -4,7 +4,7 @@ blinker==1.5
 certifi==2022.12.7
 charset-normalizer==2.0.12
 click==8.0.4
-dataclasses==0.8
+dataclasses==0.6
 dnspython==2.2.1
 dominate==2.7.0
 elastic-transport==8.4.0
@@ -29,7 +29,6 @@ langdetect==1.0.9
 Mako==1.1.6
 MarkupSafe==2.0.1
 packaging==21.3
-pkg-resources==0.0.0
 PyJWT==2.4.0
 pyparsing==3.0.9
 python-dotenv==0.20.0

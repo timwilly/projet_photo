@@ -169,7 +169,7 @@ def search():
                            next_url=next_url, prev_url=prev_url)
 
 
-# Nous avons utilisé des request.form ici car il n'y a pas nécessaire
+# Nous avons utilisé des request.form ici car il n'y a pas nécessairement
 # de 'formulaire web' en tant que tel, alors qu'on utilise d'habitude
 # le formulaire géré par Flask-WTF 
 @bp.route('/translate', methods=['POST'])
@@ -178,3 +178,11 @@ def translate_text():
     return jsonify({'text': translate(request.form['text'],
                                       request.form['source_language'],
                                       request.form['dest_language'])})
+
+
+@bp.route('/user/<username>/popup')
+@login_required
+def user_popup(username):
+    user = User.query.filter_by(username=username).first_or_404()
+    form = EmptyForm()
+    return render_template('user_popup.html', user=user, form=form)

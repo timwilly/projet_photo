@@ -1,59 +1,107 @@
-2023-01-13 21:48:22,033 ERROR: Exception on /search [GET] [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.6/site-packages/flask/app.py:1458]
+2023-01-27 20:53:49,055 ERROR: Exception on /search [GET] [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py:1457]
 Traceback (most recent call last):
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 2073, in wsgi_app
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 2073, in wsgi_app
     response = self.full_dispatch_request()
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 1518, in full_dispatch_request
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 1518, in full_dispatch_request
     rv = self.handle_user_exception(e)
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 1516, in full_dispatch_request
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 1516, in full_dispatch_request
     rv = self.dispatch_request()
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 1502, in dispatch_request
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 1502, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.6/site-packages/flask_login/utils.py", line 272, in decorated_view
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask_login/utils.py", line 272, in decorated_view
     return func(*args, **kwargs)
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/main/routes.py", line 158, in search
-    current_app.config['POSTS_PER_PAGE'])
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/models.py", line 90, in search
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/main/routes.py", line 157, in search
+    posts, total = Post.search(g.search_form.q.data, page,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/models.py", line 88, in search
     ids, total = query_index(cls.__tablename__, expression, page, per_page)
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/search.py", line 34, in query_index
-    'from': (page - 1) * per_page, 'size': per_page
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.6/site-packages/elasticsearch/_sync/client/utils.py", line 414, in wrapped
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/search.py", line 43, in query_index
+    search = current_app.elasticsearch.search(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/elasticsearch/_sync/client/utils.py", line 414, in wrapped
     return api(*args, **kwargs)
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.6/site-packages/elasticsearch/_sync/client/__init__.py", line 3771, in search
-    "POST", __path, params=__query, headers=__headers, body=__body
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.6/site-packages/elasticsearch/_sync/client/_base.py", line 295, in perform_request
-    client_meta=self._client_meta,
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.6/site-packages/elastic_transport/_transport.py", line 334, in perform_request
-    request_timeout=request_timeout,
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.6/site-packages/elastic_transport/_node/_http_urllib3.py", line 199, in perform_request
-    raise err from None
-elastic_transport.ConnectionError: Connection error caused by: ConnectionError(Connection error caused by: NewConnectionError(<urllib3.connection.HTTPConnection object at 0x7f3fed1f9400>: Failed to establish a new connection: [Errno 111] Connection refused))
-2023-01-13 21:48:25,581 ERROR: Exception on /search [GET] [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.6/site-packages/flask/app.py:1458]
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/elasticsearch/_sync/client/__init__.py", line 3770, in search
+    return self.perform_request(  # type: ignore[return-value]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/elasticsearch/_sync/client/_base.py", line 321, in perform_request
+    raise HTTP_EXCEPTIONS.get(meta.status, ApiError)(
+elasticsearch.ApiError: ApiError(406, 'Content-Type header [application/vnd.elasticsearch+json; compatible-with=8] is not supported', 'Content-Type header [application/vnd.elasticsearch+json; compatible-with=8] is not supported')
+2023-01-27 20:53:56,695 INFO: Microblog startup [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/__init__.py:90]
+2023-01-27 20:54:02,393 ERROR: Exception on /search [GET] [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py:1457]
 Traceback (most recent call last):
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 2073, in wsgi_app
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 2073, in wsgi_app
     response = self.full_dispatch_request()
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 1518, in full_dispatch_request
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 1518, in full_dispatch_request
     rv = self.handle_user_exception(e)
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 1516, in full_dispatch_request
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 1516, in full_dispatch_request
     rv = self.dispatch_request()
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 1502, in dispatch_request
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 1502, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.6/site-packages/flask_login/utils.py", line 272, in decorated_view
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask_login/utils.py", line 272, in decorated_view
     return func(*args, **kwargs)
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/main/routes.py", line 158, in search
-    current_app.config['POSTS_PER_PAGE'])
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/models.py", line 90, in search
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/main/routes.py", line 157, in search
+    posts, total = Post.search(g.search_form.q.data, page,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/models.py", line 88, in search
     ids, total = query_index(cls.__tablename__, expression, page, per_page)
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/search.py", line 34, in query_index
-    'from': (page - 1) * per_page, 'size': per_page
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.6/site-packages/elasticsearch/_sync/client/utils.py", line 414, in wrapped
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/search.py", line 43, in query_index
+    search = current_app.elasticsearch.search(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/elasticsearch/_sync/client/utils.py", line 414, in wrapped
     return api(*args, **kwargs)
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.6/site-packages/elasticsearch/_sync/client/__init__.py", line 3771, in search
-    "POST", __path, params=__query, headers=__headers, body=__body
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.6/site-packages/elasticsearch/_sync/client/_base.py", line 295, in perform_request
-    client_meta=self._client_meta,
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.6/site-packages/elastic_transport/_transport.py", line 334, in perform_request
-    request_timeout=request_timeout,
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.6/site-packages/elastic_transport/_node/_http_urllib3.py", line 199, in perform_request
-    raise err from None
-elastic_transport.ConnectionError: Connection error caused by: ConnectionError(Connection error caused by: NewConnectionError(<urllib3.connection.HTTPConnection object at 0x7f3fed1f9e10>: Failed to establish a new connection: [Errno 111] Connection refused))
-2023-01-13 21:49:10,650 INFO: Microblog startup [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/__init__.py:90]
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/elasticsearch/_sync/client/__init__.py", line 3770, in search
+    return self.perform_request(  # type: ignore[return-value]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/elasticsearch/_sync/client/_base.py", line 321, in perform_request
+    raise HTTP_EXCEPTIONS.get(meta.status, ApiError)(
+elasticsearch.ApiError: ApiError(406, 'Content-Type header [application/vnd.elasticsearch+json; compatible-with=8] is not supported', 'Content-Type header [application/vnd.elasticsearch+json; compatible-with=8] is not supported')
+2023-01-27 20:54:29,287 ERROR: Exception on /search [GET] [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py:1457]
+Traceback (most recent call last):
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/main/routes.py", line 157, in search
+    posts, total = Post.search(g.search_form.q.data, page,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/models.py", line 88, in search
+    ids, total = query_index(cls.__tablename__, expression, page, per_page)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/search.py", line 43, in query_index
+    search = current_app.elasticsearch.search(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/elasticsearch/_sync/client/utils.py", line 414, in wrapped
+    return api(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/elasticsearch/_sync/client/__init__.py", line 3770, in search
+    return self.perform_request(  # type: ignore[return-value]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/elasticsearch/_sync/client/_base.py", line 321, in perform_request
+    raise HTTP_EXCEPTIONS.get(meta.status, ApiError)(
+elasticsearch.ApiError: ApiError(406, 'Content-Type header [application/vnd.elasticsearch+json; compatible-with=8] is not supported', 'Content-Type header [application/vnd.elasticsearch+json; compatible-with=8] is not supported')
+2023-01-27 20:54:53,524 INFO: Microblog startup [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/__init__.py:90]

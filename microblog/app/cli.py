@@ -10,7 +10,7 @@ def register(app):
         pass
 
 
-    # (venv) $ flask translate init
+    # (venv) $ flask translate init <LANG>
     @translate.command()
     @click.argument('lang')
     def init(lang):

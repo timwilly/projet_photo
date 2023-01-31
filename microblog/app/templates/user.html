@@ -11,6 +11,13 @@
             </td>
         </tr>
     </table>
+    {% if user != current_user %}
+    <p>
+        <a href="{{ url_for('main.send_message', recipient=user.username) }}">
+            {{ _('Send private message') }}
+        </a>
+    </p>
+    {% endif %}
     {% if user == current_user %}
     <p><a href="{{ url_for('main.edit_profile') }}">Edit your profile</a></p>
     {% elif not current_user.is_following(user) %}

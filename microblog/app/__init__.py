@@ -1,5 +1,6 @@
 import logging
 import os
+import rq
 from config import Config
 from elasticsearch import Elasticsearch
 from flask import Flask, request, current_app
@@ -11,6 +12,7 @@ from flask_moment import Moment
 from flask_migrate import Migrate
 from flask_login import LoginManager
 from logging.handlers import SMTPHandler, RotatingFileHandler
+from redis import Redis
 
 # Ici on retrouve les objets qui représente les extensions !
 # (Extensions provenant seulement de flask !!)
@@ -31,7 +33,7 @@ login.login_message = _l('Please log in to access this page.')
 def create_app(config_class=Config):
     # __name__ : nom du module qui est 'app'. 'app' ici est une instance 
     # de la classe Flask qui créer l'application simplement
-    app = Flask(__name__)
+    app = Flask(__name__, static_folder='static')
     app.config.from_object(config_class)
     # Applique l'instance d'extension dans l'application
     db.init_app(app)
@@ -41,6 +43,9 @@ def create_app(config_class=Config):
     moment.init_app(app)
     babel.init_app(app)
     login.init_app(app)
+
+    app.redis = Redis.from_url(app.config['REDIS_URL'])    
+    app.task_queue = rq.Queue('microblog-tasks', connection=app.redis)
 
     # Instancie elasticsearch ici car ce n'est pas une extension flask
     # et nous avons besoin de l'app.config pour pouvoir l'initialiser

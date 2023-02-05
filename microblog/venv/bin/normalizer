@@ -1,4 +1,4 @@
-#!/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/bin/python3
+#!/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys

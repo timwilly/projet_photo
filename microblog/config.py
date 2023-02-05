@@ -36,3 +36,5 @@ class Config(object):
                         os.getenv('MS_TRANSLATOR_KEY')
     
     ELASTICSEARCH_URL = os.getenv('ELASTICSEARCH_URL')
+    
+    REDIS_URL = os.environ.get('REDIS_URL') or 'redis://'

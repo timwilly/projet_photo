@@ -230,6 +230,20 @@ class Task(db.Model):
         return job.meta.get('progress', 0) if job is not None else 100
             
 
+class BusinessMontreal(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(128), index=True)
+    address = db.Column(db.String(128), index=True)
+    city = db.Column(db.String(128), index=True)
+    state = db.Column(db.String(128), index=True)
+    type = db.Column(db.String(128), index=True)
+    statut = db.Column(db.String(128), index=True)
+    date_statut = db.Column(db.DateTime, index=True)
+    latitude = db.Column(db.Float)
+    longitude = db.Column(db.Float)
+    x = db.Column(db.Float)
+    y = db.Column(db.Float)
+
 
 db.event.listen(db.session, 'before_commit', SearchableMixin.before_commit)
 db.event.listen(db.session, 'after_commit', SearchableMixin.after_commit)

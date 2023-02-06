@@ -1,6 +1,8 @@
+import folium
 import logging
 import os
 import rq
+from app.bgscheduler import BgScheduler
 from config import Config
 from elasticsearch import Elasticsearch
 from flask import Flask, request, current_app
@@ -43,7 +45,7 @@ def create_app(config_class=Config):
     moment.init_app(app)
     babel.init_app(app)
     login.init_app(app)
-
+    m = folium.Map(location=[45.5236, -122.6750])
     app.redis = Redis.from_url(app.config['REDIS_URL'])    
     app.task_queue = rq.Queue('microblog-tasks', connection=app.redis)
 
@@ -64,6 +66,12 @@ def create_app(config_class=Config):
 
     from app.main import bp as main_bp
     app.register_blueprint(main_bp)
+
+    # Cédule une job...
+    BgScheduler.scheduler()
+    # Importe les données, à enlever lors de la mise en production
+    from app.tasks import import_data
+    import_data()
 
     if not app.debug and not app.testing:
         if app.config['MAIL_SERVER']:

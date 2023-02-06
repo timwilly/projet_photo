@@ -149,9 +149,6 @@ class SearchableMixin(object):
     
     @classmethod
     def before_commit(cls, session):
-        print(session.new)
-        print(session.dirty)
-        print(session.deleted)
         session._changes = {
             'add': list(session.new),       # pending object
             'update': list(session.dirty),  # changes detect
@@ -244,6 +241,11 @@ class BusinessMontreal(db.Model):
     x = db.Column(db.Float)
     y = db.Column(db.Float)
 
+    def as_dict(self):
+        return {'name': self.name}
+
+    def __repr__(self):
+        return '{}'.format(self.name)
 
 db.event.listen(db.session, 'before_commit', SearchableMixin.before_commit)
 db.event.listen(db.session, 'after_commit', SearchableMixin.after_commit)

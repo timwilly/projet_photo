@@ -236,8 +236,3 @@ def notifications():
         'data': n.get_data(),
         'timestamp': n.timestamp
     } for n in notifications])
-
-
-@bp.route('/map')
-def map():
-    return render_template('map.html')

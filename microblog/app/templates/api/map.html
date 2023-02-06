@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+    {% if form %}
+    <div class="row">
+        <div class="col-md-4">
+            {{ wtf.quick_form(form) }}
+        </div>
+    </div>
+    {% endif %}
+    <ul id="results">
+        <!-- Results will be displayed here -->
+    </ul>
+    <div id="mapid" style="height: 500px; width: 100%;"></div>
+{% endblock %}

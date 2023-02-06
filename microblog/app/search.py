@@ -17,16 +17,16 @@ def add_to_index(index, model):
         model: L'instance du modèle
 
     """
-    print('add to index: {} {}'.format(index, model))
-    print(type(index))
+    #print('add to index: {} {}'.format(index, model))
+    #print(type(index))
     if not current_app.elasticsearch:
         return
     payload = {}
     for field in model.__searchable__:
-        print('field : {}'.format(field))
+        #print('field : {}'.format(field))
         payload[field] = getattr(model, field)  # Trouver le field du modèle
-    print(model.id)
-    print(payload)
+    #print(model.id)
+    #print(payload)
     current_app.elasticsearch.index(index=index, id=model.id, body=payload)
 
 
@@ -37,7 +37,7 @@ def remove_from_index(index, model):
 
 
 def query_index(index, query, page, per_page):
-    print('query index: {}, {}, {}, {}'.format(index, query, page, per_page))
+    #print('query index: {}, {}, {}, {}'.format(index, query, page, per_page))
     if not current_app.elasticsearch:
         return [], 0
     search = current_app.elasticsearch.search(

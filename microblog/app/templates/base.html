@@ -26,7 +26,7 @@
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url_for('main.index') }}">{{ _('Home') }}</a></li>
                     <li><a href="{{ url_for('main.explore') }}">{{ _('Explore') }}</a></li>
-                    <li><a href="{{ url_for('main.map') }}">{{ _('Map') }}</a></li>
+                    <li><a href="{{ url_for('api.map') }}">{{ _('Map') }}</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     {% if current_user.is_anonymous %}
@@ -84,8 +84,10 @@
     {{ super() }}
     {{ moment.include_moment() }}
     {{ moment.lang(g.locale) }}
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-    
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script>
         var map = L.map('mapid').setView([45.545087, -73.674226], 13);
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -163,7 +165,17 @@
             })
         });
         {% endif %}
-
+        
+        $(function() {
+            $.ajax({
+                url: '{{ url_for('api.search') }}'
+                }).done(function (data){
+                    $('#business_autocomplete').autocomplete({
+                        source: data,
+                        minLength: 2
+                    });
+                });
+            });
         function set_message_count(n) {
             $('#message_count').text(n);
             $('#message_count').css('visibility', n ? 'visible' : 'hidden');

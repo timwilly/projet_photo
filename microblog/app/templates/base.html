@@ -26,6 +26,7 @@
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url_for('main.index') }}">{{ _('Home') }}</a></li>
                     <li><a href="{{ url_for('main.explore') }}">{{ _('Explore') }}</a></li>
+                    <li><a href="{{ url_for('main.map') }}">{{ _('Map') }}</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     {% if current_user.is_anonymous %}
@@ -59,7 +60,6 @@
 {% endblock %}
 
 {% block content %}
-<div id="mapid" style="height: 500px; width: 100%;"></div>
     <div class="container">
         {% with messages = get_flashed_messages() %}
         {% if messages %}

@@ -2,34 +2,15 @@ import folium
 import logging
 import os
 import rq
+from app.shared import db, migrate, mail, bootstrap, moment, babel, login
 from app.bgscheduler import BgScheduler
 from config import Config
 from elasticsearch import Elasticsearch
 from flask import Flask, request, current_app
-from flask_babel import Babel, lazy_gettext as _l
-from flask_bootstrap import Bootstrap
-from flask_sqlalchemy import SQLAlchemy
-from flask_mail import Mail
-from flask_moment import Moment
-from flask_migrate import Migrate
-from flask_login import LoginManager
+from flask_babel import lazy_gettext as _l
 from logging.handlers import SMTPHandler, RotatingFileHandler
 from redis import Redis
 
-# Ici on retrouve les objets qui représente les extensions !
-# (Extensions provenant seulement de flask !!)
-# On les instancies ici de sorte que l'on peut créer plusieurs
-# apps avec des configurations différentes pour tester ou autres
-db = SQLAlchemy()
-migrate = Migrate()
-mail = Mail()
-bootstrap = Bootstrap()
-moment = Moment()
-babel = Babel()    
-login = LoginManager()
-# L'url 'login' si n'est pas connecté
-login.login_view = 'auth.login'
-login.login_message = _l('Please log in to access this page.')
 
 # Un contexte d'application doit exister pour utiliser l'application crée
 def create_app(config_class=Config):
@@ -37,14 +18,12 @@ def create_app(config_class=Config):
     # de la classe Flask qui créer l'application simplement
     app = Flask(__name__, static_folder='static')
     app.config.from_object(config_class)
-    # Applique l'instance d'extension dans l'application
-    db.init_app(app)
-    migrate.init_app(app, db)
-    mail.init_app(app)
-    bootstrap.init_app(app)
-    moment.init_app(app)
-    babel.init_app(app)
-    login.init_app(app)
+    register_extensions(app)
+    
+    # L'url 'login' si n'est pas connecté
+    login.login_view = 'auth.login'
+    login.login_message = _l('Please log in to access this page.')
+    
     m = folium.Map(location=[45.5236, -122.6750])
     app.redis = Redis.from_url(app.config['REDIS_URL'])    
     app.task_queue = rq.Queue('microblog-tasks', connection=app.redis)
@@ -70,8 +49,10 @@ def create_app(config_class=Config):
     # Cédule une job...
     BgScheduler.scheduler()
     # Importe les données, à enlever lors de la mise en production
-    from app.tasks import import_data
-    import_data()
+    #from app.tasks import import_data
+    #@app.before_first_request
+    #def test():
+    #    import_data()
 
     if not app.debug and not app.testing:
         if app.config['MAIL_SERVER']:
@@ -104,6 +85,15 @@ def create_app(config_class=Config):
 
     return app
 
+def register_extensions(app):
+    # Applique l'instance d'extension dans l'application
+    db.init_app(app)
+    migrate.init_app(app, db)
+    mail.init_app(app)
+    bootstrap.init_app(app)
+    moment.init_app(app)
+    babel.init_app(app)
+    login.init_app(app)
 
 @babel.localeselector
 def get_locale():

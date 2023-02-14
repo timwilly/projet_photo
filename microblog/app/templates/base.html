@@ -171,11 +171,24 @@
                 url: '{{ url_for('api.search') }}'
                 }).done(function (data){
                     $('#business_autocomplete').autocomplete({
-                        source: data,
-                        minLength: 2
+                        source: function(request, response) {
+                            var results = $.ui.autocomplete.filter(data, request.term);
+                            response(results.slice(0, 10));
+                        },
+                        messages: {
+                            noResults: '',
+                            results: function() {
+                               
+                    
+                            }
+                        },
+                        minLength: 2,
+                        delay: 400
                     });
                 });
             });
+
+            
         function set_message_count(n) {
             $('#message_count').text(n);
             $('#message_count').css('visibility', n ? 'visible' : 'hidden');

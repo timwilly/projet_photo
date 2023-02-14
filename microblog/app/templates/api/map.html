@@ -1,16 +1,24 @@
 {% extends "base.html" %}
 {% import 'bootstrap/wtf.html' as wtf %}
 
+{% block styles %}
+    {{ super() }}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/api/map.css') }}">
+{% endblock %}
+
 {% block app_content %}
+    <div class="row justify-content-center">
     {% if form %}
-    <div class="row">
-        <div class="col-md-4">
-            {{ wtf.quick_form(form) }}
-        </div>
-    </div>
+        <form action="" method="post">
+            <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-12">
+                {{ form.hidden_tag() }}
+                    {{ form.search.label }}<br>
+                    {{ form.search(size=48) }}
+                    {{ form.submit() }}
+            </div>        
+        </form>
+
     {% endif %}
-    <ul id="results">
-        <!-- Results will be displayed here -->
-    </ul>
-    <div id="mapid" style="height: 500px; width: 100%;"></div>
+    </div>
+    <div id="mapid" style="position:relative;"></div>
 {% endblock %}

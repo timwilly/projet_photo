@@ -1,0 +1,27 @@
+#mapid {
+    margin-top: 20px;
+    height: 500px; 
+    width: 100%;
+    z-index: 1;
+}
+
+#business_autocomplete {
+}
+
+.ui-autocomplete-input {
+}
+
+.ui-autocomplete {
+    background-color: yellowgreen;
+    color:yellow;
+}
+
+.input {
+    overflow: hidden;
+    white-space: nowrap;
+    color:pink;
+}
+
+.ui-menu-item {
+    
+}

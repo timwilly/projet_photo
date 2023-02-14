@@ -3,6 +3,9 @@ from app.models import BusinessMontreal
 from app.api import bp
 from app.api.forms import SearchForm
 from flask import render_template, redirect, url_for, flash, request, Response
+from itertools import islice
+from json import JSONEncoder
+
 
 @bp.route('/map', methods=['GET', 'POST'])
 def map():
@@ -25,13 +28,26 @@ def search():
     all = BusinessMontreal.query.all()
     #all_businesses = [r.as_dict() for r in all]
     #print(all_businesses)
-    values = [str(value) for value in all]
+    #values = ([str(value) for value in all])
+    #tree = create(values)
+    #print(type(tree))
+    #print_tree(tree)
+    values = list(set([str(value) for value in all]))
+    #print(type(values))
     #test = list(all)
     #print(values)
     #print(type(test[0]))
+    
     return Response(json.dumps(values), mimetype='application/json')
 
 """
+src = ['foo', 'bar', 'foobar', 'bar', 'barfoo']
+tree = create(src)
+print_tree(tree)
+
+for word in src:
+    print('search {0}, result: {1}'.format(word, search(tree, word)))
+
 @bp.route('/process', methods=['POST'])
 def process():
     search = request.form['search']

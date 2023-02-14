@@ -1,87 +1,135 @@
-2023-01-13 21:46:05,859 ERROR: Exception on /search [GET] [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.6/site-packages/flask/app.py:1458]
+2023-02-06 12:43:05,820 ERROR: Exception on /api/search [GET] [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py:1457]
 Traceback (most recent call last):
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 2073, in wsgi_app
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 2073, in wsgi_app
     response = self.full_dispatch_request()
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 1518, in full_dispatch_request
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 1518, in full_dispatch_request
     rv = self.handle_user_exception(e)
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 1516, in full_dispatch_request
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 1516, in full_dispatch_request
     rv = self.dispatch_request()
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 1502, in dispatch_request
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 1502, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.6/site-packages/flask_login/utils.py", line 272, in decorated_view
-    return func(*args, **kwargs)
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/main/routes.py", line 158, in search
-    current_app.config['POSTS_PER_PAGE'])
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/models.py", line 90, in search
-    ids, total = query_index(cls.__tablename__, expression, page, per_page)
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/search.py", line 34, in query_index
-    'from': (page - 1) * per_page, 'size': per_page
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.6/site-packages/elasticsearch/_sync/client/utils.py", line 414, in wrapped
-    return api(*args, **kwargs)
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.6/site-packages/elasticsearch/_sync/client/__init__.py", line 3771, in search
-    "POST", __path, params=__query, headers=__headers, body=__body
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.6/site-packages/elasticsearch/_sync/client/_base.py", line 295, in perform_request
-    client_meta=self._client_meta,
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.6/site-packages/elastic_transport/_transport.py", line 334, in perform_request
-    request_timeout=request_timeout,
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.6/site-packages/elastic_transport/_node/_http_urllib3.py", line 199, in perform_request
-    raise err from None
-elastic_transport.ConnectionError: Connection error caused by: ConnectionError(Connection error caused by: NewConnectionError(<urllib3.connection.HTTPConnection object at 0x7f3fed20c198>: Failed to establish a new connection: [Errno 111] Connection refused))
-2023-01-13 21:47:19,405 ERROR: Exception on /search [GET] [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.6/site-packages/flask/app.py:1458]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/api/routes.py", line 30, in search
+    return Response(json.dumps(test), mimetype='application/json')
+                    ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/json/__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/json/encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/json/encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type BusinessMontreal is not JSON serializable
+2023-02-06 12:54:46,270 INFO: Microblog startup [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/__init__.py:87]
+2023-02-06 12:54:49,692 ERROR: Exception on /api/search [GET] [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py:1457]
 Traceback (most recent call last):
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 2073, in wsgi_app
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 2073, in wsgi_app
     response = self.full_dispatch_request()
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 1518, in full_dispatch_request
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 1518, in full_dispatch_request
     rv = self.handle_user_exception(e)
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 1516, in full_dispatch_request
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 1516, in full_dispatch_request
     rv = self.dispatch_request()
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 1502, in dispatch_request
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 1502, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.6/site-packages/flask_login/utils.py", line 272, in decorated_view
-    return func(*args, **kwargs)
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/main/routes.py", line 158, in search
-    current_app.config['POSTS_PER_PAGE'])
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/models.py", line 90, in search
-    ids, total = query_index(cls.__tablename__, expression, page, per_page)
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/search.py", line 34, in query_index
-    'from': (page - 1) * per_page, 'size': per_page
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.6/site-packages/elasticsearch/_sync/client/utils.py", line 414, in wrapped
-    return api(*args, **kwargs)
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.6/site-packages/elasticsearch/_sync/client/__init__.py", line 3771, in search
-    "POST", __path, params=__query, headers=__headers, body=__body
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.6/site-packages/elasticsearch/_sync/client/_base.py", line 295, in perform_request
-    client_meta=self._client_meta,
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.6/site-packages/elastic_transport/_transport.py", line 334, in perform_request
-    request_timeout=request_timeout,
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.6/site-packages/elastic_transport/_node/_http_urllib3.py", line 199, in perform_request
-    raise err from None
-elastic_transport.ConnectionError: Connection error caused by: ConnectionError(Connection error caused by: NewConnectionError(<urllib3.connection.HTTPConnection object at 0x7f3fed1f96a0>: Failed to establish a new connection: [Errno 111] Connection refused))
-2023-01-13 21:47:35,100 ERROR: Exception on /search [GET] [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.6/site-packages/flask/app.py:1458]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/api/routes.py", line 30, in search
+    return Response(json.dumps(test), mimetype='application/json')
+                    ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/json/__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/json/encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/json/encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type BusinessMontreal is not JSON serializable
+2023-02-06 12:55:43,072 INFO: Microblog startup [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/__init__.py:87]
+2023-02-06 12:55:45,501 ERROR: Exception on /api/search [GET] [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py:1457]
 Traceback (most recent call last):
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 2073, in wsgi_app
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 2073, in wsgi_app
     response = self.full_dispatch_request()
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 1518, in full_dispatch_request
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 1518, in full_dispatch_request
     rv = self.handle_user_exception(e)
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 1516, in full_dispatch_request
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 1516, in full_dispatch_request
     rv = self.dispatch_request()
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 1502, in dispatch_request
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 1502, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.6/site-packages/flask_login/utils.py", line 272, in decorated_view
-    return func(*args, **kwargs)
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/main/routes.py", line 158, in search
-    current_app.config['POSTS_PER_PAGE'])
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/models.py", line 90, in search
-    ids, total = query_index(cls.__tablename__, expression, page, per_page)
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/search.py", line 34, in query_index
-    'from': (page - 1) * per_page, 'size': per_page
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.6/site-packages/elasticsearch/_sync/client/utils.py", line 414, in wrapped
-    return api(*args, **kwargs)
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.6/site-packages/elasticsearch/_sync/client/__init__.py", line 3771, in search
-    "POST", __path, params=__query, headers=__headers, body=__body
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.6/site-packages/elasticsearch/_sync/client/_base.py", line 295, in perform_request
-    client_meta=self._client_meta,
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.6/site-packages/elastic_transport/_transport.py", line 334, in perform_request
-    request_timeout=request_timeout,
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.6/site-packages/elastic_transport/_node/_http_urllib3.py", line 199, in perform_request
-    raise err from None
-elastic_transport.ConnectionError: Connection error caused by: ConnectionError(Connection error caused by: NewConnectionError(<urllib3.connection.HTTPConnection object at 0x7f3fed20c1d0>: Failed to establish a new connection: [Errno 111] Connection refused))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/api/routes.py", line 31, in search
+    return Response(json.dumps(test), mimetype='application/json')
+                    ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/json/__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/json/encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/json/encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type BusinessMontreal is not JSON serializable
+2023-02-06 12:58:47,642 INFO: Microblog startup [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/__init__.py:87]
+2023-02-06 12:58:50,147 ERROR: Exception on /api/search [GET] [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py:1457]
+Traceback (most recent call last):
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/api/routes.py", line 28, in search
+    values = [str(value[1]) for value in all]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/api/routes.py", line 28, in <listcomp>
+    values = [str(value[1]) for value in all]
+                  ~~~~~^^^
+TypeError: 'BusinessMontreal' object is not subscriptable
+2023-02-06 12:59:25,485 INFO: Microblog startup [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/__init__.py:87]
+2023-02-06 12:59:29,873 ERROR: Exception on /api/search [GET] [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py:1457]
+Traceback (most recent call last):
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/api/routes.py", line 28, in search
+    values = [str(value[0]) for value in all]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/api/routes.py", line 28, in <listcomp>
+    values = [str(value[0]) for value in all]
+                  ~~~~~^^^
+TypeError: 'BusinessMontreal' object is not subscriptable
+2023-02-06 12:59:43,942 INFO: Microblog startup [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/__init__.py:87]
+2023-02-06 13:00:28,808 INFO: Microblog startup [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/__init__.py:87]

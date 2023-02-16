@@ -7,7 +7,7 @@ from app.translate import translate
 from datetime import datetime
 from flask import render_template, flash, redirect, url_for, request, g, \
                   jsonify, current_app
-from flask_babel import get_locale, _
+from flask_babel import get_locale, _, gettext
 from flask_login import current_user, login_required
 from langdetect import detect, LangDetectException
 #from app.email import send_password_reset_email

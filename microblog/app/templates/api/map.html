@@ -21,4 +21,43 @@
     {% endif %}
     </div>
     <div id="mapid" style="position:relative;"></div>
+    <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">{{ _('Business') }}</th>
+            <th scope="col">{{ _('Address') }}</th>
+            <th scope="col">{{ _('Type') }}</th>
+            <th scope="col">{{ _('Statut') }}</th>
+            <th scope="col">{{ _('Date statut') }}</th>
+            <th scope="col">{{ _('Latitude') }}</th>
+            <th scope="col">{{ _('Longitude') }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for r in result %}
+          <tr>
+            <td> {{ _('%(name)s', name=r.name) }}</td>
+            <td> {{ _('%(address)s', address=r.address) }}</td>
+            <td> {{ _('%(type)s', type=r.type) }}</td>
+            <td> {{ _('%(statut)s', statut=r.statut) }}</td>
+            <td> {{ _('%(date_statut)s', date_statut=r.date_statut) }} </td>
+            <td> {{ _('%(latitude)s', latitude=r.latitude) }} </td>
+            <td> {{ _('%(longitude)s', longitude=r.longitude) }} </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+    <script src="{{ url_for('static', filename='js/api/map.js') }}"></script>
+    <script>
+        var map = L.map('mapid').setView([{{ result[-1].latitude }}, {{ result[-1].longitude}}], 13);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
+          }).addTo(map);
+        var marker = L.marker([{{ result[-1].latitude }}, {{ result[-1].longitude}}]).addTo(map);
+    </script>
 {% endblock %}

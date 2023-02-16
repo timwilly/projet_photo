@@ -11,33 +11,24 @@ from json import JSONEncoder
 def map():
     form = SearchForm(request.form)
     search = request.args.get('search')
-    #print(all)
-    
+    result_name = request.args.get('result_name')
     if form.validate_on_submit():
-        search2 = BusinessMontreal.query.filter_by(name=form.search.data).first()
-        if search2 is None:
+        result = BusinessMontreal.query.filter_by(name=form.search.data) \
+                 .first()
+        if result is None:
             flash('Data not found!')
         else:
             flash('Your search is successful!')
-        return redirect(url_for('api.map'))
-        
-    return render_template('api/map.html', title="Map", form=form)
+        return redirect(url_for('api.map', result_name=result.name))
+    result = BusinessMontreal.query.filter_by(name=result_name)
+    return render_template('api/map.html', title="Map", form=form, 
+                            result=result)
 
 @bp.route('/search', methods=['GET'])
 def search():
     all = BusinessMontreal.query.all()
-    #all_businesses = [r.as_dict() for r in all]
-    #print(all_businesses)
-    #values = ([str(value) for value in all])
-    #tree = create(values)
-    #print(type(tree))
-    #print_tree(tree)
     values = list(set([str(value) for value in all]))
-    #print(type(values))
-    #test = list(all)
-    #print(values)
-    #print(type(test[0]))
-    
+
     return Response(json.dumps(values), mimetype='application/json')
 
 """

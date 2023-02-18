@@ -5,12 +5,12 @@ from app.api.forms import SearchForm
 from flask import render_template, redirect, url_for, flash, request, Response
 from itertools import islice
 from json import JSONEncoder
+from sqlalchemy import asc
 
 
 @bp.route('/map', methods=['GET', 'POST'])
 def map():
     form = SearchForm(request.form)
-    search = request.args.get('search')
     result_name = request.args.get('result_name')
     if form.validate_on_submit():
         result = BusinessMontreal.query.filter_by(name=form.search.data) \
@@ -20,9 +20,12 @@ def map():
         else:
             flash('Your search is successful!')
         return redirect(url_for('api.map', result_name=result.name))
-    result = BusinessMontreal.query.filter_by(name=result_name)
-    return render_template('api/map.html', title="Map", form=form, 
-                            result=result)
+    result = BusinessMontreal.query.filter_by(name=result_name).order_by \
+                              (BusinessMontreal.date_statut.asc())
+    for r in result:
+        print(r.date_statut)
+    return render_template('api/map.html', title="Map", form=form,
+                           result=result)
 
 @bp.route('/search', methods=['GET'])
 def search():

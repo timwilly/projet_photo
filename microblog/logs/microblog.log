@@ -1,4 +1,4 @@
-2023-02-09 02:13:45,060 ERROR: Exception on /api/search [GET] [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py:1457]
+2023-02-18 01:11:27,446 ERROR: Exception on /api/map [GET] [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py:1457]
 Traceback (most recent call last):
   File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 2073, in wsgi_app
     response = self.full_dispatch_request()
@@ -12,22 +12,39 @@ Traceback (most recent call last):
   File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 1502, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/api/routes.py", line 41, in search
-    return Response(json.dumps(tree), mimetype='application/json')
-                    ^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.11/json/__init__.py", line 231, in dumps
-    return _default_encoder.encode(obj)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.11/json/encoder.py", line 200, in encode
-    chunks = self.iterencode(o, _one_shot=True)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.11/json/encoder.py", line 258, in iterencode
-    return _iterencode(o, 0)
-           ^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.11/json/encoder.py", line 180, in default
-    raise TypeError(f'Object of type {o.__class__.__name__} '
-TypeError: Object of type Node is not JSON serializable
-2023-02-09 02:13:46,460 ERROR: Exception on /api/search [GET] [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py:1457]
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/api/routes.py", line 34, in map
+    return render_template('api/map.html', title="Map", form=form,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/templating.py", line 147, in render_template
+    return _render(
+           ^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/templating.py", line 128, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/jinja2/environment.py", line 1291, in render
+    self.environment.handle_exception()
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/jinja2/environment.py", line 925, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/templates/api/map.html", line 2, in top-level template code
+    {% import 'bootstrap/wtf.html' as wtf %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/templates/base.html", line 1, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block 'doc'
+    {%- block html %}
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block 'html'
+    {% block body -%}
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 26, in block 'body'
+    {% block scripts %}
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/templates/api/map.html", line 65, in block 'scripts'
+    {% if result|length > 0 %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: object of type 'BaseQuery' has no len()
+2023-02-18 01:11:35,549 INFO: Microblog startup [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/__init__.py:87]
+2023-02-18 01:11:35,999 ERROR: Exception on /api/map [GET] [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py:1457]
 Traceback (most recent call last):
   File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 2073, in wsgi_app
     response = self.full_dispatch_request()
@@ -41,57 +58,36 @@ Traceback (most recent call last):
   File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 1502, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/api/routes.py", line 41, in search
-    return Response(json.dumps(tree), mimetype='application/json')
-                    ^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.11/json/__init__.py", line 231, in dumps
-    return _default_encoder.encode(obj)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.11/json/encoder.py", line 200, in encode
-    chunks = self.iterencode(o, _one_shot=True)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.11/json/encoder.py", line 258, in iterencode
-    return _iterencode(o, 0)
-           ^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.11/json/encoder.py", line 180, in default
-    raise TypeError(f'Object of type {o.__class__.__name__} '
-TypeError: Object of type Node is not JSON serializable
-2023-02-09 02:14:51,266 INFO: Microblog startup [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/__init__.py:87]
-2023-02-09 02:14:52,543 ERROR: Exception on /api/search [GET] [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py:1457]
-Traceback (most recent call last):
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 2073, in wsgi_app
-    response = self.full_dispatch_request()
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 1518, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 1516, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 1502, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/api/routes.py", line 32, in search
-    tree = create(values)
-                  ^^^^^^
-UnboundLocalError: cannot access local variable 'values' where it is not associated with a value
-2023-02-09 02:15:05,402 INFO: Microblog startup [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/__init__.py:87]
-2023-02-09 02:16:52,298 INFO: Microblog startup [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/__init__.py:87]
-2023-02-09 02:17:43,997 INFO: Microblog startup [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/__init__.py:87]
-2023-02-09 02:18:05,306 INFO: Microblog startup [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/__init__.py:87]
-2023-02-09 02:18:13,712 INFO: Microblog startup [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/__init__.py:87]
-2023-02-09 02:19:27,615 INFO: Microblog startup [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/__init__.py:87]
-2023-02-09 02:20:56,462 INFO: Microblog startup [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/__init__.py:87]
-2023-02-09 02:21:35,225 INFO: Microblog startup [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/__init__.py:87]
-2023-02-09 02:21:46,470 INFO: Microblog startup [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/__init__.py:87]
-2023-02-09 02:22:09,765 INFO: Microblog startup [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/__init__.py:87]
-2023-02-09 02:22:58,005 INFO: Microblog startup [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/__init__.py:87]
-2023-02-09 02:23:15,684 INFO: Microblog startup [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/__init__.py:87]
-2023-02-09 02:23:40,962 INFO: Microblog startup [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/__init__.py:87]
-2023-02-09 02:24:44,629 INFO: Microblog startup [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/__init__.py:87]
-2023-02-09 02:26:46,817 INFO: Microblog startup [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/__init__.py:87]
-2023-02-09 02:27:23,705 INFO: Microblog startup [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/__init__.py:87]
-2023-02-09 02:27:31,559 INFO: Microblog startup [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/__init__.py:87]
-2023-02-09 02:28:08,927 INFO: Microblog startup [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/__init__.py:87]
-2023-02-12 21:27:19,354 INFO: Microblog startup [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/__init__.py:87]
-2023-02-12 21:27:35,437 INFO: Microblog startup [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/__init__.py:87]
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/api/routes.py", line 34, in map
+    return render_template('api/map.html', title="Map", form=form,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/templating.py", line 147, in render_template
+    return _render(
+           ^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/templating.py", line 128, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/jinja2/environment.py", line 1291, in render
+    self.environment.handle_exception()
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/jinja2/environment.py", line 925, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/templates/api/map.html", line 2, in top-level template code
+    {% import 'bootstrap/wtf.html' as wtf %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/templates/base.html", line 1, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block 'doc'
+    {%- block html %}
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block 'html'
+    {% block body -%}
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 26, in block 'body'
+    {% block scripts %}
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/templates/api/map.html", line 65, in block 'scripts'
+    {% if result|length > 2 %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: object of type 'BaseQuery' has no len()
+2023-02-18 01:11:51,091 INFO: Microblog startup [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/__init__.py:87]
+2023-02-18 01:12:26,050 INFO: Microblog startup [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/__init__.py:87]

@@ -9,7 +9,13 @@
 #business_autocomplete {
 }
 
-.ui-autocomplete-input {
+#submit {
+    color: black;
+}
+
+.ui-autocomplete-input {    
+    color:black;
+
 }
 
 .ui-autocomplete {
@@ -20,7 +26,7 @@
 .input {
     overflow: hidden;
     white-space: nowrap;
-    color:pink;
+    color:red;
 }
 
 .ui-menu-item {

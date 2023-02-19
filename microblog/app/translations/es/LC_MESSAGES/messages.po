@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-01-28 15:06-0500\n"
+"POT-Creation-Date: 2023-02-18 20:57-0500\n"
 "PO-Revision-Date: 2022-12-30 13:30-0500\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: es\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.11.0\n"
 
-#: app/__init__.py:28
+#: app/__init__.py:25
 msgid "Please log in to access this page."
 msgstr ""
 
@@ -30,21 +30,41 @@ msgstr ""
 msgid "Error: the translation service failed."
 msgstr ""
 
-#: app/auth/forms.py:9 app/main/forms.py:10
+#: app/api/forms.py:9 app/main/forms.py:37 app/main/routes.py:169
+msgid "Search"
+msgstr ""
+
+#: app/api/forms.py:11 app/main/forms.py:12 app/main/forms.py:27
+#: app/main/forms.py:33 app/main/forms.py:50
+msgid "Submit"
+msgstr ""
+
+#: app/auth/forms.py:9 app/auth/forms.py:16 app/main/forms.py:10
 msgid "Username"
 msgstr ""
 
-#: app/auth/forms.py:10
+#: app/auth/forms.py:10 app/auth/forms.py:18 app/auth/forms.py:42
 msgid "Password"
+msgstr ""
+
+#: app/auth/forms.py:11
+msgid "Remember Me"
+msgstr ""
+
+#: app/auth/forms.py:17 app/auth/forms.py:37
+msgid "Email"
+msgstr ""
+
+#: app/auth/forms.py:19 app/auth/forms.py:43
+msgid "Repeat Password"
+msgstr ""
+
+#: app/auth/forms.py:38 app/auth/forms.py:45
+msgid "Request Password Reset"
 msgstr ""
 
 #: app/main/forms.py:11
 msgid "About me"
-msgstr ""
-
-#: app/main/forms.py:12 app/main/forms.py:27 app/main/forms.py:33
-#: app/main/forms.py:50
-msgid "Submit"
 msgstr ""
 
 #: app/main/forms.py:23
@@ -55,19 +75,15 @@ msgstr ""
 msgid "Say something"
 msgstr ""
 
-#: app/main/forms.py:37 app/main/routes.py:169
-msgid "Search"
-msgstr ""
-
 #: app/main/forms.py:48
 msgid "Message"
 msgstr ""
 
-#: app/main/routes.py:202
+#: app/main/routes.py:203
 msgid "Your message has been sent."
 msgstr ""
 
-#: app/main/routes.py:204
+#: app/main/routes.py:205
 msgid "Send Message"
 msgstr ""
 
@@ -80,32 +96,44 @@ msgstr ""
 msgid "Translate"
 msgstr ""
 
-#: app/templates/base.html:21
+#: app/templates/base.html:28
 msgid "Home"
 msgstr ""
 
-#: app/templates/base.html:22
+#: app/templates/base.html:29
 msgid "Explore"
 msgstr ""
 
-#: app/templates/base.html:26
+#: app/templates/base.html:30
+msgid "Map"
+msgstr ""
+
+#: app/templates/base.html:34
 msgid "Login"
 msgstr ""
 
-#: app/templates/base.html:28 app/templates/messages.html:4
+#: app/templates/base.html:37 app/templates/messages.html:4
 msgid "Messages"
 msgstr ""
 
-#: app/templates/base.html:29
+#: app/templates/base.html:46
 msgid "Profile"
 msgstr ""
 
-#: app/templates/base.html:30
+#: app/templates/base.html:47
 msgid "Logout"
 msgstr ""
 
-#: app/templates/base.html:81
+#: app/templates/base.html:52
+msgid "Language"
+msgstr ""
+
+#: app/templates/base.html:116
 msgid "Error: Could not contact server."
+msgstr ""
+
+#: app/templates/edit_profile.html:6
+msgid "Edit Profile"
 msgstr ""
 
 #: app/templates/index.html:7
@@ -113,11 +141,11 @@ msgstr ""
 msgid "Hi, %(username)s"
 msgstr ""
 
-#: app/templates/index.html:25
+#: app/templates/index.html:25 app/templates/user.html:68
 msgid "Newer posts"
 msgstr ""
 
-#: app/templates/index.html:30
+#: app/templates/index.html:30 app/templates/user.html:71
 msgid "Older posts"
 msgstr ""
 
@@ -146,8 +174,16 @@ msgstr ""
 msgid "Send Message to %(recipient)s"
 msgstr ""
 
+#: app/templates/user.html:10
+msgid "Last seen on:"
+msgstr ""
+
 #: app/templates/user.html:17
 msgid "Send private message"
+msgstr ""
+
+#: app/templates/user.html:22
+msgid "Edit your profile"
 msgstr ""
 
 #: app/templates/user_popup.html:11
@@ -172,8 +208,107 @@ msgstr ""
 msgid "Unfollow"
 msgstr ""
 
+#: app/templates/api/map.html:27
+msgid "Business"
+msgstr ""
+
+#: app/templates/api/map.html:28
+msgid "Address"
+msgstr ""
+
+#: app/templates/api/map.html:29
+msgid "Type"
+msgstr ""
+
+#: app/templates/api/map.html:30
+msgid "Statut"
+msgstr ""
+
+#: app/templates/api/map.html:31
+msgid "Date statut"
+msgstr ""
+
+#: app/templates/api/map.html:32
+msgid "Latitude"
+msgstr ""
+
+#: app/templates/api/map.html:33
+msgid "Longitude"
+msgstr ""
+
+#: app/templates/api/map.html:39
+#, python-format
+msgid "%(name)s"
+msgstr ""
+
+#: app/templates/api/map.html:40
+#, python-format
+msgid "%(address)s"
+msgstr ""
+
+#: app/templates/api/map.html:41
+#, python-format
+msgid "%(type)s"
+msgstr ""
+
+#: app/templates/api/map.html:42
+#, python-format
+msgid "%(statut)s"
+msgstr ""
+
+#: app/templates/api/map.html:43
+#, python-format
+msgid "%(date_statut)s"
+msgstr ""
+
+#: app/templates/api/map.html:44
+#, python-format
+msgid "%(latitude)s"
+msgstr ""
+
+#: app/templates/api/map.html:45
+#, python-format
+msgid "%(longitude)s"
+msgstr ""
+
+#: app/templates/auth/login.html:5
+msgid "Sign in"
+msgstr ""
+
+#: app/templates/auth/login.html:11
+msgid "New user?"
+msgstr ""
+
+#: app/templates/auth/login.html:11
+msgid "Click to register!"
+msgstr ""
+
+#: app/templates/auth/login.html:12
+msgid "Forgot your password?"
+msgstr ""
+
+#: app/templates/auth/login.html:12
+msgid "Click to reset"
+msgstr ""
+
+#: app/templates/auth/register.html:5
+msgid "Register"
+msgstr ""
+
+#: app/templates/auth/reset_password_request.html:5
+msgid "Reset password"
+msgstr ""
+
 #: app/templates/errors/404.html:4
 msgid "File not Found"
+msgstr ""
+
+#: app/templates/errors/500.html:4
+msgid "An unexpected error has occurred"
+msgstr ""
+
+#: app/templates/errors/500.html:5
+msgid "The administrator has been notified. Sorry for the inconvenience!"
 msgstr ""
 
 #~ msgid "Hi, %(username)s!"

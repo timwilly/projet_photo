@@ -30,7 +30,7 @@ class Config(object):
 
     ADMINS = ['your-email@example.com']
     POSTS_PER_PAGE = 10
-    LANGUAGES = ['en', 'fr', 'es']
+    LANGUAGES = {'en': 'English', 'fr': 'French', 'es': 'Español'}
 
     MS_TRANSLATOR_KEY = os.environ.get('MS_TRANSLATOR_KEY') or \
                         os.getenv('MS_TRANSLATOR_KEY')

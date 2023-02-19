@@ -7,11 +7,12 @@
 {% block styles %}
     {{ super() }}
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/base.css') }}">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
 {% endblock %}
 
 {% block navbar %}
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-custom"  data-bs-theme="dark">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -44,7 +45,21 @@
                     </li>
                     <li><a href="{{ url_for('main.user', username=current_user.username) }}">{{ _('Profile') }}</a></li>
                     <li><a href="{{ url_for('auth.logout') }}">{{ _('Logout') }}</a></li>
+                    
                     {% endif %}
+                    <li class="nav-item dropdown">
+                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{ _('Language') }}
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        {% for language in AVAILABLE_LANGUAGES.items() %}
+                        {% if CURRENT_LANGUAGE == language[0] or (CURRENT_LANGUAGE == '' and BEST_MATCH_LANGUAGE == language[0]) %}
+                            <li class="lang_active"><a name="language">{{ language[1] }}</a></li>
+                        {% else %}
+                            <li class="lang_inactive"><a href="{{ url_for('main.set_language', language=language[0]) }}">{{ language[1] }}</a></li>
+                        {%  endif %}
+                        {% endfor %}
+                    </ul>
                 </ul>
                 {% if g.search_form %}
                 <form class="navbar-form navbar-left" method="get" action="{{ url_for('main.search') }}">

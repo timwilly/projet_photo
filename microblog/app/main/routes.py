@@ -6,7 +6,7 @@ from app.models import User, Post, Message, Notification
 from app.translate import translate
 from datetime import datetime
 from flask import render_template, flash, redirect, url_for, request, g, \
-                  jsonify, current_app
+                  jsonify, current_app, session
 from flask_babel import get_locale, _, gettext
 from flask_login import current_user, login_required
 from langdetect import detect, LangDetectException
@@ -236,3 +236,23 @@ def notifications():
         'data': n.get_data(),
         'timestamp': n.timestamp
     } for n in notifications])
+    
+
+@bp.route('/language=<language>')
+def set_language(language=None):
+    session['language'] = language
+    print(session['language'])
+    print(language)
+    print(current_app.config['LANGUAGES'])
+    return redirect(url_for('main.index'))
+
+
+@bp.app_context_processor
+def inject_conf_var():
+    print('ALLO')
+    return dict(AVAILABLE_LANGUAGES=current_app.config['LANGUAGES'], 
+                CURRENT_LANGUAGE=session.get('language', 
+                                             request.accept_languages
+                                             .best_match(current_app
+                                                        .config['LANGUAGES']
+                                                        .keys())))

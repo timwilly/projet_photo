@@ -6,7 +6,7 @@ from app.shared import db, migrate, mail, bootstrap, moment, babel, login
 from app.bgscheduler import BgScheduler
 from config import Config
 from elasticsearch import Elasticsearch
-from flask import Flask, request, current_app
+from flask import Flask, request, current_app, session
 from flask_babel import lazy_gettext as _l
 from logging.handlers import SMTPHandler, RotatingFileHandler
 from redis import Redis
@@ -100,8 +100,16 @@ def register_extensions(app):
 
 @babel.localeselector
 def get_locale():
-    return request.accept_languages.best_match(current_app.config['LANGUAGES'])
-    
+    # Si l'utilisateur utilise un langage manuel du fureteur, il sera 
+    # utilisé à l'intérieur de la session que nous utiliserons
+    try:
+        language = session['language']
+    except KeyError:
+        language = None
+    if language is not None:
+        return language
+    return request.accept_languages.best_match(current_app.config['LANGUAGES'].keys())
+
 
 # L'importation de models ici évite le phénomène d'importations
 # circulaires

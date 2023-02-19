@@ -28,6 +28,13 @@
                     <li><a href="{{ url_for('main.index') }}">{{ _('Home') }}</a></li>
                     <li><a href="{{ url_for('main.explore') }}">{{ _('Explore') }}</a></li>
                     <li><a href="{{ url_for('api.map') }}">{{ _('Map') }}</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ _('About me') }}
+                        </a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <li><a href="{{ url_for('about_me.about_me') }}">{{ _('About me') }}</a></li>
+                    </ul>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     {% if current_user.is_anonymous %}
@@ -53,11 +60,11 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         {% for language in AVAILABLE_LANGUAGES.items() %}
-                        {% if CURRENT_LANGUAGE == language[0] or (CURRENT_LANGUAGE == '' and BEST_MATCH_LANGUAGE == language[0]) %}
-                            <li class="lang_active"><a name="language">{{ language[1] }}</a></li>
-                        {% else %}
-                            <li class="lang_inactive"><a href="{{ url_for('main.set_language', language=language[0]) }}">{{ language[1] }}</a></li>
-                        {%  endif %}
+                            {% if CURRENT_LANGUAGE == language[0] or (CURRENT_LANGUAGE == '' and BEST_MATCH_LANGUAGE == language[0]) %}
+                                <li class="lang_active"><a name="language">{{ language[1] }}</a></li>
+                            {% else %}
+                                <li class="lang_inactive"><a href="{{ url_for('main.set_language', language=language[0]) }}">{{ language[1] }}</a></li>
+                            {%  endif %}
                         {% endfor %}
                     </ul>
                 </ul>

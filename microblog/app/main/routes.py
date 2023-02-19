@@ -241,15 +241,11 @@ def notifications():
 @bp.route('/language=<language>')
 def set_language(language=None):
     session['language'] = language
-    print(session['language'])
-    print(language)
-    print(current_app.config['LANGUAGES'])
-    return redirect(url_for('main.index'))
+    return redirect(request.referrer)
 
 
 @bp.app_context_processor
 def inject_conf_var():
-    print('ALLO')
     return dict(AVAILABLE_LANGUAGES=current_app.config['LANGUAGES'], 
                 CURRENT_LANGUAGE=session.get('language', 
                                              request.accept_languages

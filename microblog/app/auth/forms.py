@@ -9,7 +9,7 @@ class LoginForm(FlaskForm):
     username = StringField(_l('Username'), validators=[DataRequired()])
     password = PasswordField(_l('Password'), validators=[DataRequired()])
     remember_me = BooleanField(_l('Remember Me'))
-    submit = SubmitField('Sign in')
+    submit = SubmitField(_l('Sign in'))
 
 
 class RegistrationForm(FlaskForm):
@@ -18,19 +18,19 @@ class RegistrationForm(FlaskForm):
     password = PasswordField(_l('Password'), validators=[DataRequired()])
     password2 = PasswordField(_l('Repeat Password'), 
                               validators=[DataRequired(), EqualTo('password')])
-    submit = SubmitField('Register')
+    submit = SubmitField(_l('Register'))
 
     # 'validate_<field_name>' WTForms utilise ces validateurs personnalisés
     # en conjonction avec ceux qui ont été utilisés
     def validate_username(self, username):
         user = User.query.filter_by(username=username.data).first()
         if user is not None:
-            raise ValidationError('Please use a different username.')
+            raise ValidationError(_l('Please use a different username.'))
 
     def validate_email(self, email):
         user = User.query.filter_by(email=email.data).first()
         if user is not None:
-            raise ValidationError('Please use a different email address.')
+            raise ValidationError(_l('Please use a different email address.'))
         
 
 class ResetPasswordRequestForm(FlaskForm):

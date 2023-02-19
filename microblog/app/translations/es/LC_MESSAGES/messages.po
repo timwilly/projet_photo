@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-02-18 20:57-0500\n"
+"POT-Creation-Date: 2023-02-18 21:36-0500\n"
 "PO-Revision-Date: 2022-12-30 13:30-0500\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: es\n"
@@ -51,6 +51,10 @@ msgstr ""
 msgid "Remember Me"
 msgstr ""
 
+#: app/auth/forms.py:12 app/templates/auth/login.html:5
+msgid "Sign in"
+msgstr ""
+
 #: app/auth/forms.py:17 app/auth/forms.py:37
 msgid "Email"
 msgstr ""
@@ -59,16 +63,24 @@ msgstr ""
 msgid "Repeat Password"
 msgstr ""
 
+#: app/auth/forms.py:21 app/templates/auth/register.html:5
+msgid "Register"
+msgstr ""
+
+#: app/auth/forms.py:28 app/main/forms.py:23
+msgid "Please use a different username."
+msgstr ""
+
+#: app/auth/forms.py:33
+msgid "Please use a different email address."
+msgstr ""
+
 #: app/auth/forms.py:38 app/auth/forms.py:45
 msgid "Request Password Reset"
 msgstr ""
 
 #: app/main/forms.py:11
 msgid "About me"
-msgstr ""
-
-#: app/main/forms.py:23
-msgid "Please use a different username."
 msgstr ""
 
 #: app/main/forms.py:31
@@ -271,28 +283,20 @@ msgstr ""
 msgid "%(longitude)s"
 msgstr ""
 
-#: app/templates/auth/login.html:5
-msgid "Sign in"
-msgstr ""
-
-#: app/templates/auth/login.html:11
+#: app/templates/auth/login.html:12
 msgid "New user?"
 msgstr ""
 
-#: app/templates/auth/login.html:11
+#: app/templates/auth/login.html:12
 msgid "Click to register!"
 msgstr ""
 
-#: app/templates/auth/login.html:12
+#: app/templates/auth/login.html:13
 msgid "Forgot your password?"
 msgstr ""
 
-#: app/templates/auth/login.html:12
+#: app/templates/auth/login.html:13
 msgid "Click to reset"
-msgstr ""
-
-#: app/templates/auth/register.html:5
-msgid "Register"
 msgstr ""
 
 #: app/templates/auth/reset_password_request.html:5

@@ -17,9 +17,10 @@ def map():
                  .first()
         if result is None:
             flash('Data not found!')
+            return redirect(url_for('api.map'))
         else:
             flash('Your search is successful!')
-        return redirect(url_for('api.map', result_name=result.name))
+            return redirect(url_for('api.map', result_name=result.name))
     result = BusinessMontreal.query.filter_by(name=result_name).order_by \
                               (BusinessMontreal.date_statut.asc())
     for r in result:

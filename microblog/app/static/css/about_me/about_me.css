@@ -1,5 +1,6 @@
 body {
-  }
+    background-image: linear-gradient(to left bottom, #5dece3, #46e1ee, #41d6f5, #51c9f7, #68bbf4, #78b1f1, #89a6eb, #9a9ae1, #aa8fd8, #ba83ca, #c777b9, #d16ba5);    color: #EFEFEF;
+}
   
   .timeline {
     margin: 0 auto;
@@ -76,7 +77,7 @@ body {
     position: sticky;
     top: 100px;
     padding: 20px;
-    background-color: #f9f9f9;
+    background-color: black;
     border: 1px solid #ddd;
     margin-bottom: 20px;
   }

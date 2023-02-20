@@ -2,15 +2,22 @@
 
 }
 
+html {
+    background-repeat:no-repeat;
+    min-height: 100%;
+    min-width: 1024px;
+  
+    width: 100%;
+    height: auto;
+}
+
 body {
-    background-image: linear-gradient(to right, #1D0C32, #32135A ,#582D90, #A582CD),
-                      linear-gradient(to bottom, blue, yellow);
+    background-image: linear-gradient(to left bottom, #a582cd, #9772c1, #8862b6, #7a52aa, #6b429f, #5f3891, #542e84, #482477, #3d1e65, #321853, #271242, #1d0c32);
+    width: 100%;
     color: #EFEFEF;
 }
 
 .navbar-custom {
-    background-image: linear-gradient(to right, #1D0C32, #32135A ,#582D90, #A582CD),
-    linear-gradient(to bottom, blue, yellow);
     color: #EFEFEF;
 	position: sticky;
 	top: 0;

@@ -1,4 +1,8 @@
-<table class="table">
+{% block styles %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/user_popup.css') }}">
+{% endblock %}
+
+<table class="table" id="user_popup">
     <tr>
         <td width="64" style="border: 0px;"><img src="{{ user.avatar(64) }}"></td>
         <td style="border: 0px;">
@@ -39,3 +43,4 @@
         </td>
     </tr>
 </table>
+

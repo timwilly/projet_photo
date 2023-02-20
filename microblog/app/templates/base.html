@@ -6,13 +6,12 @@
 
 {% block styles %}
     {{ super() }}
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/base.css') }}">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
 {% endblock %}
 
 {% block navbar %}
-    <nav class="navbar navbar-custom"  data-bs-theme="dark">
+    <nav class="navbar navbar-custom" data-bs-theme="dark">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -30,7 +29,7 @@
                     <li><a href="{{ url_for('api.map') }}">{{ _('Map') }}</a></li>
                     <li class="nav-item dropdown">
                         <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {{ _('About me') }}
+                            {{ _('About me') }} <span class="caret"></span>
                         </a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         <li><a href="{{ url_for('about_me.about_me') }}">{{ _('About me') }}</a></li>
@@ -56,7 +55,7 @@
                     {% endif %}
                     <li class="nav-item dropdown">
                     <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        {{ _('Language') }}
+                        {{ _('Language') }} <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         {% for language in AVAILABLE_LANGUAGES.items() %}
@@ -108,8 +107,9 @@
     {{ moment.lang(g.locale) }}
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <!--<script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="{{ url_for('static', filename='js/base.js') }}"></script>
     <script>
         function translate(sourceElem, destElem, sourceLang, destLang) {
             $(destElem).html('<img src="{{ url_for('static', filename='loading.gif') }}">');
@@ -124,47 +124,48 @@
             });
         }
         
-        $(function() {
-            var timer = null;
-            var xhr = null;
-            $('.user_popup').hover(
-                function(event) {
-                    // Curseur à l'intérieur
-                    var elem = $(event.currentTarget);
-                    timer = setTimeout(function() {
-                        timer = null;
-                        xhr = $.ajax(
-                            '/user/' + elem.first().text().trim() + '/popup').done(
-                                function(data) {
-                                    xhr = null;
-                                    elem.popover({
-                                        trigger: 'manual',
-                                        html: true,
-                                        animation: false,
-                                        container: elem,
-                                        content: data
-                                    }).popover('show');
-                                    flask_moment_render_all();
-                                }
-                        );
-                    }, 400);
-                },
-                function(event) {
-                    // Curseur à l'extérieur
-                    var elem = $(event.currentTarget);
-                    if(timer) {
-                        clearTimeout(timer);
-                        timer = null;
-                    } else if(xhr) {
-                        xhr.abort();
-                        xhr = null;
-                    } else {
-                        elem.popover('destroy');
-                    }
+
+    $(function() {
+        var timer = null;
+        var xhr = null;
+        $('.user_popup').hover(
+            function(event) {
+                // Curseur à l'intérieur
+                var elem = $(event.currentTarget);
+                timer = setTimeout(function() {
+                    timer = null;
+                    xhr = $.ajax(
+                        '/user/' + elem.first().text().trim() + '/popup').done(
+                            function(data) {
+                                xhr = null;
+                                elem.popover({
+                                    trigger: 'manual',
+                                    html: true,
+                                    animation: false,
+                                    container: elem,
+                                    content: data
+                                }).popover('show');
+                                flask_moment_render_all();
+                            }
+                    );
+                }, 400);
+            },
+            function(event) {
+                // Curseur à l'extérieur
+                var elem = $(event.currentTarget);
+                if(timer) {
+                    clearTimeout(timer);
+                    timer = null;
+                } else if(xhr) {
+                    xhr.abort();
+                    xhr = null;
+                } else {
+                    elem.popover('destroy');
                 }
-            )
-        });
-        
+            }
+        )
+    });
+        /*
         {% if current_user.is_authenticated %}
         $(function() {
             var since = 0;
@@ -180,13 +181,6 @@
                 )
             })
         });
-        {% endif %}
-        
-
-            
-        function set_message_count(n) {
-            $('#message_count').text(n);
-            $('#message_count').css('visibility', n ? 'visible' : 'hidden');
-        }
+        {% endif %}*/
     </script>
 {% endblock %}

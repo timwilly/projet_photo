@@ -1,2 +1,47 @@
-.navbar-toggle {
+.container {
+
+}
+
+body {
+    background-image: linear-gradient(to right, #1D0C32, #32135A ,#582D90, #A582CD),
+                      linear-gradient(to bottom, blue, yellow);
+    color: #EFEFEF;
+}
+
+.navbar-custom {
+    background-image: linear-gradient(to right, #1D0C32, #32135A ,#582D90, #A582CD),
+    linear-gradient(to bottom, blue, yellow);
+    color: #EFEFEF;
+	position: sticky;
+	top: 0;
+    z-index: 1;
+}
+.navbar-custom a {
+    color: #EFEFEF;
+}
+
+.navbar-custom a:hover {
+    background-color: #AFC3FA;
+}
+
+.navbar-custom ul li a:hover {
+    background-color: #AFC3FA;
+}
+
+.navbar-custom ul li .lang_active {
+    background-color: #DEE1E1;
+}
+
+.dropdown .caret {
+    border-top: 4px solid;
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent;
+    display: inline-block;
+    margin-left: 5px;
+    vertical-align: middle;
+    transition: transform 0.3s ease;
+}
+
+.dropdown.open .caret {
+    transform: rotate(180deg);
 }

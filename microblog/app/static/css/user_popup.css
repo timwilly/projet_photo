@@ -1,0 +1,8 @@
+#user_popup {
+    background-image: linear-gradient(to right, #1D0C32, #32135A ,#582D90, #A582CD),
+    linear-gradient(to bottom, blue, yellow);
+}
+
+#user_popup p {
+    color:white;
+}

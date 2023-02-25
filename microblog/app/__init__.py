@@ -2,8 +2,11 @@ import folium
 import logging
 import os
 import rq
-from app.shared import db, migrate, mail, bootstrap, moment, babel, login
-from app.bgscheduler import BgScheduler
+from app.shared import db, migrate, mail, bootstrap, moment, babel, login, \
+                       scheduler
+from app.bgscheduler import scheduler
+from app.tasks import import_data, example2
+from apscheduler.schedulers.background import BackgroundScheduler
 from config import Config
 from elasticsearch import Elasticsearch
 from flask import Flask, request, current_app, session
@@ -53,7 +56,21 @@ def create_app(config_class=Config):
     app.register_blueprint(main_bp)
 
     # Cédule une job...
-    BgScheduler.scheduler()
+    #app.scheduler = BgScheduler
+    #app.scheduler.scheduler()
+    #@scheduler.task('cron', id='do job 1', hour=0, minute=56, second=12, 
+    #                misfire_grace_time=800)
+    #def job1():
+    #    with scheduler.app.app_context():
+    #        import_data()
+        
+    scheduler.start()
+    #app.scheduler.add_job(func=example2(), trigger='interval', seconds=7)
+    #app.scheduler.start()    
+    #scheduler = BackgroundScheduler()
+    #@app.before_first_request
+    #def initialize_scheduler():
+    
     # Importe les données, à enlever lors de la mise en production
     #from app.tasks import import_data
     #@app.before_first_request
@@ -100,6 +117,8 @@ def register_extensions(app):
     moment.init_app(app)
     babel.init_app(app)
     login.init_app(app)
+    scheduler.init_app(app)
+    
 
 @babel.localeselector
 def get_locale():

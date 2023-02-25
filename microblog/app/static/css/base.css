@@ -16,6 +16,8 @@ body {
 	position: sticky;
 	top: 0;
     z-index: 1;
+    -webkit-box-shadow: -5px 1px 11px 8px rgba(0,0,0,0.10); 
+    box-shadow: -5px 1px 11px 8px rgba(0,0,0,0.10);
 }
 
 /* Link on navbar */

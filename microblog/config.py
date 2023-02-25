@@ -38,3 +38,9 @@ class Config(object):
     ELASTICSEARCH_URL = os.getenv('ELASTICSEARCH_URL')
     
     REDIS_URL = os.environ.get('REDIS_URL') or 'redis://'
+    
+    # json utf-8 avec indentation
+    JSON_AS_ASCII = False
+    JSONIFY_PRETTYPRINT_REGULAR = True
+    
+    SCHEDULER_API_ENABLED = True

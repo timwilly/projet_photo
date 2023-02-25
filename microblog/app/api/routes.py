@@ -2,7 +2,9 @@ import json
 from app.models import BusinessMontreal
 from app.api import bp
 from app.api.forms import SearchForm
-from flask import render_template, redirect, url_for, flash, request, Response
+from datetime import datetime, date, time
+from flask import render_template, redirect, url_for, flash, request, Response, \
+                  jsonify
 from itertools import islice
 from json import JSONEncoder
 from sqlalchemy import asc
@@ -14,7 +16,7 @@ def map():
     result_name = request.args.get('result_name')
     if form.validate_on_submit():
         result = BusinessMontreal.query.filter_by(name=form.search.data) \
-                 .first()
+                                 .first()
         if result is None:
             flash('Data not found!')
             return redirect(url_for('api.map'))
@@ -28,13 +30,30 @@ def map():
     return render_template('api/map.html', title="Map", form=form,
                            result=result)
 
+
 @bp.route('/search', methods=['GET'])
 def search():
     all = BusinessMontreal.query.all()
     values = list(set([str(value) for value in all]))
-
     return Response(json.dumps(values), mimetype='application/json')
 
+
+@bp.route('/food_business', methods=["GET", "POST"])
+def get_food_business_json():
+    food_business = request.args.get("business")
+    result = BusinessMontreal.query.filter_by(name=food_business).all()
+    result_json = []
+    for r in result:
+        r.date_statut = datetime_handler(r.date_statut)
+        result_json.append(r.as_dict())
+        
+    return jsonify(json.loads(json.dumps({'Business': result_json}, ensure_ascii=False).encode('utf8')))
+
+
+# Convertit un objet datetime en string
+def datetime_handler(obj):
+    if isinstance(obj, (datetime, date, time)):
+        return str(obj)
 """
 src = ['foo', 'bar', 'foobar', 'bar', 'barfoo']
 tree = create(src)

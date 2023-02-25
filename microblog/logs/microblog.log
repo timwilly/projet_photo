@@ -91,3 +91,8 @@ Traceback (most recent call last):
 TypeError: object of type 'BaseQuery' has no len()
 2023-02-18 01:11:51,091 INFO: Microblog startup [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/__init__.py:87]
 2023-02-18 01:12:26,050 INFO: Microblog startup [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/__init__.py:87]
+2023-02-25 01:23:07,588 INFO: Microblog startup [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/__init__.py:90]
+2023-02-25 01:28:25,855 INFO: Microblog startup [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/__init__.py:107]
+2023-02-25 01:29:15,437 INFO: Microblog startup [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/__init__.py:107]
+2023-02-25 01:30:16,166 INFO: Microblog startup [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/__init__.py:107]
+2023-02-25 01:30:56,081 INFO: Microblog startup [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/__init__.py:107]

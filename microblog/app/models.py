@@ -242,7 +242,18 @@ class BusinessMontreal(db.Model):
     y = db.Column(db.Float)
 
     def as_dict(self):
-        return {'name': self.name}
+        return {'id': self.id,
+                'name': self.name,
+                'address': self.address,
+                'city': self.city,
+                'state': self.state,
+                'type': self.type,
+                'statut': self.statut,
+                'date_statut': self.date_statut,
+                'latitude': self.latitude,
+                'longitude': self.longitude,
+                'x': self.x,
+                'y': self.y}
 
     def __repr__(self):
         return '{}'.format(self.name)

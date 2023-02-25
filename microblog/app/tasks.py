@@ -31,6 +31,7 @@ def import_data():
                            "business_montreal")
         import_csv_to_database("business_montreal")
         convert_csv_to_json("business_montreal")
+        print('FINI :)')
     except Exception as e:
         print(e)
         
@@ -62,20 +63,18 @@ def import_csv_to_database(read_file_name):
                                             x=string_to_float(row[10]),
                                             y=string_to_float(row[11]))
 
-            business_montreal = BusinessMontreal(id=row[0], name=row[1],
-                                                 address=row[2], city=row[3],
-                                                 state=row[4], type=row[5],
-                                                 statut=row[6], 
-                                                 date_statut=date,
-                                                 latitude=string_to_float\
-                                                 (row[8]),
-                                                 longitude=string_to_float\
-                                                 (row[9]), 
-                                                 x=string_to_float(row[10]),
-                                                 y=string_to_float(row[11]))
+            business_montreal = \
+                BusinessMontreal(id=row[0], name=row[1], address=row[2], 
+                                 city=row[3], state=row[4], type=row[5],
+                                 statut=row[6], date_statut=date,
+                                 latitude=string_to_float(row[8]),
+                                 longitude=string_to_float(row[9]), 
+                                 x=string_to_float(row[10]),
+                                 y=string_to_float(row[11]))
+                
             if not existing_record:
                 db.session.add(business_montreal)
-            db.session.commit()
+        db.session.commit()    
         return 'Data imported successfully'
 
 

@@ -1,3 +1,4 @@
+from flask_apscheduler import APScheduler
 from flask_babel import Babel
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
@@ -17,3 +18,4 @@ bootstrap = Bootstrap()
 moment = Moment()
 babel = Babel()    
 login = LoginManager()
+scheduler = APScheduler()

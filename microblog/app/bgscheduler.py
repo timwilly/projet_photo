@@ -1,15 +1,15 @@
-import app.tasks
+from app import scheduler
+from app.tasks import import_data
 from flask import current_app
-from pytz import utc
+from pytz import utc, timezone
 from apscheduler.schedulers.background import BackgroundScheduler
 
 
 class BgScheduler:
+    eastern_tz = timezone('US/Eastern')
     
-    def scheduler():
-        try:
-            scheduler = BackgroundScheduler(timezone=utc)
-            scheduler.add_job(func=app.tasks.import_data, trigger='cron', hour=0)
-            scheduler.start()
-        except Exception as e:
-            print(e)
+    @scheduler.task('cron', id='do job 1', hour=1, minute=31, second=11, 
+                    misfire_grace_time=800, timezone=eastern_tz)
+    def import_():
+        with scheduler.app.app_context():
+            import_data()

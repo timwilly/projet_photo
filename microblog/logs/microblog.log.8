@@ -1,4 +1,4 @@
-2023-02-09 01:28:49,026 ERROR: Exception on /api/search [GET] [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py:1457]
+2023-02-09 01:34:44,407 ERROR: Exception on /api/search [GET] [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py:1457]
 Traceback (most recent call last):
   File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 2073, in wsgi_app
     response = self.full_dispatch_request()
@@ -12,27 +12,8 @@ Traceback (most recent call last):
   File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 1502, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/api/routes.py", line 33, in search
-    return Response(json.dumps(), mimetype='application/json')
-                    ^^^^^^^^^^^^
-TypeError: dumps() missing 1 required positional argument: 'obj'
-2023-02-09 01:29:52,522 INFO: Microblog startup [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/__init__.py:87]
-2023-02-09 01:29:58,827 ERROR: Exception on /api/search [GET] [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py:1457]
-Traceback (most recent call last):
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 2073, in wsgi_app
-    response = self.full_dispatch_request()
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 1518, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 1516, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 1502, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/api/routes.py", line 33, in search
-    return Response(json.dumps(set(values)), mimetype='application/json')
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/api/routes.py", line 36, in search
+    return Response(json.dumps(set(values)), mimetype='application/json', cls=setEncoder)
                     ^^^^^^^^^^^^^^^^^^^^^^^
   File "/usr/lib/python3.11/json/__init__.py", line 231, in dumps
     return _default_encoder.encode(obj)
@@ -46,8 +27,8 @@ Traceback (most recent call last):
   File "/usr/lib/python3.11/json/encoder.py", line 180, in default
     raise TypeError(f'Object of type {o.__class__.__name__} '
 TypeError: Object of type set is not JSON serializable
-2023-02-09 01:30:29,639 INFO: Microblog startup [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/__init__.py:87]
-2023-02-09 01:30:33,571 ERROR: Exception on /api/search [GET] [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py:1457]
+2023-02-09 01:36:08,801 INFO: Microblog startup [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/__init__.py:87]
+2023-02-09 01:36:11,666 ERROR: Exception on /api/search [GET] [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py:1457]
 Traceback (most recent call last):
   File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 2073, in wsgi_app
     response = self.full_dispatch_request()
@@ -61,9 +42,9 @@ Traceback (most recent call last):
   File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 1502, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/api/routes.py", line 34, in search
-    return Response(json.dumps(set(values)), mimetype='application/json', cls=SetEncoder)
-                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/api/routes.py", line 36, in search
+    return Response(json.dumps(values), mimetype='application/json')
+                    ^^^^^^^^^^^^^^^^^^
   File "/usr/lib/python3.11/json/__init__.py", line 231, in dumps
     return _default_encoder.encode(obj)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -76,7 +57,8 @@ Traceback (most recent call last):
   File "/usr/lib/python3.11/json/encoder.py", line 180, in default
     raise TypeError(f'Object of type {o.__class__.__name__} '
 TypeError: Object of type set is not JSON serializable
-2023-02-09 01:30:34,659 ERROR: Exception on /api/search [GET] [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py:1457]
+2023-02-09 01:36:23,385 INFO: Microblog startup [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/__init__.py:87]
+2023-02-09 01:36:24,888 ERROR: Exception on /api/search [GET] [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py:1457]
 Traceback (most recent call last):
   File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 2073, in wsgi_app
     response = self.full_dispatch_request()
@@ -90,8 +72,8 @@ Traceback (most recent call last):
   File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 1502, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/api/routes.py", line 34, in search
-    return Response(json.dumps(set(values)), mimetype='application/json', cls=SetEncoder)
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/api/routes.py", line 36, in search
+    return Response(json.dumps(set(values)),  cls=setEncoder)
                     ^^^^^^^^^^^^^^^^^^^^^^^
   File "/usr/lib/python3.11/json/__init__.py", line 231, in dumps
     return _default_encoder.encode(obj)
@@ -105,8 +87,8 @@ Traceback (most recent call last):
   File "/usr/lib/python3.11/json/encoder.py", line 180, in default
     raise TypeError(f'Object of type {o.__class__.__name__} '
 TypeError: Object of type set is not JSON serializable
-2023-02-09 01:31:09,454 INFO: Microblog startup [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/__init__.py:87]
-2023-02-09 01:31:10,794 ERROR: Exception on /api/search [GET] [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py:1457]
+2023-02-09 01:37:06,763 INFO: Microblog startup [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/__init__.py:87]
+2023-02-09 01:37:08,970 ERROR: Exception on /api/search [GET] [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py:1457]
 Traceback (most recent call last):
   File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 2073, in wsgi_app
     response = self.full_dispatch_request()
@@ -120,9 +102,9 @@ Traceback (most recent call last):
   File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 1502, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/api/routes.py", line 34, in search
-    return Response(json.dumps(set(values)), mimetype='application/json', default=serialize_sets)
-                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/api/routes.py", line 36, in search
+    return Response(json.dumps(values), mimetype='application/json')
+                    ^^^^^^^^^^^^^^^^^^
   File "/usr/lib/python3.11/json/__init__.py", line 231, in dumps
     return _default_encoder.encode(obj)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -135,4 +117,3 @@ Traceback (most recent call last):
   File "/usr/lib/python3.11/json/encoder.py", line 180, in default
     raise TypeError(f'Object of type {o.__class__.__name__} '
 TypeError: Object of type set is not JSON serializable
-2023-02-09 01:34:42,675 INFO: Microblog startup [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/__init__.py:87]

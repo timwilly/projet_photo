@@ -1,6 +1,7 @@
 import csv
 import json
 import time
+import pandas as pd
 from app import db
 from app.models import BusinessMontreal
 from datetime import datetime
@@ -48,36 +49,40 @@ def import_data_to_csv(link, write_file_name):
 
 def import_csv_to_database(read_file_name):
     with open("app/static/data/{}.csv".format(read_file_name), 'r') as file:
-        reader = csv.reader(file)
+        reader = csv.DictReader(file)
         next(reader)
         for row in reader:
-            date = datetime.strptime(row[7], '%Y%m%d').date()
-            existing_record = db.session.query(BusinessMontreal).\
-                                    filter_by(id=row[0], name=row[1],
-                                            address=row[2], city=row[3],
-                                            state=row[4], type=row[5],
-                                            statut=row[6], 
-                                            date_statut=date,
-                                            latitude=string_to_float(row[8]),
-                                            longitude=string_to_float(row[9]),
-                                            x=string_to_float(row[10]),
-                                            y=string_to_float(row[11]))
+            date = datetime.strptime(row['date_statut'], '%Y%m%d').date()
+            with db.session.no_autoflush:
+                existing_record = db.session.query(BusinessMontreal).\
+                                        filter_by(id=row['business_id']).first()
+                                        
+                new_record = BusinessMontreal(
+                    id=row['business_id'], name=row['name'],
+                    address=row['address'], city=row['city'],
+                    state=row['state'], type=row['type'],
+                    statut=row['statut'], date_statut=date,
+                    latitude=string_to_float(row['latitude']),
+                    longitude=string_to_float(row['longitude']),
+                    x=string_to_float(row['x']),
+                    y=string_to_float(row['y']))
 
-            business_montreal = \
-                BusinessMontreal(id=row[0], name=row[1], address=row[2], 
-                                 city=row[3], state=row[4], type=row[5],
-                                 statut=row[6], date_statut=date,
-                                 latitude=string_to_float(row[8]),
-                                 longitude=string_to_float(row[9]), 
-                                 x=string_to_float(row[10]),
-                                 y=string_to_float(row[11]))
-                
-            if not existing_record:
-                db.session.add(business_montreal)
+                # S'il y a une mise à jour à faire
+                if existing_record is not None and \
+                    existing_record.to_dict() != new_record.to_dict():
+                    existing_record.update_from_dict(row)
+                    db.session.commit()
+                elif existing_record is None:
+                    db.session.add(new_record)
         db.session.commit()    
         return 'Data imported successfully'
 
 
+def compare_rows_csv_to_db(read_file_name):
+    df_csv = pd.read_csv("app/static/data/{}.csv".format(read_file_name), 'r')
+
+
+# Gère un float '' pour retourner None...
 def string_to_float(string):
     try:
         return float(string)

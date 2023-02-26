@@ -242,7 +242,7 @@ class BusinessMontreal(db.Model):
     y = db.Column(db.Float)
 
     def as_dict(self):
-        return {'id': self.id,
+        return {'business_id': self.id,
                 'name': self.name,
                 'address': self.address,
                 'city': self.city,
@@ -255,12 +255,49 @@ class BusinessMontreal(db.Model):
                 'x': self.x,
                 'y': self.y}
 
+    def to_dict(self):
+        return {'business_id': str(self.id),
+                'name': str(self.name),
+                'address': str(self.address),
+                'city': str(self.city),
+                'state': str(self.state),
+                'type': str(self.type),
+                'statut': str(self.statut),
+                'date_statut': self.date_statut.strftime("%Y%m%d"),
+                'latitude': str(self.latitude),
+                'longitude': str(self.longitude),
+                'x': str(self.x),
+                'y': str(self.y)}
+
+    def update_from_dict(self, dict):
+        self.id = dict.get('business_id', self.id)
+        self.name = dict.get('name', self.name)
+        self.address = dict.get('address', self.address)
+        self.city = dict.get('city', self.city)
+        self.state = dict.get('state', self.state)
+        self.type = dict.get('type', self.type)
+        self.statut = dict.get('statut', self.statut)
+        self.date_statut = datetime.strptime(dict.get('date_statut', 
+                                                      self.date_statut),
+                                             '%Y%m%d').date()
+        self.latitude = string_to_float(dict.get('latitude', self.latitude))
+        self.longitude = string_to_float(dict.get('longitude', self.longitude))
+        self.x = string_to_float(dict.get('x', self.x))
+        self.y = string_to_float(dict.get('y', self.y))
+
+
     def __repr__(self):
         return '{}'.format(self.name)
 
 db.event.listen(db.session, 'before_commit', SearchableMixin.before_commit)
 db.event.listen(db.session, 'after_commit', SearchableMixin.after_commit)
 
+# Gère un float '' pour retourner None...
+def string_to_float(string):
+    try:
+        return float(string)
+    except ValueError:
+        return None
 
 @login.user_loader
 def load_user(id):

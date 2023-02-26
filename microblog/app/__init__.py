@@ -72,10 +72,10 @@ def create_app(config_class=Config):
     #def initialize_scheduler():
     
     # Importe les données, à enlever lors de la mise en production
-    #from app.tasks import import_data
-    #@app.before_first_request
-    #def test():
-    #    import_data()
+    from app.tasks import import_data
+    @app.before_first_request
+    def test():
+        import_data()
 
     if not app.debug and not app.testing:
         if app.config['MAIL_SERVER']:

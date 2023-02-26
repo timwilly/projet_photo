@@ -1,4 +1,4 @@
-2023-02-18 01:09:05,946 ERROR: Exception on /api/map [GET] [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py:1457]
+2023-02-18 01:09:25,041 ERROR: Exception on /api/map [GET] [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py:1457]
 Traceback (most recent call last):
   File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 2073, in wsgi_app
     response = self.full_dispatch_request()
@@ -40,11 +40,11 @@ Traceback (most recent call last):
   File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 26, in block 'body'
     {% block scripts %}
   File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/templates/api/map.html", line 65, in block 'scripts'
-    {% if result is defined | length > 0 %}
+    {% if result | length > 0 %}
     ^^^^^^^^^^^^^^^^^^^^^^^^^
 TypeError: object of type 'bool' has no len()
-2023-02-18 01:09:15,552 INFO: Microblog startup [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/__init__.py:87]
-2023-02-18 01:09:16,282 ERROR: Exception on /api/map [GET] [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py:1457]
+2023-02-18 01:09:30,206 INFO: Microblog startup [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/__init__.py:87]
+2023-02-18 01:09:30,914 ERROR: Exception on /api/map [GET] [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py:1457]
 Traceback (most recent call last):
   File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 2073, in wsgi_app
     response = self.full_dispatch_request()
@@ -86,6 +86,8 @@ Traceback (most recent call last):
   File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 26, in block 'body'
     {% block scripts %}
   File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/templates/api/map.html", line 65, in block 'scripts'
-    {% if result is defined | length > 1 %}
+    {% if result | length > 0 %}
     ^^^^^^^^^^^^^^^^^^^^^^^^^
-TypeError: object of type 'bool' has no len()
+TypeError: object of type 'BaseQuery' has no len()
+2023-02-18 01:09:39,843 INFO: Microblog startup [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/__init__.py:87]
+2023-02-18 01:09:58,511 INFO: Microblog startup [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/__init__.py:87]

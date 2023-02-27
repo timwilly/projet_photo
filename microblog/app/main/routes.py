@@ -1,8 +1,8 @@
-from app import db
+from app import db, mail
 from app.main import bp
 from app.main.forms import EditProfileForm, EmptyForm, PostForm, SearchForm, \
                            MessageForm
-from app.models import User, Post, Message, Notification
+from app.models import User, Post, Notification, Message
 from app.translate import translate
 from datetime import datetime
 from flask import render_template, flash, redirect, url_for, request, g, \
@@ -237,6 +237,7 @@ def notifications():
         'timestamp': n.timestamp
     } for n in notifications])
     
+
 
 @bp.route('/language=<language>')
 def set_language(language=None):

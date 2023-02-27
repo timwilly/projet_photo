@@ -1,6 +1,7 @@
 import folium
 import logging
 import os
+import tweepy
 import rq
 from app.shared import db, migrate, mail, bootstrap, moment, babel, login, \
                        scheduler
@@ -56,26 +57,14 @@ def create_app(config_class=Config):
     app.register_blueprint(main_bp)
 
     # Cédule une job...
-    #app.scheduler = BgScheduler
-    #app.scheduler.scheduler()
-    #@scheduler.task('cron', id='do job 1', hour=0, minute=56, second=12, 
-    #                misfire_grace_time=800)
-    #def job1():
-    #    with scheduler.app.app_context():
-    #        import_data()
-        
     scheduler.start()
-    #app.scheduler.add_job(func=example2(), trigger='interval', seconds=7)
-    #app.scheduler.start()    
-    #scheduler = BackgroundScheduler()
-    #@app.before_first_request
-    #def initialize_scheduler():
     
     # Importe les données, à enlever lors de la mise en production
-    from app.tasks import import_data
-    @app.before_first_request
-    def test():
-        import_data()
+    #from app.tasks import import_data
+    #@app.before_first_request
+    #def test():
+    #    import_data()
+
 
     if not app.debug and not app.testing:
         if app.config['MAIL_SERVER']:
@@ -88,7 +77,7 @@ def create_app(config_class=Config):
             mail_handler = SMTPHandler(
                 mailhost = (app.config['MAIL_SERVER'], app.config['MAIL_PORT']),
                 fromaddr = 'no-reply@' + app.config['MAIL_SERVER'],
-                toaddrs = app.config['ADMINS'], subject='Microblog Failure',
+                toaddrs = app.config['ADMINS'], subject='Project Failure',
                 credentials = auth, secure = secure
             )
             mail_handler.setLevel(logging.ERROR)
@@ -96,7 +85,7 @@ def create_app(config_class=Config):
         
         if not os.path.exists('logs'):
             os.mkdir('logs')
-        file_handler = RotatingFileHandler('logs/microblog.log', maxBytes=10240,
+        file_handler = RotatingFileHandler('logs/project.log', maxBytes=10240,
                                            backupCount=10)
         file_handler.setFormatter(logging.Formatter(
             '%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]'))
@@ -104,7 +93,7 @@ def create_app(config_class=Config):
         app.logger.addHandler(file_handler)
 
         app.logger.setLevel(logging.INFO)
-        app.logger.info('Microblog startup')
+        app.logger.info('Project startup')
 
     return app
 

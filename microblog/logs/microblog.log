@@ -68,3 +68,7 @@ sqlalchemy.exc.PendingRollbackError: This Session's transaction has been rolled 
 [parameters: [{'y': '', 'x': '', 'id': '986', 'date_statut': datetime.date(2009, 4, 2), 'latitude': '', 'longitude': '', 'business_montreal_id': 986}]] (Background on this error at: https://sqlalche.me/e/14/7s2a)
 2023-02-25 22:20:27,352 INFO: Microblog startup [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/__init__.py:107]
 2023-02-25 22:21:18,572 INFO: Microblog startup [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/__init__.py:107]
+2023-02-25 22:31:40,826 INFO: Microblog startup [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/__init__.py:107]
+2023-02-26 02:11:23,113 INFO: Microblog startup [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/__init__.py:108]
+2023-02-26 17:01:28,948 INFO: Microblog startup [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/__init__.py:108]
+2023-02-26 17:02:31,487 INFO: Microblog startup [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/__init__.py:108]

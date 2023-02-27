@@ -1,0 +1,42 @@
+2023-02-26 19:12:08,555 ERROR: Exception on /auth/reset_password/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyZXNldF9wYXNzd29yZCI6NiwiZXhwIjoxNjc3NDU3Mjk3LjYwNTI1NH0.GQ30wYs4W-DK_zSOr-rwpdoI7iNXm652_Hk1qt0Hl8s [GET] [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py:1457]
+Traceback (most recent call last):
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/auth/routes.py", line 81, in reset_password
+    return render_template('auth/reset_password.html', form=form)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/templating.py", line 148, in render_template
+    ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/jinja2/environment.py", line 1068, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/jinja2/environment.py", line 997, in get_template
+    return self._load_template(name, globals)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/jinja2/environment.py", line 958, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/jinja2/loaders.py", line 125, in load
+    source, filename, uptodate = self.get_source(environment, name)
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/templating.py", line 59, in get_source
+    return self._get_source_fast(environment, template)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/lib/python3.11/site-packages/flask/templating.py", line 95, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: auth/reset_password.html
+2023-02-26 19:20:24,116 INFO: Project startup [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/__init__.py:96]
+2023-02-26 19:25:02,238 INFO: Project startup [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/__init__.py:96]
+2023-02-26 19:27:31,013 INFO: Project startup [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/__init__.py:96]
+2023-02-26 19:29:02,464 INFO: Project startup [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/__init__.py:96]

@@ -6,8 +6,6 @@ import rq
 from app.shared import db, migrate, mail, bootstrap, moment, babel, login, \
                        scheduler
 from app.bgscheduler import scheduler
-from app.tasks import import_data, example2
-from apscheduler.schedulers.background import BackgroundScheduler
 from config import Config
 from elasticsearch import Elasticsearch
 from flask import Flask, request, current_app, session
@@ -60,10 +58,10 @@ def create_app(config_class=Config):
     scheduler.start()
     
     # Importe les données, à enlever lors de la mise en production
-    #from app.tasks import import_data
+    #from app.tasks import import_data_business_montreal
     #@app.before_first_request
     #def test():
-    #    import_data()
+    #    import_data_business_montreal()
 
 
     if not app.debug and not app.testing:

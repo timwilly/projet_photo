@@ -1,5 +1,5 @@
 from app import scheduler
-from app.tasks import import_data
+from app.tasks import import_data_business_montreal
 from pytz import timezone
 
 
@@ -10,4 +10,4 @@ eastern_tz = timezone('US/Eastern')
                 timezone=eastern_tz)
 def schedule_import_business_montreal():
     with scheduler.app.app_context():
-        import_data()
+        import_data_business_montreal()

@@ -20,22 +20,25 @@ def example(seconds):
     job.save_meta()
     print('Task completed')
 
+
 def example2():
     print('TEST')
-    
-def import_data():
+
+# Possible que ça puisse prendre du temps à charger, trouver solution
+def import_data_business_montreal():
     print('BONJOUR!')
     try:
-        import_data_to_csv("https://data.montreal.ca/dataset/c1d65779-d3cb"
+        import_data_to_csv("https://donnees.montreal.ca/dataset/c1d65779-d3cb"
                            "-44e8-af0a-b9f2c5f7766d/resource/28a4957d-732e"
                            "-48f9-8adb-0624867d9bb0/download/businesses.csv",
-                           "business_montreal")
+                           "business_montreal") 
         import_csv_to_database("business_montreal")
         convert_csv_to_json("business_montreal")
         print('FINI :)')
     except Exception as e:
         print(e)
-        
+
+
 def import_data_to_csv(link, write_file_name):
     url = urlopen("{}".format(link))
     string = url.read().decode('utf-8')
@@ -51,6 +54,8 @@ def import_csv_to_database(read_file_name):
     with open("app/static/data/{}.csv".format(read_file_name), 'r') as file:
         reader = csv.DictReader(file)
         next(reader)
+        new_record_list = []
+        existing_record_update_list = []
         for row in reader:
             date = datetime.strptime(row['date_statut'], '%Y%m%d').date()
             with db.session.no_autoflush:
@@ -72,9 +77,12 @@ def import_csv_to_database(read_file_name):
                     existing_record.to_dict() != new_record.to_dict():
                     existing_record.update_from_dict(row)
                     db.session.commit()
+                    existing_record_update_list.append(
+                        existing_record.as_dict())
                 elif existing_record is None:
                     db.session.add(new_record)
-        db.session.commit()    
+                    new_record_list.append(new_record)
+        db.session.commit() 
         return 'Data imported successfully'
 
 

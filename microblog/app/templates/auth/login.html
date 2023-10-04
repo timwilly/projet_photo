@@ -1,14 +1,30 @@
 {% extends "base.html" %}
 {% import 'bootstrap/wtf.html' as wtf %}
 
+{% block styles %}
+    {{ super() }}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/auth/login.css') }}">
+{% endblock %}
+
 {% block app_content %}
     <h1>{{ _('Sign in') }}</h1>
     <div class="row">
         <div class="col-md-4">
-            {{ wtf.quick_form(form) }}
+            {{ wtf.quick_form(form) }}<br>
+            <p>{{ _('New user?') }}<a href="{{ url_for('auth.register') }}"> {{ _('Click to register!') }}</a></p>
+    <p>{{ _('Forgot your password?') }} <a href="{{ url_for('auth.reset_password_request') }}"> {{ _('Click to reset') }}</a></p>
+        </div>
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-5">
+            <!-- Ajoutez votre bloc de texte ici -->
+            <p id="notice">
+                {{ _('On this page, you can create an account, login, reset your password, 
+                interact with other, follow each other and have a main feed.<br><br>
+                To prevent abuse, only 2 account can be created so you can test it.') }}
+
+            </p>
         </div>
     </div>
     <br>
-    <p>{{ _('New user?') }}<a href="{{ url_for('auth.register') }}"> {{ _('Click to register!') }}</a></p>
-    <p>{{ _('Forgot your password?') }} <a href="{{ url_for('auth.reset_password_request') }}"> {{ _('Click to reset') }}</a></p>
 {% endblock %}

@@ -61,8 +61,12 @@ def create_app(config_class=Config):
     #from app.tasks import import_data_business_montreal
     #@app.before_first_request
     #def test():
-    #    import_data_business_montreal()
+    #   import_data_business_montreal()
 
+    #from app.tasks import clear_users_related_tables
+    #@app.before_first_request
+    #def test2():
+    #    clear_users_related_tables()
 
     if not app.debug and not app.testing:
         if app.config['MAIL_SERVER']:

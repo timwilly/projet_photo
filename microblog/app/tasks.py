@@ -1,9 +1,11 @@
 import csv
 import json
+import tweepy
 import time
 import pandas as pd
 from app import db
-from app.models import BusinessMontreal
+from app.models import BusinessMontreal, User, Post, Message, Notification, \
+                       Task
 from datetime import datetime
 from rq import get_current_job
 from urllib.request import urlopen
@@ -24,6 +26,7 @@ def example(seconds):
 def example2():
     print('TEST')
 
+# TODO: à effacer à la fin les print!
 # Possible que ça puisse prendre du temps à charger, trouver solution
 def import_data_business_montreal():
     print('BONJOUR!')
@@ -82,12 +85,21 @@ def import_csv_to_database(read_file_name):
                 elif existing_record is None:
                     db.session.add(new_record)
                     new_record_list.append(new_record)
+                    
+        print(new_record_list)
+        print(existing_record_update_list)
         db.session.commit() 
         return 'Data imported successfully'
 
 
 def compare_rows_csv_to_db(read_file_name):
     df_csv = pd.read_csv("app/static/data/{}.csv".format(read_file_name), 'r')
+
+
+def create_tweet():
+    
+    
+    return None
 
 
 # Gère un float '' pour retourner None...
@@ -108,3 +120,35 @@ def convert_csv_to_json(file_name):
     with open('app/static/data/{}.json'.format(file_name), 'w') as jsonfile:
         json.dump(data, jsonfile)
     
+    
+def clear_users_related_tables():
+    clear_message_table()
+    clear_notification_table()
+    clear_post_table()
+    clear_user_table()
+    print('marche tu ?')
+
+
+def clear_message_table():
+    db.session.query(Message).delete()
+    db.session.commit()
+    
+    
+def clear_notification_table():
+    db.session.query(Notification).delete()
+    db.session.commit()
+
+    
+def clear_post_table():
+    db.session.query(Post).delete()
+    db.session.commit()
+    
+
+def clear_user_table():
+    db.session.query(User).delete()
+    db.session.commit()
+
+    
+def clear_task_table():
+    db.session.query(Task).delete()
+    db.session.commit()

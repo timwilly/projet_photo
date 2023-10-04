@@ -44,3 +44,13 @@ class Config(object):
     JSONIFY_PRETTYPRINT_REGULAR = True
     
     SCHEDULER_API_ENABLED = True
+    
+    # TODO: À effacer à la fin !
+    #for a in os.environ:
+    #    print('Var: ', a, 'Value: ', os.getenv(a))
+    #print("all done")
+    # tweepy key & secret
+    twitter_consumer_key = None
+    twitter_consumer_secret = None
+    twitter_access_token = None
+    twitter_access_token_secret = None

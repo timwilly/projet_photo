@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-02-26 19:27-0500\n"
+"POT-Creation-Date: 2023-10-04 14:12-0400\n"
 "PO-Revision-Date: 2022-12-30 14:06-0500\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.11.0\n"
 
-#: app/__init__.py:29
+#: app/__init__.py:27
 msgid "Please log in to access this page."
 msgstr "Veuillez vous connecter pour accéder à cette page"
 
@@ -51,7 +51,7 @@ msgstr "Mot de passe"
 msgid "Remember Me"
 msgstr "Se souvenir de moi"
 
-#: app/auth/forms.py:12 app/templates/auth/login.html:5
+#: app/auth/forms.py:12 app/templates/auth/login.html:10
 msgid "Sign in"
 msgstr "Connectez-vous"
 
@@ -191,6 +191,10 @@ msgstr "Recherche suivante"
 msgid "Send Message to %(recipient)s"
 msgstr "Envoyer un message à %(recipient)s"
 
+#: app/templates/user.html:8
+msgid "User: "
+msgstr ""
+
 #: app/templates/user.html:10
 #, fuzzy
 msgid "Last seen on:"
@@ -289,19 +293,33 @@ msgstr "%(latitude)s"
 msgid "%(longitude)s"
 msgstr "%(longitude)s"
 
-#: app/templates/auth/login.html:12
+#: app/templates/auth/login.html:20
+msgid ""
+"On this page, you can create an account, login, reset your password, \n"
+"                interact with other, follow each other and have a main "
+"feed.<br><br>\n"
+"                To prevent abuse, only 2 account can be created so you "
+"can test it."
+msgstr ""
+"Sur cette page, vous pouvez créer un compte, vous connecter, "
+"Réinitialiservotre mot de passe, intéragir avec d'autres utilisateur, "
+"suivre d'autresutilisateur et consulter votre fil "
+"d'actualité.<br><br>Pour éviter les abus, deux comptes ne peuvent qu'être"
+" crée pour tester."
+
+#: app/templates/auth/login.html:28
 msgid "New user?"
 msgstr "Nouveau utilisateur?"
 
-#: app/templates/auth/login.html:12
+#: app/templates/auth/login.html:28
 msgid "Click to register!"
 msgstr "Cliquez pour vous enregistrer"
 
-#: app/templates/auth/login.html:13
+#: app/templates/auth/login.html:29
 msgid "Forgot your password?"
 msgstr "Mot de passe oublié?"
 
-#: app/templates/auth/login.html:13
+#: app/templates/auth/login.html:29
 msgid "Click to reset"
 msgstr "Cliquez pour réinitialiser"
 

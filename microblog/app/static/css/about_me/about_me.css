@@ -107,4 +107,10 @@ body {
       transform: translateX(0);
     }
   }
+
+#resized_image {
+  width: 240px; /* Largeur souhaitée en pixels */
+  height: auto; /* Laissez la hauteur s'ajuster automatiquement pour maintenir les proportions */
+  position: relative;
+}
   

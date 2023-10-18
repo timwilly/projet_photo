@@ -1,14 +1,14 @@
 from app import db, mail
 from app.main import bp
 from app.main.forms import EditProfileForm, EmptyForm, PostForm, SearchForm, \
-                           MessageForm
+                           MessageForm, DeleteProfileForm
 from app.models import User, Post, Notification, Message
 from app.translate import translate
 from datetime import datetime
 from flask import render_template, flash, redirect, url_for, request, g, \
                   jsonify, current_app, session
 from flask_babel import get_locale, _, gettext
-from flask_login import current_user, login_required
+from flask_login import current_user, login_required, logout_user
 from langdetect import detect, LangDetectException
 #from app.email import send_password_reset_email
 
@@ -89,6 +89,26 @@ def edit_profile():
         form.username.data = current_user.username
         form.about_me.data = current_user.about_me
     return render_template('edit_profile.html', title='Edit Profile',
+                           form=form)
+    
+    
+@bp.route('/delete_profile', methods=['GET', 'POST'])
+@login_required
+def delete_profile():
+    form = DeleteProfileForm()
+    if form.validate_on_submit():
+        print(form.password.data)
+        user = User.query.filter_by(username=current_user.username).first()
+        if(user.check_password(form.password.data)):
+            db.session.delete(user)
+            db.session.commit()
+            flash('Your account has been deleted', 'success')
+            return redirect(url_for('main.index'))
+        else:
+            flash('Wrong password', 'error')
+        
+        
+    return render_template('delete_profile.html', title='Edit Profile',
                            form=form)
 
 

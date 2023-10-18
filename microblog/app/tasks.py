@@ -126,7 +126,6 @@ def clear_users_related_tables():
     clear_notification_table()
     clear_post_table()
     clear_user_table()
-    print('marche tu ?')
 
 
 def clear_message_table():

@@ -6,7 +6,22 @@
 {% endblock %}
 
 {% block app_content %}
+  <div class="row">
+    <div class="col-md-3">
+      <img src="{{ image_file_me }}" id="resized_image">
+    </div>
+    <div class="col-md-4">
 
+      
+        <p id="introduction">
+          {{ _('Bonjour et bienvenue sur mon site web. Sur cette page, vous aurez
+                 une aperçu de mon parcours, de mes intérêts et mes compétences.
+                 Sur ce site, vous pouvez tenter de créer un compte et naviguer au
+                 travers des différentes paramètres comme si c''était un réseau social,
+                 vous pourrez explorer les différents commerces de Montréal et leur état 
+                 et changer la langue.<br><br> Merci et bonne visite! :)') }}</p>
+    </div>
+  </div>
 <div class="timeline">
     <div class="timeline__component">
       <div class="timeline__date timeline__date--right">August 2014</div>

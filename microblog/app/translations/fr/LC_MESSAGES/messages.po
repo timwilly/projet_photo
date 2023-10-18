@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-10-04 14:12-0400\n"
+"POT-Creation-Date: 2023-10-04 14:23-0400\n"
 "PO-Revision-Date: 2022-12-30 14:06-0500\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -293,7 +293,23 @@ msgstr "%(latitude)s"
 msgid "%(longitude)s"
 msgstr "%(longitude)s"
 
-#: app/templates/auth/login.html:20
+#: app/templates/auth/login.html:14
+msgid "New user?"
+msgstr "Nouveau utilisateur?"
+
+#: app/templates/auth/login.html:14
+msgid "Click to register!"
+msgstr "Cliquez pour vous enregistrer"
+
+#: app/templates/auth/login.html:15
+msgid "Forgot your password?"
+msgstr "Mot de passe oublié?"
+
+#: app/templates/auth/login.html:15
+msgid "Click to reset"
+msgstr "Cliquez pour réinitialiser"
+
+#: app/templates/auth/login.html:22
 msgid ""
 "On this page, you can create an account, login, reset your password, \n"
 "                interact with other, follow each other and have a main "
@@ -303,25 +319,9 @@ msgid ""
 msgstr ""
 "Sur cette page, vous pouvez créer un compte, vous connecter, "
 "Réinitialiservotre mot de passe, intéragir avec d'autres utilisateur, "
-"suivre d'autresutilisateur et consulter votre fil "
+"suivre d'autres utilisateurs et consulter votre fil "
 "d'actualité.<br><br>Pour éviter les abus, deux comptes ne peuvent qu'être"
 " crée pour tester."
-
-#: app/templates/auth/login.html:28
-msgid "New user?"
-msgstr "Nouveau utilisateur?"
-
-#: app/templates/auth/login.html:28
-msgid "Click to register!"
-msgstr "Cliquez pour vous enregistrer"
-
-#: app/templates/auth/login.html:29
-msgid "Forgot your password?"
-msgstr "Mot de passe oublié?"
-
-#: app/templates/auth/login.html:29
-msgid "Click to reset"
-msgstr "Cliquez pour réinitialiser"
 
 #: app/templates/auth/reset_password.html:5
 msgid "Reset your password"

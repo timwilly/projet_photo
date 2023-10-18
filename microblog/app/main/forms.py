@@ -2,7 +2,7 @@ from app.models import User
 from flask import request
 from flask_babel import lazy_gettext as _l
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, TextAreaField
+from wtforms import StringField, SubmitField, TextAreaField, PasswordField
 from wtforms.validators import DataRequired, Length, ValidationError
 
 
@@ -21,6 +21,11 @@ class EditProfileForm(FlaskForm):
             user = User.query.filter_by(username=self.username.data).first()
             if user is not None:
                 raise ValidationError(_l('Please use a different username.'))
+
+
+class DeleteProfileForm(FlaskForm):
+    password = PasswordField(_l('Password'), validators=[DataRequired()])
+    submit = SubmitField(_l('Submit'))
 
 
 class EmptyForm(FlaskForm):

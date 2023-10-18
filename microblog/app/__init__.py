@@ -23,7 +23,7 @@ def create_app(config_class=Config):
     register_extensions(app)
     
     # L'url 'login' si n'est pas connecté
-    login.login_view = 'auth.login'
+    login.login_view = 'about_me.about_me'
     login.login_message = _l('Please log in to access this page.')
     
     m = folium.Map(location=[45.5236, -122.6750])

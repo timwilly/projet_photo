@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-10-04 14:23-0400\n"
+"POT-Creation-Date: 2023-10-18 17:03-0400\n"
 "PO-Revision-Date: 2022-12-30 14:06-0500\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -30,12 +30,12 @@ msgstr "Erreur: le service de traduction n'est pas configuré"
 msgid "Error: the translation service failed."
 msgstr "Erreur: le service de traduction a échoué"
 
-#: app/api/forms.py:9 app/main/forms.py:37 app/main/routes.py:169
+#: app/api/forms.py:9 app/main/forms.py:42 app/main/routes.py:189
 msgid "Search"
 msgstr "Recherche"
 
-#: app/api/forms.py:11 app/main/forms.py:12 app/main/forms.py:27
-#: app/main/forms.py:33 app/main/forms.py:50
+#: app/api/forms.py:11 app/main/forms.py:12 app/main/forms.py:28
+#: app/main/forms.py:32 app/main/forms.py:38 app/main/forms.py:55
 msgid "Submit"
 msgstr "Soumettre"
 
@@ -44,6 +44,7 @@ msgid "Username"
 msgstr "Utilisateur"
 
 #: app/auth/forms.py:10 app/auth/forms.py:18 app/auth/forms.py:42
+#: app/main/forms.py:27
 msgid "Password"
 msgstr "Mot de passe"
 
@@ -51,7 +52,7 @@ msgstr "Mot de passe"
 msgid "Remember Me"
 msgstr "Se souvenir de moi"
 
-#: app/auth/forms.py:12 app/templates/auth/login.html:10
+#: app/auth/forms.py:12 app/templates/auth/login.html:11
 msgid "Sign in"
 msgstr "Connectez-vous"
 
@@ -83,23 +84,24 @@ msgstr "Veuillez utilisez un différent nom d'utilisateur"
 msgid "Request Password Reset"
 msgstr "Mot de passe"
 
-#: app/main/forms.py:11 app/templates/base.html:32 app/templates/base.html:35
+#: app/main/forms.py:11 app/templates/base.html:25 app/templates/base.html:34
+#: app/templates/base.html:38
 msgid "About me"
 msgstr "À propos de moi"
 
-#: app/main/forms.py:31
+#: app/main/forms.py:36
 msgid "Say something"
 msgstr "Dites quelque chose"
 
-#: app/main/forms.py:48
+#: app/main/forms.py:53
 msgid "Message"
 msgstr "Message"
 
-#: app/main/routes.py:203
+#: app/main/routes.py:223
 msgid "Your message has been sent."
 msgstr "Votre message a été envoyé."
 
-#: app/main/routes.py:205
+#: app/main/routes.py:225
 msgid "Send Message"
 msgstr "Envoyer un message"
 
@@ -112,41 +114,50 @@ msgstr "%(username)s a dit %(when)s"
 msgid "Translate"
 msgstr "Traduire"
 
-#: app/templates/base.html:27
-msgid "Home"
-msgstr "Accueil"
-
-#: app/templates/base.html:28
-msgid "Explore"
-msgstr "Explore"
-
 #: app/templates/base.html:29
-msgid "Map"
-msgstr "Map"
+msgid "Feed"
+msgstr "Fil d'actualité"
 
-#: app/templates/base.html:40
+#: app/templates/base.html:30
+msgid "Explore"
+msgstr "Explorer"
+
+#: app/templates/base.html:31
+msgid "Map"
+msgstr "Carte"
+
+#: app/templates/base.html:43
 msgid "Login"
 msgstr "Connexion"
 
-#: app/templates/base.html:43 app/templates/messages.html:4
+#: app/templates/base.html:46 app/templates/messages.html:4
 msgid "Messages"
 msgstr "Messages"
 
-#: app/templates/base.html:52
+#: app/templates/base.html:55
 msgid "Profile"
 msgstr "Profile"
 
-#: app/templates/base.html:53
+#: app/templates/base.html:56
 msgid "Logout"
 msgstr "Déconnexion"
 
-#: app/templates/base.html:57
+#: app/templates/base.html:60
 msgid "Language"
 msgstr "Langage"
 
-#: app/templates/base.html:122
+#: app/templates/base.html:125
 msgid "Error: Could not contact server."
 msgstr "Erreur: le serveur ne peut être contacté"
+
+#: app/templates/delete_profile.html:10
+#, fuzzy
+msgid "Delete Profile"
+msgstr "Profile"
+
+#: app/templates/delete_profile.html:11
+msgid "Confirm your password to delete your account"
+msgstr ""
 
 #: app/templates/edit_profile.html:6
 #, fuzzy
@@ -158,11 +169,11 @@ msgstr "Profile"
 msgid "Hi, %(username)s"
 msgstr "Bonjour, %(username)s"
 
-#: app/templates/index.html:25 app/templates/user.html:68
+#: app/templates/index.html:25 app/templates/user.html:73
 msgid "Newer posts"
 msgstr "Messages récents"
 
-#: app/templates/index.html:30 app/templates/user.html:71
+#: app/templates/index.html:30 app/templates/user.html:76
 msgid "Older posts"
 msgstr "Anciens messages"
 
@@ -191,22 +202,26 @@ msgstr "Recherche suivante"
 msgid "Send Message to %(recipient)s"
 msgstr "Envoyer un message à %(recipient)s"
 
-#: app/templates/user.html:8
+#: app/templates/user.html:9
 msgid "User: "
-msgstr ""
+msgstr "Utilisateur: "
 
-#: app/templates/user.html:10
+#: app/templates/user.html:11
 #, fuzzy
 msgid "Last seen on:"
 msgstr "Connecté depuis"
 
-#: app/templates/user.html:17
+#: app/templates/user.html:21
 msgid "Send private message"
 msgstr "Envoyer un message privé"
 
-#: app/templates/user.html:22
+#: app/templates/user.html:26
 msgid "Edit your profile"
-msgstr ""
+msgstr "Modifier votre profile"
+
+#: app/templates/user.html:27
+msgid "Delete your profile"
+msgstr "Effacer votre profile"
 
 #: app/templates/user_popup.html:15
 msgid "Last seen on"
@@ -229,6 +244,79 @@ msgstr "Suivre"
 #: app/templates/user_popup.html:36
 msgid "Unfollow"
 msgstr "Ne plus suivre"
+
+#: app/templates/about_me/about_me.html:17
+msgid ""
+"Hello and welcome to my website. On this page, you will have an \n"
+"              overview of my background, my interests and my skills. On "
+"this site,\n"
+"               you can try to create an account and navigate through the "
+"different \n"
+"               settings as if it were a social network, you can explore "
+"the \n"
+"               different businesses in Montreal and their status and "
+"finally change the \n"
+"               language.\n"
+"\n"
+"              Thank you and enjoy your visit! :)"
+msgstr ""
+"Bonjour et bienvenue sur mon site web. Sur cette page \n"
+"vous aurez une aperçu de mon parcours, de mes intérêts et mes compétences"
+" \n"
+" Sur ce site, vous pouvez tenter de créer un compte et naviguer au "
+"travers des différentes paramètres comme si c'était un réseau social, "
+"vous pourrez explorer les différents commerces \n"
+"de Montréal et leur état et finalement changer la langue.\n"
+"\n"
+"Merci et bonne visite :)"
+
+#: app/templates/about_me/about_me.html:29
+msgid "August 2014"
+msgstr "Août 2014"
+
+#: app/templates/about_me/about_me.html:35
+msgid "Social Science"
+msgstr "Sciences Humaines"
+
+#: app/templates/about_me/about_me.html:37
+msgid "Montmorency College"
+msgstr "Collège Montmorency"
+
+#: app/templates/about_me/about_me.html:43
+msgid "Bachelor of Career Development"
+msgstr "Baccalauréat en Développement de Carrière"
+
+#: app/templates/about_me/about_me.html:45
+msgid "University of Quebec At Montreal"
+msgstr "Université de Québec à Montréal"
+
+#: app/templates/about_me/about_me.html:49
+msgid "Membre du salon national de l'emploi en 2016"
+msgstr ""
+
+#: app/templates/about_me/about_me.html:50
+msgid ""
+"Animation sur les emplois à la portée des détenus dans un milieu carcéral"
+" à Laval"
+msgstr ""
+
+#: app/templates/about_me/about_me.html:51
+msgid ""
+"Réaliser des animations sur la gestion du stress auprès d'un groupe "
+"d'adulte"
+msgstr ""
+
+#: app/templates/about_me/about_me.html:59
+msgid "August 2016"
+msgstr "Août 2016"
+
+#: app/templates/about_me/about_me.html:64
+msgid "August 2019"
+msgstr "Août 2019"
+
+#: app/templates/about_me/about_me.html:70
+msgid "Bachelor of Computer Science and Software Engineering"
+msgstr "Baccalauréat en informatique et génie logiciel"
 
 #: app/templates/api/map.html:27
 msgid "Business"
@@ -293,23 +381,23 @@ msgstr "%(latitude)s"
 msgid "%(longitude)s"
 msgstr "%(longitude)s"
 
-#: app/templates/auth/login.html:14
+#: app/templates/auth/login.html:15
 msgid "New user?"
 msgstr "Nouveau utilisateur?"
 
-#: app/templates/auth/login.html:14
+#: app/templates/auth/login.html:15
 msgid "Click to register!"
 msgstr "Cliquez pour vous enregistrer"
 
-#: app/templates/auth/login.html:15
+#: app/templates/auth/login.html:16
 msgid "Forgot your password?"
 msgstr "Mot de passe oublié?"
 
-#: app/templates/auth/login.html:15
+#: app/templates/auth/login.html:16
 msgid "Click to reset"
 msgstr "Cliquez pour réinitialiser"
 
-#: app/templates/auth/login.html:22
+#: app/templates/auth/login.html:23
 msgid ""
 "On this page, you can create an account, login, reset your password, \n"
 "                interact with other, follow each other and have a main "
@@ -343,4 +431,25 @@ msgstr "Une erreur inattendu est survenu"
 #: app/templates/errors/500.html:5
 msgid "The administrator has been notified. Sorry for the inconvenience!"
 msgstr "L'administrateur a été notifiée. Désolé de cet inconvénient!"
+
+#~ msgid "Home"
+#~ msgstr "Accueil"
+
+#~ msgid ""
+#~ "Bonjour et bienvenue sur mon site web. Sur cette page, vous aurez\n"
+#~ "                 une aperçu de mon "
+#~ "parcours, de mes intérêts et mes "
+#~ "compétences.\n"
+#~ "                 Sur ce site, vous "
+#~ "pouvez tenter de créer un compte "
+#~ "et naviguer au\n"
+#~ "                 travers des différentes "
+#~ "paramètres comme si c'était un réseau"
+#~ " social,\n"
+#~ "                 vous pourrez explorer les "
+#~ "différents commerces de Montréal et leur"
+#~ " état \n"
+#~ "                 et changer la langue.<br><br>"
+#~ " Merci et bonne visite! :)"
+#~ msgstr ""
 

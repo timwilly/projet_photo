@@ -6,47 +6,51 @@
 {% endblock %}
 
 {% block app_content %}
-  <div class="row">
-    <div class="col-md-3">
-      <img src="{{ image_file_me }}" id="resized_image">
+<div class="container">
+  <div class="row glass-effect">
+    <div class="col-md-2">
     </div>
-    <div class="col-md-4">
+      <div class="col-md-4">
+        <img src="{{ image_file_me }}" id="resized_image">
+      </div>
+      <div class="col-md-4">
+          <p id="introduction">
+            {{ _("Hello and welcome to my website. On this page, you will have an 
+                overview of my background, my interests and my skills. On this site,
+                you can try to create an account and navigate through the different 
+                settings as if it were a social network, you can explore the 
+                different businesses in Montreal and their status and finally change the 
+                language.
 
-      
-        <p id="introduction">
-          {{ _('Bonjour et bienvenue sur mon site web. Sur cette page, vous aurez
-                 une aperçu de mon parcours, de mes intérêts et mes compétences.
-                 Sur ce site, vous pouvez tenter de créer un compte et naviguer au
-                 travers des différentes paramètres comme si c''était un réseau social,
-                 vous pourrez explorer les différents commerces de Montréal et leur état 
-                 et changer la langue.<br><br> Merci et bonne visite! :)') }}</p>
-    </div>
+                Thank you and enjoy your visit! :)") }}</p>
+      </div>
   </div>
+</div>
 <div class="timeline">
     <div class="timeline__component">
-      <div class="timeline__date timeline__date--right">August 2014</div>
+      <div class="timeline__date timeline__date--right">{{ _('August 2014') }}</div>
     </div>
     <div class="timeline__middle">
       <div class="timeline__point"></div>
     </div>
     <div class="timeline__component timeline__component--bg">
-      <h2 class="timeline__title">Sciences Humaines</h2>
+      <h2 class="timeline__title">{{ _('Social Science') }}</h2>
       <p class="timeline__paragraph">
-        The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.
+        {{ _('Montmorency College') }}
       </p>
     </div>
 
 
     <div class="timeline__component timeline__component--bg">
-      <h2 class="timeline__title">Baccalauréat en développement de carrière</h2>
+      <h2 class="timeline__title">{{ _('Bachelor of Career Development') }}</h2>
       <p class="timeline__paragraph">
-        
+        {{ _('University of Quebec At Montreal') }}
       </p>
       <p class="timeline__paragraph">
         <ul>
-          <li>Membre du salon national de l'emploi en 2016</li><br>
-          <li>Animation sur les emplois à la portée des détenus dans un milieu carcéral à Laval</li><br>
-          <li>Réaliser des animations sur la gestion du stress auprès d'un groupe d'adulte</li><br>
+          <li>{{ _("Membre du salon national de l'emploi en 2016") }}</li><br>
+          <li>{{ _("Animation sur les emplois à la portée des détenus dans un milieu carcéral à Laval") }}</li><br>
+          <li>{{ _("Réaliser des animations sur la gestion du stress auprès d'un groupe d'adulte") }}</li><br>
         </ul>
       </p>
     </div>
@@ -54,18 +58,18 @@
       <div class="timeline__point"></div>
     </div>
     <div class="timeline__component">
-      <div class="timeline__date">August 2016</div>
+      <div class="timeline__date">{{ _('August 2016') }}</div>
     </div>
 
 
     <div class="timeline__component">
-      <div class="timeline__date timeline__date--right">August 2019</div>
+      <div class="timeline__date timeline__date--right">{{ _('August 2019') }}</div>
     </div>
     <div class="timeline__middle">
       <div class="timeline__point"></div>
     </div>
     <div class="timeline__component timeline__component--bg">
-      <h2 class="timeline__title">Baccalauréat en informatique et génie logiciel</h2>
+      <h2 class="timeline__title">{{ _('Bachelor of Computer Science and Software Engineering') }}</h2>
       <p class="timeline__paragraph">
         Contrary to popular belief, Lorem Ipsum is not simply random text.
       </p>

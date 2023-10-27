@@ -12,18 +12,31 @@
     </div>
       <div class="col-md-4">
         <img src="{{ image_file_me }}" id="resized_image">
+        <br><br>
+        <a id="cv_button" target="_blank" href="{{ url_for('static', filename='pdf/CV_WillyTim.pdf') }}" >{{ _("Curriculum Vitae") }}</a>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-5">
           <p id="introduction">
             {{ _("Hello and welcome to my website. On this page, you will have an 
                 overview of my background, my interests and my skills. On this site,
                 you can try to create an account and navigate through the different 
                 settings as if it were a social network, you can explore the 
                 different businesses in Montreal and their status and finally change the 
-                language.
-
-                Thank you and enjoy your visit! :)") }}</p>
+                language.") }}</p>
+          <br>
+          <p id="introduction">
+            {{ _("Thank you and enjoy your visit! :)") }}
+          </p>
       </div>
+  </div>
+  <br><br>
+  <div class="row glass-effect" id="information">
+    <h1>{{ _("My skills")}}</h1>
+    <div class="col-md-2">
+    </div>
+    <div class="col-md-4">
+      {{ _("Python")}}
+    </div>
   </div>
 </div>
 <div class="timeline">
@@ -71,7 +84,7 @@
     <div class="timeline__component timeline__component--bg">
       <h2 class="timeline__title">{{ _('Bachelor of Computer Science and Software Engineering') }}</h2>
       <p class="timeline__paragraph">
-        Contrary to popular belief, Lorem Ipsum is not simply random text.
+      {{ _("University of Quebec At Montreal")}}
       </p>
     </div>
 
@@ -79,10 +92,10 @@
     <div class="timeline__component timeline__component--bottom timeline__component--bg">
       <h2 class="timeline__title">Fin</h2>
       <p class="timeline__paragraph">
-        It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
+        {{ _("test")}}
       </p>
       <p class="timeline__paragraph">
-        The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters.
+        {{ _("test")}}
       </p>
     </div>
     <div class="timeline__middle">
@@ -90,7 +103,7 @@
       <div class="timeline__point timeline__point--bottom"></div>
     </div>
     <div class="timeline__component timeline__component--bottom">
-      <div class="timeline__date">May 2022</div>
+      <div class="timeline__date">{{ _("May 2022")}}</div>
     </div>
   </div> 
 

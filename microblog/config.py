@@ -30,7 +30,10 @@ class Config(object):
 
     ADMINS = ['projet.timwilly@gmail.com']
     POSTS_PER_PAGE = 10
+    
+    # pybabel
     LANGUAGES = {'en': 'English', 'fr': 'French', 'es': 'Español'}
+    BABEL_DEFAULT_LOCALE = 'fr'
 
     MS_TRANSLATOR_KEY = os.environ.get('MS_TRANSLATOR_KEY') or \
                         os.getenv('MS_TRANSLATOR_KEY')

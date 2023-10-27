@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-10-18 17:03-0400\n"
+"POT-Creation-Date: 2023-10-20 13:14-0400\n"
 "PO-Revision-Date: 2022-12-30 14:06-0500\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -245,78 +245,88 @@ msgstr "Suivre"
 msgid "Unfollow"
 msgstr "Ne plus suivre"
 
-#: app/templates/about_me/about_me.html:17
+#: app/templates/about_me/about_me.html:18
 msgid ""
 "Hello and welcome to my website. On this page, you will have an \n"
-"              overview of my background, my interests and my skills. On "
-"this site,\n"
-"               you can try to create an account and navigate through the "
-"different \n"
-"               settings as if it were a social network, you can explore "
+"                overview of my background, my interests and my skills. On"
+" this site,\n"
+"                you can try to create an account and navigate through the"
+" different \n"
+"                settings as if it were a social network, you can explore "
 "the \n"
-"               different businesses in Montreal and their status and "
+"                different businesses in Montreal and their status and "
 "finally change the \n"
-"               language.\n"
-"\n"
-"              Thank you and enjoy your visit! :)"
+"                language."
 msgstr ""
 "Bonjour et bienvenue sur mon site web. Sur cette page \n"
-"vous aurez une aperçu de mon parcours, de mes intérêts et mes compétences"
+"vous aurez une aperçu de mon parcours, de mes intérêts et mes compétences."
 " \n"
 " Sur ce site, vous pouvez tenter de créer un compte et naviguer au "
 "travers des différentes paramètres comme si c'était un réseau social, "
 "vous pourrez explorer les différents commerces \n"
 "de Montréal et leur état et finalement changer la langue.\n"
-"\n"
-"Merci et bonne visite :)"
 
-#: app/templates/about_me/about_me.html:29
+#: app/templates/about_me/about_me.html:26
+msgid "Thank you and enjoy your visit! :)"
+msgstr "Merci de votre visite! :)"
+
+#: app/templates/about_me/about_me.html:33
 msgid "August 2014"
 msgstr "Août 2014"
 
-#: app/templates/about_me/about_me.html:35
+#: app/templates/about_me/about_me.html:39
 msgid "Social Science"
 msgstr "Sciences Humaines"
 
-#: app/templates/about_me/about_me.html:37
+#: app/templates/about_me/about_me.html:41
 msgid "Montmorency College"
 msgstr "Collège Montmorency"
 
-#: app/templates/about_me/about_me.html:43
+#: app/templates/about_me/about_me.html:47
 msgid "Bachelor of Career Development"
 msgstr "Baccalauréat en Développement de Carrière"
 
-#: app/templates/about_me/about_me.html:45
+#: app/templates/about_me/about_me.html:49
+#: app/templates/about_me/about_me.html:76
 msgid "University of Quebec At Montreal"
 msgstr "Université de Québec à Montréal"
 
-#: app/templates/about_me/about_me.html:49
+#: app/templates/about_me/about_me.html:53
 msgid "Membre du salon national de l'emploi en 2016"
 msgstr ""
 
-#: app/templates/about_me/about_me.html:50
+#: app/templates/about_me/about_me.html:54
 msgid ""
 "Animation sur les emplois à la portée des détenus dans un milieu carcéral"
 " à Laval"
 msgstr ""
 
-#: app/templates/about_me/about_me.html:51
+#: app/templates/about_me/about_me.html:55
 msgid ""
 "Réaliser des animations sur la gestion du stress auprès d'un groupe "
 "d'adulte"
 msgstr ""
 
-#: app/templates/about_me/about_me.html:59
+#: app/templates/about_me/about_me.html:63
 msgid "August 2016"
 msgstr "Août 2016"
 
-#: app/templates/about_me/about_me.html:64
+#: app/templates/about_me/about_me.html:68
 msgid "August 2019"
 msgstr "Août 2019"
 
-#: app/templates/about_me/about_me.html:70
+#: app/templates/about_me/about_me.html:74
 msgid "Bachelor of Computer Science and Software Engineering"
 msgstr "Baccalauréat en informatique et génie logiciel"
+
+#: app/templates/about_me/about_me.html:84
+#: app/templates/about_me/about_me.html:87
+msgid "test"
+msgstr ""
+
+#: app/templates/about_me/about_me.html:95
+msgid "May 2022"
+msgstr "Mai 2022"
 
 #: app/templates/api/map.html:27
 msgid "Business"
@@ -439,7 +449,7 @@ msgstr "L'administrateur a été notifiée. Désolé de cet inconvénient!"
 #~ "Bonjour et bienvenue sur mon site web. Sur cette page, vous aurez\n"
 #~ "                 une aperçu de mon "
 #~ "parcours, de mes intérêts et mes "
-#~ "compétences.\n"
+#~ "compétences."
 #~ "                 Sur ce site, vous "
 #~ "pouvez tenter de créer un compte "
 #~ "et naviguer au\n"

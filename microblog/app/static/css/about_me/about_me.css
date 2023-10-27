@@ -12,6 +12,29 @@ body {
   padding: 40px;
 }
 
+#introduction {
+  font-size: 22px;
+  text-align: justify;
+}
+
+#information h1 {
+  text-align: center;
+}
+
+#cv_button {
+  background-color: #0074d9; /* Couleur de fond bleue */
+  color: #fff; /* Couleur du texte blanc */
+  border: none; /* Pas de bordure */
+  padding: 10px 20px; /* Rembourrage intérieur pour le bouton */
+  border-radius: 5px; /* Coins arrondis */
+  cursor: pointer; /* Curseur de la main au survol */
+}
+
+#cv_button:hover {
+  background-color: #0056b3; /* Couleur de fond légèrement plus sombre au survol */
+
+}
+
   .timeline {
     margin: 0 auto;
     max-width: 750px;

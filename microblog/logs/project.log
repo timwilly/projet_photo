@@ -69,3 +69,6 @@ jinja2.exceptions.TemplateNotFound: auth/reset_password.html
 2023-10-18 11:51:29,458 INFO: Project startup [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/__init__.py:98]
 2023-10-18 11:54:10,250 INFO: Project startup [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/__init__.py:98]
 2023-10-18 16:52:29,121 INFO: Project startup [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/__init__.py:98]
+2023-10-20 20:25:04,592 INFO: Project startup [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/__init__.py:98]
+2023-10-20 20:26:20,021 INFO: Project startup [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/__init__.py:98]
+2023-10-25 13:52:46,458 INFO: Project startup [in /mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/app/__init__.py:98]

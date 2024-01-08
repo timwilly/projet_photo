@@ -25,10 +25,13 @@ def map():
             return redirect(url_for('api.map', result_name=result.name))
     result = BusinessMontreal.query.filter_by(name=result_name).order_by \
                               (BusinessMontreal.date_statut.asc())
+    print('cest ici')    
+    print(read_file('update_data_business_montreal'))                     
     for r in result:
         print(r.date_statut)
     return render_template('api/map.html', title="Map", form=form,
-                           result=result)
+                           result=result, business_montreal_data_update=
+                           read_file('update_data_business_montreal'))
 
 
 @bp.route('/search', methods=['GET'])
@@ -54,6 +57,17 @@ def get_food_business_json():
 def datetime_handler(obj):
     if isinstance(obj, (datetime, date, time)):
         return str(obj)
+    
+def read_file(read_file_name):
+    try:
+        # Ouvre le fichier en mode lecture
+        with open("app/static/data/{}.txt".format(read_file_name), "r") as file:
+            # Lit les données du fichier
+            data = file.read()
+            return data
+    except Exception as e:
+        # En cas d'erreur, affiche le message d'erreur
+        print(e)
 """
 src = ['foo', 'bar', 'foobar', 'bar', 'barfoo']
 tree = create(src)

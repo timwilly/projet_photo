@@ -10,4 +10,4 @@ eastern_tz = timezone('US/Eastern')
                 timezone=eastern_tz)
 def schedule_import_business_montreal():
     with scheduler.app.app_context():
-        result = import_data_business_montreal()
+        import_data_business_montreal()

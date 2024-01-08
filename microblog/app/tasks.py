@@ -3,11 +3,14 @@ import json
 import tweepy
 import time
 import pandas as pd
+import polars as pl
 from app import db
 from app.models import BusinessMontreal, User, Post, Message, Notification, \
                        Task
 from datetime import datetime
 from rq import get_current_job
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy.exc import IntegrityError
 from urllib.request import urlopen
 
 def example(seconds):
@@ -31,13 +34,22 @@ def example2():
 def import_data_business_montreal():
     print('BONJOUR!')
     try:
+        """
         import_data_to_csv("https://donnees.montreal.ca/dataset/c1d65779-d3cb"
                            "-44e8-af0a-b9f2c5f7766d/resource/28a4957d-732e"
                            "-48f9-8adb-0624867d9bb0/download/businesses.csv",
                            "business_montreal") 
-        import_csv_to_database("business_montreal")
+        """
+        result = import_csv_to_database("business_montreal")
+        print('allo')
+        print(result[2])
+        #export_update_data_business_montreal_to_txt(
+        #    result[2], 
+        #    "update_data_business_montreal"
+        #)
         convert_csv_to_json("business_montreal")
         print('FINI :)')
+        return result
     except Exception as e:
         print(e)
 
@@ -54,12 +66,15 @@ def import_data_to_csv(link, write_file_name):
     
 
 def import_csv_to_database(read_file_name):
+    with db.session.begin():
+        db.session.query(BusinessMontreal).delete()
     with open("app/static/data/{}.csv".format(read_file_name), 'r') as file:
         reader = csv.DictReader(file)
-        next(reader)
+        #next(reader)
         new_record_list = []
         existing_record_update_list = []
         for row in reader:
+            #print(row)
             date = datetime.strptime(row['date_statut'], '%Y%m%d').date()
             with db.session.no_autoflush:
                 existing_record = db.session.query(BusinessMontreal).\
@@ -87,6 +102,7 @@ def import_csv_to_database(read_file_name):
                     new_record_list.append(new_record)
                     
         print(new_record_list)
+        print('ASFDAS')
         print(existing_record_update_list)
         db.session.commit() 
         return 'Data imported successfully'
@@ -94,6 +110,15 @@ def import_csv_to_database(read_file_name):
 
 def compare_rows_csv_to_db(read_file_name):
     df_csv = pd.read_csv("app/static/data/{}.csv".format(read_file_name), 'r')
+
+def export_update_data_business_montreal_to_txt(update_data_business_montreal, 
+                                                write_file_name):
+    try:
+        file = open("app/static/data/{}.csv".format(write_file_name), "w")
+    except Exception as e:
+        print(e)
+    file.write(update_data_business_montreal)
+    file.close()
 
 
 def create_tweet():

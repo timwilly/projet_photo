@@ -9,10 +9,9 @@ from app.models import BusinessMontreal, User, Post, Message, Notification, \
                        Task
 from datetime import datetime
 from rq import get_current_job
-from sqlalchemy.orm import sessionmaker
-from sqlalchemy.exc import IntegrityError
 from urllib.request import urlopen
 
+"""
 def example(seconds):
     job = get_current_job()
     print('Starting task')
@@ -24,10 +23,11 @@ def example(seconds):
     job.meta['progress'] = 100
     job.save_meta()
     print('Task completed')
-
+"""
 
 def example2():
     print('TEST')
+
 
 # TODO: à effacer à la fin les print!
 # Possible que ça puisse prendre du temps à charger, trouver solution
@@ -41,12 +41,18 @@ def import_data_business_montreal():
                            "business_montreal") 
         """
         result = import_csv_to_database("business_montreal")
-        print('allo')
-        print(result[2])
-        #export_update_data_business_montreal_to_txt(
-        #    result[2], 
-        #    "update_data_business_montreal"
-        #)
+        #print('allo')
+        #print(result[2])
+        export_before_update_data_business_montreal_to_csv(
+            "business_montreal",
+            result[3], 
+            "before_update_data_business_montreal"
+        )
+        export_update_data_business_montreal_to_csv(
+            "business_montreal",
+            result[2], 
+            "update_data_business_montreal"
+        )
         convert_csv_to_json("business_montreal")
         print('FINI :)')
         return result
@@ -66,12 +72,13 @@ def import_data_to_csv(link, write_file_name):
     
 
 def import_csv_to_database(read_file_name):
-    with db.session.begin():
-        db.session.query(BusinessMontreal).delete()
+    #with db.session.begin():
+    #    db.session.query(BusinessMontreal).delete()
     with open("app/static/data/{}.csv".format(read_file_name), 'r') as file:
         reader = csv.DictReader(file)
         #next(reader)
         new_record_list = []
+        before_record_update_list = []
         existing_record_update_list = []
         for row in reader:
             #print(row)
@@ -93,6 +100,7 @@ def import_csv_to_database(read_file_name):
                 # S'il y a une mise à jour à faire
                 if existing_record is not None and \
                     existing_record.to_dict() != new_record.to_dict():
+                    before_record_update_list.append(existing_record.as_dict())
                     existing_record.update_from_dict(row)
                     db.session.commit()
                     existing_record_update_list.append(
@@ -100,24 +108,81 @@ def import_csv_to_database(read_file_name):
                 elif existing_record is None:
                     db.session.add(new_record)
                     new_record_list.append(new_record)
-                    
+        
+        print('New record:')       
         print(new_record_list)
-        print('ASFDAS')
+        print('Before record:')
+        print(before_record_update_list)
+        print('update record:')
         print(existing_record_update_list)
         db.session.commit() 
-        return 'Data imported successfully'
-
+        return 'Data imported successfully', new_record_list, \
+                existing_record_update_list, before_record_update_list
 
 def compare_rows_csv_to_db(read_file_name):
     df_csv = pd.read_csv("app/static/data/{}.csv".format(read_file_name), 'r')
 
-def export_update_data_business_montreal_to_txt(update_data_business_montreal, 
-                                                write_file_name):
+
+def export_before_update_data_business_montreal_to_csv(business_montreal_csv,
+                                        before_update_data_business_montreal,
+                                        write_file_name):
     try:
-        file = open("app/static/data/{}.csv".format(write_file_name), "w")
+        # Obtenir le nom des colonnes appropriées
+        fieldnames = obtain_column_name_csv(business_montreal_csv)
+
+        # Écriture des données avant la mise à jour
+        with open("app/static/data/{}.csv".format(write_file_name), \
+            'w') as destination_csv:
+            writer = csv.DictWriter(destination_csv, fieldnames=fieldnames)
+            writer.writeheader()
+            # Écriture des données
+            for row in before_update_data_business_montreal:
+                writer.writerow(row)
     except Exception as e:
         print(e)
-    file.write(update_data_business_montreal)
+
+
+def export_update_data_business_montreal_to_csv(business_montreal_csv,
+                                                update_data_business_montreal, 
+                                                write_file_name):
+    try:
+        # Obtenir le nom des colonnes appropriées
+        fieldnames = obtain_column_name_csv(business_montreal_csv)
+        # Écriture des mise à jour des données
+        with open("app/static/data/{}.csv".format(write_file_name), \
+            'w') as destination_csv:
+            writer = csv.DictWriter(destination_csv, fieldnames=fieldnames)
+            writer.writeheader()
+            # Écriture des données
+            for row in update_data_business_montreal:
+                writer.writerow(row)
+    except Exception as e:
+        print(e)
+
+
+def obtain_column_name_csv(file_name):
+    try:
+        # Obtenir le nom des colonnes appropriées
+        with open("app/static/data/{}.csv".format(file_name), \
+            'r') as source_csv:
+            reader = csv.reader(source_csv)
+            fieldnames = next(reader)
+        return fieldnames
+    except Exception as e:
+        print(e)
+
+
+def read_csv(file_name):
+    try:
+        with open("app/static/data/{}.csv".format(file_name), "r") as file:
+            reader = csv.DictReader(file)
+            data = []
+            for row in reader:
+                data.append(row)
+                
+            return data
+    except Exception as e:
+        print(e)
     file.close()
 
 

@@ -2,6 +2,7 @@ import json
 from app.models import BusinessMontreal
 from app.api import bp
 from app.api.forms import SearchForm
+from app.tasks import read_csv
 from datetime import datetime, date, time
 from flask import render_template, redirect, url_for, flash, request, Response, \
                   jsonify
@@ -25,13 +26,12 @@ def map():
             return redirect(url_for('api.map', result_name=result.name))
     result = BusinessMontreal.query.filter_by(name=result_name).order_by \
                               (BusinessMontreal.date_statut.asc())
-    print('cest ici')    
-    print(read_file('update_data_business_montreal'))                     
-    for r in result:
-        print(r.date_statut)
+    business_montreal_data_update = read_csv('update_data_business_montreal')
+    #_, _, business_montreal_data_update=import_csv_to_database()
+    #print(business_montreal_data_update)
     return render_template('api/map.html', title="Map", form=form,
                            result=result, business_montreal_data_update=
-                           read_file('update_data_business_montreal'))
+                           business_montreal_data_update)
 
 
 @bp.route('/search', methods=['GET'])

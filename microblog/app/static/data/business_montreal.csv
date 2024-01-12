@@ -1,4 +1,6 @@
 business_id,name,address,city,state,type,statut,date_statut,latitude,longitude,x,y
+101,"LES TESTA","12322   Boulevard Rodolphe-Forget ","Montréal","Québec, Canada","Distributrice automatique","Ouvert","20031123",45.350661,-73.580261,228544.13,5056754.99
+102,"LES TESTE","12322   Boulevard Rodolphe-Forget ","Montréal","Québec, Canada","Distributrice automatique","Ouvert","20031123",45.350661,-73.580261,228544.13,5056754.99
 127,"LES ENTREPRISES ALJO","12515   Boulevard Rodolphe-Forget ","Montréal","Québec, Canada","Distributrice automatique","Ouvert","20031123",45.650661,-73.580264,298544.13,5056754.99
 135,"PROVI-TOT","9128   Boulevard Perras ","Montréal","Québec, Canada","Épicerie avec préparation","Fermé changement d'exploitant","20090821",45.650352,-73.577726,298741.88,5056720.54
 138,"LE PETIT TABLIER","690   Rue Sherbrooke Ouest","Montréal","Québec, Canada","Restaurant","Fermé changement d'exploitant","20090306",45.504673,-73.573766,299035.65,5040530.65
@@ -14,3 +16,24 @@ business_id,name,address,city,state,type,statut,date_statut,latitude,longitude,x
 159,"DOLLARIUM","6540   Boulevard Monk ","Montréal","Québec, Canada","Magasin à rayons","Fermé changement d'exploitant","20150928",45.453388,-73.594099,297440.09,5034833.02
 500,"RESIDENCE MARIE-ROSE","8205   Rue Arthur-Buies ","Montréal","Québec, Canada","Centre d'accueil","Fermé","20120704",45.593428,-73.513934,303712.87,5050391.57
 501,"C.P.E. BILBO  (LA PETITE OURSE)","2796   Avenue Lebrun ","Montréal","Québec, Canada","Garderie","Fermé","20210504",45.600529,-73.52494,302854.42,5051180.94
+502,"C.P.E. DU DOLMEN","585   Rue De Saint-Just ","Montréal","Québec, Canada","Garderie","Ouvert","19930407",45.587136,-73.509212,304081.16,5049692.22
+505,"DEPAN ESCOMPTE COUCHE-TARD #305","8550   Rue Hochelaga ","Montréal","Québec, Canada","Épicerie","Ouvert","19930210",45.599466,-73.521039,303158.66,5051062.64
+506,"DEPANNEUR L. HENRY","9090   Avenue Pierre-De Coubertin ","Montréal","Québec, Canada","Épicerie","Fermé changement d'exploitant","20100215",45.606324,-73.519437,303283.84,5051824.82
+507,"DEPANNEUR KARIANNE","9581   Avenue Pierre-De Coubertin ","Montréal","Québec, Canada","Épicerie","Fermé","20140117",45.610816,-73.51725,303454.56,5052323.98
+509,"DIST. SERVI-VEND INC(INDUS.MAJESTIC INC.","3700   Rue Jean-Rivard ","Montréal","Québec, Canada","Distributrice automatique","Fermé","20150319",45.57109,-73.610179,296200.35,5047914.87
+511,"ECOLE DUNTON # 253","5555   Rue De Boucherville ","Montréal","Québec, Canada","Cafétéria institution d'enseignement","Ouvert","19930405",45.595794,-73.545051,301285.24,5050655.34
+515,"DEPANNEUR ROYAL PLUS","3334   Rue Jean-Talon Est","Montréal","Québec, Canada","Épicerie avec préparation","Fermé","20151125",45.559973,-73.597316,297202.82,5046678.12
+516,"MARCHE BOB","8596   Rue De Grosbois ","Montréal","Québec, Canada","Épicerie avec préparation","Fermé changement d'exploitant","20220622",45.604348,-73.535104,302061.67,5051605.63
+518,"TABAGIE LE PASSE-TEMPS","8670   Rue De Grosbois ","Montréal","Québec, Canada","Épicerie","Fermé changement d'exploitant","20081212",45.605182,-73.534606,302100.61,5051698.28
+524,"RESTAURANT LA FRITE DOREE MONTREAL","9501   Rue Marseille ","Montréal","Québec, Canada","Restaurant service rapide","Fermé","20220510",45.610641,-73.521979,303085.71,5052304.54
+525,"DEPANNEUR BARBE GRISE ENR.","542   Rue Des Ormeaux ","Montréal","Québec, Canada","Épicerie","Fermé changement d'exploitant","20100716",45.599466,-73.5129,303793.6,5051062.51
+527,"DEPANNEUR VARIETES PIERRE PIGEON","641   Rue Des Ormeaux ","Montréal","Québec, Canada","Épicerie","Fermé changement d'exploitant","20170329",45.599956,-73.514566,303663.71,5051117.06
+529,"DEPANNEUR DES ORMEAUX","2159   Rue Des Ormeaux ","Montréal","Québec, Canada","Épicerie","Fermé changement d'exploitant","20100217",45.600157,-73.515241,303611.05,5051139.33
+530,"COQ-O-RICO","2248   Rue Des Ormeaux ","Montréal","Québec, Canada","Restaurant","Fermé changement d'exploitant","20090311",45.600717,-73.517138,303463.03,5051201.67
+531,"BAR DES ORMEAUX","2269   Rue Des Ormeaux ","Montréal","Québec, Canada","Bar salon, taverne","Ouvert","20091006",45.601035,-73.518214,303379.14,5051236.95
+532,"MARCHE MADHUBON","530   Avenue Ogilvy ","Montréal","Québec, Canada","Boucherie-épicerie","Ouvert","19931012",45.528841,-73.625389,295005.82,5043221.48
+536,"PHARMACIE DECEMBRE DORMEUS S.E.N.C.","9210   Rue Sherbrooke Est","Montréal","Québec, Canada","Magasin à rayons","Ouvert","19930405",45.609593,-73.527234,302675.81,5052188.28
+538,"8858 SOCIETE MARCHE ROBERT SENC PROVIGO","2710   Rue Des Ormeaux ","Montréal","Québec, Canada","Boucherie-épicerie","Fermé changement d'exploitant","20121108",45.602184,-73.522108,303075.37,5051364.8
+542,"DEPANNEUR C.N. VIENS ICI","8762   Rue De Teck ","Montréal","Québec, Canada","Épicerie","Fermé","20080908",45.604497,-73.52775,302635.33,5051621.94
+166,"CAFETERIA MONTE CARLO","11011   Boulevard Maurice-Duplessis ","Montréal","Québec, Canada","Cafétéria","Fermé","20071003",45.666372,-73.53036,302434.33,5058498.4
+169,"FLEUR DE PAPIER","11011   Boulevard Maurice-Duplessis ","Montréal","Québec, Canada","Garderie","Ouvert","19930308",45.666372,-73.53036,302434.33,5058498.4

@@ -9,8 +9,10 @@
 {% block app_content %}
     <div class="row glass-effect" id="update_business_montreal_title">
       <h1>{{ _("Update") }}</h1>
-        {% for data_update in business_montreal_data_update %}
-          <p>{{ data_update.name }}, {{ data_update.address }}</p>
+        {% for data_update in business_montreal_before_data_update %}
+          <a href="{{ url_for('api.data_update') }}">
+            <p>{{ data_update.name }}, {{ data_update.address }}</p>
+          </a>
         {% endfor %}
     </div>
     <br>

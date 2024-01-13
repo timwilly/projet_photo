@@ -1,5 +1,5 @@
 business_id,name,address,city,state,type,statut,date_statut,latitude,longitude,x,y
-101,"LES TESTA","12322   Boulevard Rodolphe-Forget ","Montréal","Québec, Canada","Distributrice automatique","Ouvert","20031123",45.350661,-73.580261,228544.13,5056754.99
+101,"LES TESTAS","12322   Boulevard Rodolphe-Forget ","Montréal","Québec, Canada","Distributrice automatique","Ouvert","20031123",45.350661,-73.580261,228544.13,5056754.99
 102,"LES TESTE","12322   Boulevard Rodolphe-Forget ","Montréal","Québec, Canada","Distributrice automatique","Ouvert","20031123",45.350661,-73.580261,228544.13,5056754.99
 127,"LES ENTREPRISES ALJO","12515   Boulevard Rodolphe-Forget ","Montréal","Québec, Canada","Distributrice automatique","Ouvert","20031123",45.650661,-73.580264,298544.13,5056754.99
 135,"PROVI-TOT","9128   Boulevard Perras ","Montréal","Québec, Canada","Épicerie avec préparation","Fermé changement d'exploitant","20090821",45.650352,-73.577726,298741.88,5056720.54

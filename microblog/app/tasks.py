@@ -41,14 +41,14 @@ def import_data_business_montreal():
                            "business_montreal") 
         """
         result = import_csv_to_database("business_montreal")
-        #print('allo')
-        #print(result[2])
-        export_before_update_data_business_montreal_to_csv(
+        # Exporte les données avant sa MAJ
+        export_csv_data_to_csv(
             "business_montreal",
             result[3], 
             "before_update_data_business_montreal"
         )
-        export_update_data_business_montreal_to_csv(
+        # Exporte les données après sa MAJ
+        export_csv_data_to_csv(
             "business_montreal",
             result[2], 
             "update_data_business_montreal"
@@ -123,39 +123,38 @@ def compare_rows_csv_to_db(read_file_name):
     df_csv = pd.read_csv("app/static/data/{}.csv".format(read_file_name), 'r')
 
 
-def export_before_update_data_business_montreal_to_csv(business_montreal_csv,
-                                        before_update_data_business_montreal,
-                                        write_file_name):
+def export_csv_data_to_csv(source_csv, data, destination_csv):
     try:
         # Obtenir le nom des colonnes appropriées
-        fieldnames = obtain_column_name_csv(business_montreal_csv)
-
-        # Écriture des données avant la mise à jour
-        with open("app/static/data/{}.csv".format(write_file_name), \
+        fieldnames = obtain_column_name_csv(source_csv)
+        # Écriture des données
+        with open("app/static/data/{}.csv".format(destination_csv), \
             'w') as destination_csv:
             writer = csv.DictWriter(destination_csv, fieldnames=fieldnames)
             writer.writeheader()
             # Écriture des données
-            for row in before_update_data_business_montreal:
+            for row in data:
                 writer.writerow(row)
     except Exception as e:
         print(e)
 
 
-def export_update_data_business_montreal_to_csv(business_montreal_csv,
-                                                update_data_business_montreal, 
-                                                write_file_name):
+def add_todays_date_column_csv(file_name):
     try:
         # Obtenir le nom des colonnes appropriées
-        fieldnames = obtain_column_name_csv(business_montreal_csv)
-        # Écriture des mise à jour des données
-        with open("app/static/data/{}.csv".format(write_file_name), \
+        existing_fieldnames = obtain_column_name_csv(file_name)
+        new_fieldnames = "date_update"
+        # Écriture des mises à jour des données
+        with open("app/static/data/{}.csv".format(file_name), \
             'w') as destination_csv:
-            writer = csv.DictWriter(destination_csv, fieldnames=fieldnames)
-            writer.writeheader()
+            # Importe l'heure actuelle
+            current_datetime = datetime.now()
+            formatted_datetime = current_datetime.strftime('%Y-%m-%d %H:%M:%S')
+            writer = csv.DictWriter(destination_csv, fieldnames=
+                                    existing_fieldnames + [new_fieldnames])
             # Écriture des données
-            for row in update_data_business_montreal:
-                writer.writerow(row)
+            for row in file_name:
+                writer.writerow({})
     except Exception as e:
         print(e)
 

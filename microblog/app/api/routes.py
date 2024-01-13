@@ -26,12 +26,19 @@ def map():
             return redirect(url_for('api.map', result_name=result.name))
     result = BusinessMontreal.query.filter_by(name=result_name).order_by \
                               (BusinessMontreal.date_statut.asc())
-    business_montreal_data_update = read_csv('update_data_business_montreal')
+    business_montreal_before_data_update = read_csv(
+        'before_update_data_business_montreal')
     #_, _, business_montreal_data_update=import_csv_to_database()
     #print(business_montreal_data_update)
     return render_template('api/map.html', title="Map", form=form,
-                           result=result, business_montreal_data_update=
-                           business_montreal_data_update)
+                           result=result, business_montreal_before_data_update=
+                           business_montreal_before_data_update)
+
+
+@bp.route('/data_update', methods=['GET'])
+def data_update():
+
+    return render_template('api/data_update.html', title="Data update")
 
 
 @bp.route('/search', methods=['GET'])

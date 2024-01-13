@@ -1,16 +1,6 @@
 body {
     background-image: linear-gradient(to left bottom, #5dece3, #46e1ee, #41d6f5, #51c9f7, #68bbf4, #78b1f1, #89a6eb, #9a9ae1, #aa8fd8, #ba83ca, #c777b9, #d16ba5);    color: #EFEFEF;
 }
-  
-.glass-effect {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255,0));
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-radius: 20px;
-  border:1px solid rgba(255, 255, 255, 0.18);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-  padding: 40px;
-}
 
 #introduction {
   font-size: 22px;

@@ -80,12 +80,25 @@ def import_csv_to_database(read_file_name):
         new_record_list = []
         before_record_update_list = []
         existing_record_update_list = []
+        current_ids = set()
+        # Importe l'heure actuelle
+        current_datetime = datetime.now()
+        formatted_datetime = current_datetime.strftime('%Y-%m-%d %H:%M:%S')
+        current_datetime = datetime.strptime(formatted_datetime, 
+                                             "%Y-%m-%d %H:%M:%S")
+        existing_records = db.session.query(BusinessMontreal).all()
+        # Sauvegarde les ids pour comparaison entre csv et la bd
+        df = pl.read_csv(("app/static/data/{}.csv".format(read_file_name)))
+        current_ids = set(df['business_id'].to_list())
+        #for record in existing_records:
+        #    print(record.id)
+        #    current_ids.add(record.id)
         for row in reader:
-            #print(row)
             date = datetime.strptime(row['date_statut'], '%Y%m%d').date()
             with db.session.no_autoflush:
                 existing_record = db.session.query(BusinessMontreal).\
-                                        filter_by(id=row['business_id']).first()
+                                        filter_by(id=row['business_id']).\
+                                        first()
                                         
                 new_record = BusinessMontreal(
                     id=row['business_id'], name=row['name'],
@@ -95,7 +108,8 @@ def import_csv_to_database(read_file_name):
                     latitude=string_to_float(row['latitude']),
                     longitude=string_to_float(row['longitude']),
                     x=string_to_float(row['x']),
-                    y=string_to_float(row['y']))
+                    y=string_to_float(row['y']),
+                    date_last_update=current_datetime)
 
                 # S'il y a une mise à jour à faire
                 if existing_record is not None and \
@@ -108,6 +122,16 @@ def import_csv_to_database(read_file_name):
                 elif existing_record is None:
                     db.session.add(new_record)
                     new_record_list.append(new_record)
+
+    
+        # Identifier les IDs à supprimer
+        ids_to_delete = [record.id for record in existing_records if record.id not in current_ids]
+        print(ids_to_delete)
+        # Supprimer les enregistrements correspondants de la base de données
+        for id_to_delete in ids_to_delete:
+            print(id_to_delete)
+            record_to_delete = db.session.query(BusinessMontreal).filter_by(id=id_to_delete).first()
+            db.session.delete(record_to_delete)
         
         print('New record:')       
         print(new_record_list)

@@ -240,6 +240,7 @@ class BusinessMontreal(db.Model):
     longitude = db.Column(db.Float)
     x = db.Column(db.Float)
     y = db.Column(db.Float)
+    date_last_update = db.Column(db.DateTime, index=True)
 
     def as_dict(self):
         return {'business_id': self.id,
@@ -253,7 +254,8 @@ class BusinessMontreal(db.Model):
                 'latitude': self.latitude,
                 'longitude': self.longitude,
                 'x': self.x,
-                'y': self.y}
+                'y': self.y,
+                'date_last_update': self.date_last_update}
 
     def to_dict(self):
         return {'business_id': str(self.id),
@@ -267,7 +269,9 @@ class BusinessMontreal(db.Model):
                 'latitude': str(self.latitude),
                 'longitude': str(self.longitude),
                 'x': str(self.x),
-                'y': str(self.y)}
+                'y': str(self.y),
+                'date_last_update': self.date_last_update.strftime("%Y%m%d")}
+
 
     def update_from_dict(self, dict):
         self.id = dict.get('business_id', self.id)
@@ -284,6 +288,9 @@ class BusinessMontreal(db.Model):
         self.longitude = string_to_float(dict.get('longitude', self.longitude))
         self.x = string_to_float(dict.get('x', self.x))
         self.y = string_to_float(dict.get('y', self.y))
+        self.date_last_update = datetime.strptime(dict.get('date_last_update', 
+                                                    self.date_last_update),
+                                                    '%Y%m%d').date()
 
 
     def __repr__(self):

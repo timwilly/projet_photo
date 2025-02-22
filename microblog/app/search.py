@@ -27,25 +27,39 @@ def add_to_index(index, model):
         payload[field] = getattr(model, field)  # Trouver le field du modèle
     #print(model.id)
     #print(payload)
-    current_app.elasticsearch.index(index=index, id=model.id, body=payload)
-
+    
+    try:
+        current_app.elasticsearch.index(index=index, id=model.id, body=payload)
+    except Exception as e:
+        # Journaliser l'erreur si nécessaire
+        print(f"Erreur lors de l'ajout à l'index dans Elasticsearch: {e}")
 
 def remove_from_index(index, model):
     if not current_app.elasticsearch:
         return
-    current_app.elasticsearch.delete(index=index, id=model.id)
+    try:
+        current_app.elasticsearch.delete(index=index, id=model.id)
+    except Exception as e:
+        # Journaliser l'erreur si nécessaire
+        print(f"Erreur lors de la suppression de l'index dans Elasticsearch: {e}")
 
 
 def query_index(index, query, page, per_page):
     #print('query index: {}, {}, {}, {}'.format(index, query, page, per_page))
     if not current_app.elasticsearch:
         return [], 0
-    search = current_app.elasticsearch.search(
-        index=index,
-        body={
-            'query': {'multi_match': {'query': query, 'fields': ['*']}},
-            'from': (page - 1) * per_page, 'size': per_page
-        }
-    )
+    try:
+        search = current_app.elasticsearch.search(
+            index=index,
+            body={
+                'query': {'multi_match': {'query': query, 'fields': ['*']}},
+                'from': (page - 1) * per_page, 'size': per_page
+            }
+        )        
+    except Exception as e:
+        # Journaliser l'erreur si nécessaire
+        print(f"Erreur lors de la recherche dans Elasticsearch: {e}")
+        return [], 0
+
     ids = [int(hit['_id']) for hit in search['hits']['hits']]
     return ids, search['hits']['total']['value']

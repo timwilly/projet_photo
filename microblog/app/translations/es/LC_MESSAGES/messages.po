@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-02-22 04:24-0500\n"
+"POT-Creation-Date: 2025-02-22 16:37-0500\n"
 "PO-Revision-Date: 2022-12-30 13:30-0500\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: es\n"
@@ -360,68 +360,78 @@ msgid "Image Preview"
 msgstr ""
 
 #: app/templates/api/map.html:11
+msgid "Establishment finder in Montreal"
+msgstr ""
+
+#: app/templates/api/map.html:13
+msgid ""
+"Please write the name of the establishment you would like information "
+"about."
+msgstr ""
+
+#: app/templates/api/map.html:15
 msgid "Update"
 msgstr ""
 
-#: app/templates/api/map.html:36
+#: app/templates/api/map.html:42
 msgid "Business"
 msgstr ""
 
-#: app/templates/api/map.html:37
+#: app/templates/api/map.html:43
 msgid "Address"
 msgstr ""
 
-#: app/templates/api/map.html:38
+#: app/templates/api/map.html:44
 msgid "Type"
 msgstr ""
 
-#: app/templates/api/map.html:39
+#: app/templates/api/map.html:45
 msgid "Statut"
 msgstr ""
 
-#: app/templates/api/map.html:40
+#: app/templates/api/map.html:46
 msgid "Date statut"
 msgstr ""
 
-#: app/templates/api/map.html:41
+#: app/templates/api/map.html:47
 msgid "Latitude"
 msgstr ""
 
-#: app/templates/api/map.html:42
+#: app/templates/api/map.html:48
 msgid "Longitude"
 msgstr ""
 
-#: app/templates/api/map.html:48
+#: app/templates/api/map.html:54
 #, python-format
 msgid "%(name)s"
 msgstr ""
 
-#: app/templates/api/map.html:49
+#: app/templates/api/map.html:55
 #, python-format
 msgid "%(address)s"
 msgstr ""
 
-#: app/templates/api/map.html:50
+#: app/templates/api/map.html:56
 #, python-format
 msgid "%(type)s"
 msgstr ""
 
-#: app/templates/api/map.html:51
+#: app/templates/api/map.html:57
 #, python-format
 msgid "%(statut)s"
 msgstr ""
 
-#: app/templates/api/map.html:52
+#: app/templates/api/map.html:58
 #, python-format
 msgid "%(date_statut)s"
 msgstr ""
 
-#: app/templates/api/map.html:53
+#: app/templates/api/map.html:59
 #, python-format
 msgid "%(latitude)s"
 msgstr ""
 
-#: app/templates/api/map.html:54
+#: app/templates/api/map.html:60
 #, python-format
 msgid "%(longitude)s"
 msgstr ""

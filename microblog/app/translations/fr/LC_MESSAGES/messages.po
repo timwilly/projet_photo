@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-02-22 04:24-0500\n"
+"POT-Creation-Date: 2025-02-22 16:37-0500\n"
 "PO-Revision-Date: 2022-12-30 14:06-0500\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -311,11 +311,12 @@ msgstr "Membre du salon national de l'emploi en 2016"
 msgid ""
 "Facilitation on jobs accessible to inmates in a correctional facility in "
 "Laval"
-msgstr "Facilitation on jobs accessible to inmates in a correctional facility in Laval"
+msgstr "Atelier sur les emplois à la portée des détenus dans un centre "
+"correctionnel à Laval"
 
 #: app/templates/about_me/about_me.html:66
 msgid "Animator on stress management for a group of adults"
-msgstr "Conducting workshops on stress management for a group of adults"
+msgstr "Animateur sur la gestion du stress auprès d'un groupe d'adultes"
 
 #: app/templates/about_me/about_me.html:74
 msgid "August 2016"
@@ -371,71 +372,81 @@ msgstr ""
 
 #: app/templates/about_me/about_me.html:126
 msgid "Image Preview"
-msgstr ""
+msgstr "Aperçu de l'image"
 
 #: app/templates/api/map.html:11
-msgid "Update"
-msgstr ""
+msgid "Establishment finder in Montreal"
+msgstr "Recherche d'établissement à Montréal"
 
-#: app/templates/api/map.html:36
+#: app/templates/api/map.html:13
+msgid ""
+"Please write the name of the establishment you would like information "
+"about."
+msgstr "Écrivez le nom de l'établissement que vous souhaitez obtenir de l'information"
+
+#: app/templates/api/map.html:15
+msgid "Update"
+msgstr "Mise à jour"
+
+#: app/templates/api/map.html:42
 msgid "Business"
 msgstr "Établissement"
 
-#: app/templates/api/map.html:37
+#: app/templates/api/map.html:43
 msgid "Address"
 msgstr "Adresse"
 
-#: app/templates/api/map.html:38
+#: app/templates/api/map.html:44
 msgid "Type"
 msgstr "Type"
 
-#: app/templates/api/map.html:39
+#: app/templates/api/map.html:45
 msgid "Statut"
 msgstr "Statut"
 
-#: app/templates/api/map.html:40
+#: app/templates/api/map.html:46
 msgid "Date statut"
 msgstr "Date statut"
 
-#: app/templates/api/map.html:41
+#: app/templates/api/map.html:47
 msgid "Latitude"
 msgstr "Latitude"
 
-#: app/templates/api/map.html:42
+#: app/templates/api/map.html:48
 msgid "Longitude"
 msgstr "Longitude"
 
-#: app/templates/api/map.html:48
+#: app/templates/api/map.html:54
 #, fuzzy, python-format
 msgid "%(name)s"
 msgstr "Bonjour, %(name)s"
 
-#: app/templates/api/map.html:49
+#: app/templates/api/map.html:55
 #, python-format
 msgid "%(address)s"
 msgstr "%(address)s"
 
-#: app/templates/api/map.html:50
+#: app/templates/api/map.html:56
 #, python-format
 msgid "%(type)s"
 msgstr "%(type)s"
 
-#: app/templates/api/map.html:51
+#: app/templates/api/map.html:57
 #, python-format
 msgid "%(statut)s"
 msgstr "%(statut)s"
 
-#: app/templates/api/map.html:52
+#: app/templates/api/map.html:58
 #, python-format
 msgid "%(date_statut)s"
 msgstr "%(date_statut)s"
 
-#: app/templates/api/map.html:53
+#: app/templates/api/map.html:59
 #, python-format
 msgid "%(latitude)s"
 msgstr "%(latitude)s"
 
-#: app/templates/api/map.html:54
+#: app/templates/api/map.html:60
 #, python-format
 msgid "%(longitude)s"
 msgstr "%(longitude)s"

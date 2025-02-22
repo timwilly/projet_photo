@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-10-20 13:14-0400\n"
+"POT-Creation-Date: 2025-02-22 04:24-0500\n"
 "PO-Revision-Date: 2022-12-30 13:30-0500\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: es\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.11.0\n"
 
-#: app/__init__.py:27
+#: app/__init__.py:28
 msgid "Please log in to access this page."
 msgstr ""
 
@@ -142,7 +142,7 @@ msgstr ""
 msgid "Language"
 msgstr ""
 
-#: app/templates/base.html:125
+#: app/templates/base.html:129
 msgid "Error: Could not contact server."
 msgstr ""
 
@@ -238,7 +238,11 @@ msgstr ""
 msgid "Unfollow"
 msgstr ""
 
-#: app/templates/about_me/about_me.html:18
+#: app/templates/about_me/about_me.html:16
+msgid "Curriculum Vitae"
+msgstr ""
+
+#: app/templates/about_me/about_me.html:20
 msgid ""
 "Hello and welcome to my website. On this page, you will have an \n"
 "                overview of my background, my interests and my skills. On"
@@ -252,127 +256,172 @@ msgid ""
 "                language."
 msgstr ""
 
-#: app/templates/about_me/about_me.html:26
+#: app/templates/about_me/about_me.html:28
 msgid "Thank you and enjoy your visit! :)"
 msgstr ""
 
-#: app/templates/about_me/about_me.html:33
+#: app/templates/about_me/about_me.html:34
+msgid "My skills"
+msgstr ""
+
+#: app/templates/about_me/about_me.html:38
+msgid "Python"
+msgstr ""
+
+#: app/templates/about_me/about_me.html:44
 msgid "August 2014"
 msgstr ""
 
-#: app/templates/about_me/about_me.html:39
+#: app/templates/about_me/about_me.html:50
 msgid "Social Science"
 msgstr ""
 
-#: app/templates/about_me/about_me.html:41
+#: app/templates/about_me/about_me.html:52
 msgid "Montmorency College"
 msgstr ""
 
-#: app/templates/about_me/about_me.html:47
+#: app/templates/about_me/about_me.html:58
 msgid "Bachelor of Career Development"
 msgstr ""
 
-#: app/templates/about_me/about_me.html:49
-#: app/templates/about_me/about_me.html:76
+#: app/templates/about_me/about_me.html:60
+#: app/templates/about_me/about_me.html:87
 msgid "University of Quebec At Montreal"
 msgstr ""
 
-#: app/templates/about_me/about_me.html:53
-msgid "Membre du salon national de l'emploi en 2016"
+#: app/templates/about_me/about_me.html:64
+msgid "Member of the National Employment Fair in 2016"
 msgstr ""
 
-#: app/templates/about_me/about_me.html:54
+#: app/templates/about_me/about_me.html:65
 msgid ""
-"Animation sur les emplois à la portée des détenus dans un milieu carcéral"
-" à Laval"
+"Facilitation on jobs accessible to inmates in a correctional facility in "
+"Laval"
 msgstr ""
 
-#: app/templates/about_me/about_me.html:55
-msgid ""
-"Réaliser des animations sur la gestion du stress auprès d'un groupe "
-"d'adulte"
-msgstr ""
-
-#: app/templates/about_me/about_me.html:63
-msgid "August 2016"
-msgstr ""
-
-#: app/templates/about_me/about_me.html:68
-msgid "August 2019"
+#: app/templates/about_me/about_me.html:66
+msgid "Animator on stress management for a group of adults"
 msgstr ""
 
 #: app/templates/about_me/about_me.html:74
+msgid "August 2016"
+msgstr ""
+
+#: app/templates/about_me/about_me.html:79
+msgid "August 2019"
+msgstr ""
+
+#: app/templates/about_me/about_me.html:85
 msgid "Bachelor of Computer Science and Software Engineering"
 msgstr ""
 
-#: app/templates/about_me/about_me.html:84
-#: app/templates/about_me/about_me.html:87
-msgid "test"
-msgstr ""
-
-#: app/templates/about_me/about_me.html:95
+#: app/templates/about_me/about_me.html:100
 msgid "May 2022"
 msgstr ""
 
-#: app/templates/api/map.html:27
+#: app/templates/about_me/about_me.html:105
+msgid "Photography"
+msgstr ""
+
+#: app/templates/about_me/about_me.html:109
+msgid "Photo 1"
+msgstr ""
+
+#: app/templates/about_me/about_me.html:110
+msgid "Photo 2"
+msgstr ""
+
+#: app/templates/about_me/about_me.html:111
+msgid "Photo 3"
+msgstr ""
+
+#: app/templates/about_me/about_me.html:112
+msgid "Photo 4"
+msgstr ""
+
+#: app/templates/about_me/about_me.html:113
+msgid "Photo 5"
+msgstr ""
+
+#: app/templates/about_me/about_me.html:114
+msgid "Photo 6"
+msgstr ""
+
+#: app/templates/about_me/about_me.html:115
+msgid "Photo 7"
+msgstr ""
+
+#: app/templates/about_me/about_me.html:116
+msgid "Photo 8"
+msgstr ""
+
+#: app/templates/about_me/about_me.html:126
+msgid "Image Preview"
+msgstr ""
+
+#: app/templates/api/map.html:11
+msgid "Update"
+msgstr ""
+
+#: app/templates/api/map.html:36
 msgid "Business"
 msgstr ""
 
-#: app/templates/api/map.html:28
+#: app/templates/api/map.html:37
 msgid "Address"
 msgstr ""
 
-#: app/templates/api/map.html:29
+#: app/templates/api/map.html:38
 msgid "Type"
 msgstr ""
 
-#: app/templates/api/map.html:30
+#: app/templates/api/map.html:39
 msgid "Statut"
 msgstr ""
 
-#: app/templates/api/map.html:31
+#: app/templates/api/map.html:40
 msgid "Date statut"
 msgstr ""
 
-#: app/templates/api/map.html:32
+#: app/templates/api/map.html:41
 msgid "Latitude"
 msgstr ""
 
-#: app/templates/api/map.html:33
+#: app/templates/api/map.html:42
 msgid "Longitude"
 msgstr ""
 
-#: app/templates/api/map.html:39
+#: app/templates/api/map.html:48
 #, python-format
 msgid "%(name)s"
 msgstr ""
 
-#: app/templates/api/map.html:40
+#: app/templates/api/map.html:49
 #, python-format
 msgid "%(address)s"
 msgstr ""
 
-#: app/templates/api/map.html:41
+#: app/templates/api/map.html:50
 #, python-format
 msgid "%(type)s"
 msgstr ""
 
-#: app/templates/api/map.html:42
+#: app/templates/api/map.html:51
 #, python-format
 msgid "%(statut)s"
 msgstr ""
 
-#: app/templates/api/map.html:43
+#: app/templates/api/map.html:52
 #, python-format
 msgid "%(date_statut)s"
 msgstr ""
 
-#: app/templates/api/map.html:44
+#: app/templates/api/map.html:53
 #, python-format
 msgid "%(latitude)s"
 msgstr ""
 
-#: app/templates/api/map.html:45
+#: app/templates/api/map.html:54
 #, python-format
 msgid "%(longitude)s"
 msgstr ""
@@ -482,5 +531,23 @@ msgstr ""
 #~ "                language.\n"
 #~ "\n"
 #~ "                Thank you and enjoy your visit! :)"
+#~ msgstr ""
+
+#~ msgid "test"
+#~ msgstr ""
+
+#~ msgid "Membre du salon national de l'emploi en 2016"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Animation sur les emplois à la "
+#~ "portée des détenus dans un milieu "
+#~ "carcéral à Laval"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Réaliser des animations sur la gestion"
+#~ " du stress auprès d'un groupe "
+#~ "d'adulte"
 #~ msgstr ""
 

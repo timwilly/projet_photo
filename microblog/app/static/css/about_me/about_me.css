@@ -163,3 +163,7 @@ body {
   max-width: 100%; /* Empêche l'image de dépasser la largeur de la modale */
   height: auto; /* Maintient le ratio de l'image */
 }
+
+.modal-title {
+  color: black;
+}

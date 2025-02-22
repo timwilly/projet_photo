@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-02-22 16:37-0500\n"
+"POT-Creation-Date: 2025-02-22 17:33-0500\n"
 "PO-Revision-Date: 2022-12-30 13:30-0500\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: es\n"
@@ -20,24 +20,24 @@ msgstr ""
 
 #: app/__init__.py:28
 msgid "Please log in to access this page."
-msgstr ""
+msgstr "Por favor, inicie sesión para acceder a esta página."
 
 #: app/translate.py:9
 msgid "Error: the translation service is not configured."
-msgstr ""
+msgstr "Error: el servicio de traducción no está configurado."
 
 #: app/translate.py:19
 msgid "Error: the translation service failed."
-msgstr ""
+msgstr "Error: el servicio de traducción falló."
 
 #: app/api/forms.py:9 app/main/forms.py:42 app/main/routes.py:189
 msgid "Search"
-msgstr ""
+msgstr "Buscar"
 
 #: app/api/forms.py:11 app/main/forms.py:12 app/main/forms.py:28
 #: app/main/forms.py:32 app/main/forms.py:38 app/main/forms.py:55
 msgid "Submit"
-msgstr ""
+msgstr "Enviar"
 
 #: app/auth/forms.py:9 app/auth/forms.py:16 app/main/forms.py:10
 msgid "Username"
@@ -46,201 +46,201 @@ msgstr ""
 #: app/auth/forms.py:10 app/auth/forms.py:18 app/auth/forms.py:42
 #: app/main/forms.py:27
 msgid "Password"
-msgstr ""
+msgstr "Contraseña"
 
 #: app/auth/forms.py:11
 msgid "Remember Me"
-msgstr ""
+msgstr "Recuérdame"
 
 #: app/auth/forms.py:12 app/templates/auth/login.html:11
 msgid "Sign in"
-msgstr ""
+msgstr "Iniciar sesión"
 
 #: app/auth/forms.py:17 app/auth/forms.py:37
 msgid "Email"
-msgstr ""
+msgstr "Correo electrónico"
 
 #: app/auth/forms.py:19 app/auth/forms.py:43
 msgid "Repeat Password"
-msgstr ""
+msgstr "Repetir contraseña"
 
 #: app/auth/forms.py:21 app/templates/auth/register.html:5
 msgid "Register"
-msgstr ""
+msgstr "Registrarse"
 
 #: app/auth/forms.py:28 app/main/forms.py:23
 msgid "Please use a different username."
-msgstr ""
+msgstr "Por favor, use un nombre de usuario diferente."
 
 #: app/auth/forms.py:33
 msgid "Please use a different email address."
-msgstr ""
+msgstr "Por favor, use una dirección de correo electrónico diferente."
 
 #: app/auth/forms.py:38 app/auth/forms.py:45
 msgid "Request Password Reset"
-msgstr ""
+msgstr "Solicitar restablecimiento de contraseña"
 
 #: app/main/forms.py:11 app/templates/base.html:25 app/templates/base.html:34
 #: app/templates/base.html:38
 msgid "About me"
-msgstr ""
+msgstr "Sobre mí"
 
 #: app/main/forms.py:36
 msgid "Say something"
-msgstr ""
+msgstr "Di algo"
 
 #: app/main/forms.py:53
 msgid "Message"
-msgstr ""
+msgstr "Mensaje"
 
 #: app/main/routes.py:223
 msgid "Your message has been sent."
-msgstr ""
+msgstr "Tu mensaje ha sido enviado."
 
 #: app/main/routes.py:225
 msgid "Send Message"
-msgstr ""
+msgstr "Enviar mensaje"
 
 #: app/templates/_post.html:20
 #, python-format
 msgid "%(username)s said %(when)s"
-msgstr ""
+msgstr "%(username)s dijo %(when)s"
 
 #: app/templates/_post.html:31
 msgid "Translate"
-msgstr ""
+msgstr "Traducir"
 
 #: app/templates/base.html:29
 msgid "Feed"
-msgstr ""
+msgstr "Feed"
 
 #: app/templates/base.html:30
 msgid "Explore"
-msgstr ""
+msgstr "Explorar"
 
 #: app/templates/base.html:31
 msgid "Map"
-msgstr ""
+msgstr "Mapa"
 
 #: app/templates/base.html:43
 msgid "Login"
-msgstr ""
+msgstr "Iniciar sesión"
 
 #: app/templates/base.html:46 app/templates/messages.html:4
 msgid "Messages"
-msgstr ""
+msgstr "Mensajes"
 
 #: app/templates/base.html:55
 msgid "Profile"
-msgstr ""
+msgstr "Perfil"
 
 #: app/templates/base.html:56
 msgid "Logout"
-msgstr ""
+msgstr "Cerrar sesión"
 
 #: app/templates/base.html:60
 msgid "Language"
-msgstr ""
+msgstr "Idioma"
 
-#: app/templates/base.html:129
+#: app/templates/base.html:130
 msgid "Error: Could not contact server."
-msgstr ""
+msgstr "Error: No se pudo contactar al servidor."
 
 #: app/templates/delete_profile.html:10
 msgid "Delete Profile"
-msgstr ""
+msgstr "Eliminar perfil"
 
 #: app/templates/delete_profile.html:11
 msgid "Confirm your password to delete your account"
-msgstr ""
+msgstr "Confirma tu contraseña para eliminar tu cuenta"
 
 #: app/templates/edit_profile.html:6
 msgid "Edit Profile"
-msgstr ""
+msgstr "Editar perfil"
 
 #: app/templates/index.html:7
 #, python-format
 msgid "Hi, %(username)s"
-msgstr ""
+msgstr "Hola, %(username)s"
 
 #: app/templates/index.html:25 app/templates/user.html:73
 msgid "Newer posts"
-msgstr ""
+msgstr "Publicaciones más nuevas"
 
 #: app/templates/index.html:30 app/templates/user.html:76
 msgid "Older posts"
-msgstr ""
+msgstr "Publicaciones más antiguas"
 
 #: app/templates/messages.html:12
 msgid "Newer messages"
-msgstr ""
+msgstr "Mensajes más nuevos"
 
 #: app/templates/messages.html:17
 msgid "Older messages"
-msgstr ""
+msgstr "Mensajes más antiguos"
 
 #: app/templates/search.html:4
 msgid "Search Results"
-msgstr ""
+msgstr "Resultados de búsqueda"
 
 #: app/templates/search.html:13
 msgid "Previous results"
-msgstr ""
+msgstr "Resultados anteriores"
 
 #: app/templates/search.html:18
 msgid "Next results"
-msgstr ""
+msgstr "Siguientes resultados"
 
 #: app/templates/send_message.html:5
 #, python-format
 msgid "Send Message to %(recipient)s"
-msgstr ""
+msgstr "Enviar mensaje a %(recipient)s"
 
 #: app/templates/user.html:9
 msgid "User: "
-msgstr ""
+msgstr "Usuario: "
 
 #: app/templates/user.html:11
 msgid "Last seen on:"
-msgstr ""
+msgstr "Última vez visto en:"
 
 #: app/templates/user.html:21
 msgid "Send private message"
-msgstr ""
+msgstr "Enviar mensaje privado"
 
 #: app/templates/user.html:26
 msgid "Edit your profile"
-msgstr ""
+msgstr "Editar tu perfil"
 
 #: app/templates/user.html:27
 msgid "Delete your profile"
-msgstr ""
+msgstr "Eliminar tu perfil"
 
 #: app/templates/user_popup.html:15
 msgid "Last seen on"
-msgstr ""
+msgstr "Última vez visto en"
 
 #: app/templates/user_popup.html:18
 #, python-format
 msgid "%(count)d followers"
-msgstr ""
+msgstr "%(count)d seguidores"
 
 #: app/templates/user_popup.html:19
 #, python-format
 msgid "%(count)d following"
-msgstr ""
+msgstr "%(count)d siguiendo"
 
 #: app/templates/user_popup.html:27
 msgid "Follow"
-msgstr ""
+msgstr "Seguir"
 
 #: app/templates/user_popup.html:36
 msgid "Unfollow"
-msgstr ""
+msgstr "Dejar de seguir"
 
 #: app/templates/about_me/about_me.html:16
 msgid "Curriculum Vitae"
-msgstr ""
+msgstr "Currículum Vitae"
 
 #: app/templates/about_me/about_me.html:20
 msgid ""
@@ -255,231 +255,248 @@ msgid ""
 "finally change the \n"
 "                language."
 msgstr ""
+"Hola y bienvenido a mi sitio web. En esta página, tendrás una \n"
+"                visión general de mi experiencia, mis intereses y mis habilidades. En"
+" este sitio,\n"
+"                puedes intentar crear una cuenta y navegar a través de los"
+" diferentes \n"
+"                ajustes como si fuera una red social, puedes explorar "
+"los \n"
+"                diferentes negocios en Montreal y su estado y "
+"finalmente cambiar el \n"
+"                idioma."
 
 #: app/templates/about_me/about_me.html:28
-msgid "Thank you and enjoy your visit! :)"
-msgstr ""
+msgid "Thank you and enjoy your visit!"
+msgstr "¡Gracias y disfruta de tu visita!"
 
-#: app/templates/about_me/about_me.html:34
+#: app/templates/about_me/about_me.html:35
 msgid "My skills"
-msgstr ""
+msgstr "Mis habilidades"
 
-#: app/templates/about_me/about_me.html:38
+#: app/templates/about_me/about_me.html:39
 msgid "Python"
-msgstr ""
+msgstr "Python"
 
-#: app/templates/about_me/about_me.html:44
+#: app/templates/about_me/about_me.html:46
 msgid "August 2014"
-msgstr ""
-
-#: app/templates/about_me/about_me.html:50
-msgid "Social Science"
-msgstr ""
+msgstr "Agosto de 2014"
 
 #: app/templates/about_me/about_me.html:52
-msgid "Montmorency College"
-msgstr ""
+msgid "Social Science"
+msgstr "Ciencias Sociales"
 
-#: app/templates/about_me/about_me.html:58
-msgid "Bachelor of Career Development"
-msgstr ""
+#: app/templates/about_me/about_me.html:54
+msgid "Montmorency College"
+msgstr "Colegio Montmorency"
 
 #: app/templates/about_me/about_me.html:60
-#: app/templates/about_me/about_me.html:87
+msgid "Bachelor of Career Development"
+msgstr "Licenciatura en Desarrollo Profesional"
+
+#: app/templates/about_me/about_me.html:62
+#: app/templates/about_me/about_me.html:89
 msgid "University of Quebec At Montreal"
-msgstr ""
+msgstr "Universidad de Quebec en Montreal"
 
-#: app/templates/about_me/about_me.html:64
+#: app/templates/about_me/about_me.html:66
 msgid "Member of the National Employment Fair in 2016"
-msgstr ""
+msgstr "Miembro de la Feria Nacional de Empleo en 2016"
 
-#: app/templates/about_me/about_me.html:65
+#: app/templates/about_me/about_me.html:67
 msgid ""
 "Facilitation on jobs accessible to inmates in a correctional facility in "
 "Laval"
 msgstr ""
+"Facilitación sobre trabajos accesibles para reclusos en una instalación "
+"correccional en Laval"
 
-#: app/templates/about_me/about_me.html:66
+#: app/templates/about_me/about_me.html:68
 msgid "Animator on stress management for a group of adults"
-msgstr ""
+msgstr "Animador en manejo del estrés para un grupo de adultos"
 
-#: app/templates/about_me/about_me.html:74
+#: app/templates/about_me/about_me.html:76
 msgid "August 2016"
-msgstr ""
+msgstr "Agosto de 
 
-#: app/templates/about_me/about_me.html:79
+#: app/templates/about_me/about_me.html:81
 msgid "August 2019"
-msgstr ""
+msgstr "Agosto de 2019"
 
-#: app/templates/about_me/about_me.html:85
+#: app/templates/about_me/about_me.html:87
 msgid "Bachelor of Computer Science and Software Engineering"
-msgstr ""
+msgstr "Licenciatura en Ciencias de la Computación e Ingeniería de Software"
 
-#: app/templates/about_me/about_me.html:100
+#: app/templates/about_me/about_me.html:102
 msgid "May 2022"
-msgstr ""
+msgstr "Mayo de 2022"
 
-#: app/templates/about_me/about_me.html:105
+#: app/templates/about_me/about_me.html:107
 msgid "Photography"
-msgstr ""
+msgstr "Fotografía"
 
-#: app/templates/about_me/about_me.html:109
-msgid "Photo 1"
-msgstr ""
-
-#: app/templates/about_me/about_me.html:110
-msgid "Photo 2"
-msgstr ""
-
-#: app/templates/about_me/about_me.html:111
-msgid "Photo 3"
-msgstr ""
+#: app/templates/about_me/about_me.html:108
+msgid "I'm a passionate photographer and here is a few of my photos"
+msgstr "Soy un fotógrafo apasionado y aquí hay algunas de mis fotos"
 
 #: app/templates/about_me/about_me.html:112
-msgid "Photo 4"
-msgstr ""
+msgid "Photo 1"
+msgstr "Foto 1"
 
 #: app/templates/about_me/about_me.html:113
-msgid "Photo 5"
-msgstr ""
+msgid "Photo 2"
+msgstr "Foto 2"
 
 #: app/templates/about_me/about_me.html:114
-msgid "Photo 6"
-msgstr ""
+msgid "Photo 3"
+msgstr "Foto 3"
 
 #: app/templates/about_me/about_me.html:115
-msgid "Photo 7"
-msgstr ""
+msgid "Photo 4"
+msgstr "Foto 4"
 
 #: app/templates/about_me/about_me.html:116
-msgid "Photo 8"
-msgstr ""
+msgid "Photo 5"
+msgstr "Foto 5"
 
-#: app/templates/about_me/about_me.html:126
+#: app/templates/about_me/about_me.html:117
+msgid "Photo 6"
+msgstr "Foto 6"
+
+#: app/templates/about_me/about_me.html:118
+msgid "Photo 7"
+msgstr "Foto 7"
+
+#: app/templates/about_me/about_me.html:119
+msgid "Photo 8"
+msgstr "Foto 8"
+
+#: app/templates/about_me/about_me.html:129
 msgid "Image Preview"
-msgstr ""
+msgstr "Vista previa de la imagen"
 
 #: app/templates/api/map.html:11
 msgid "Establishment finder in Montreal"
-msgstr ""
+msgstr "Buscador de establecimientos en Montreal"
 
 #: app/templates/api/map.html:13
 msgid ""
 "Please write the name of the establishment you would like information "
 "about."
 msgstr ""
+"Por favor, escribe el nombre del establecimiento sobre el que te gustaría obtener información."
 
 #: app/templates/api/map.html:15
 msgid "Update"
-msgstr ""
+msgstr "Actualizar"
 
 #: app/templates/api/map.html:42
 msgid "Business"
-msgstr ""
+msgstr "Negocio"
 
 #: app/templates/api/map.html:43
 msgid "Address"
-msgstr ""
+msgstr "Dirección"
 
 #: app/templates/api/map.html:44
 msgid "Type"
-msgstr ""
+msgstr "Tipo"
 
 #: app/templates/api/map.html:45
 msgid "Statut"
-msgstr ""
+msgstr "Estado"
 
 #: app/templates/api/map.html:46
 msgid "Date statut"
-msgstr ""
+msgstr "Fecha de estado"
 
 #: app/templates/api/map.html:47
 msgid "Latitude"
-msgstr ""
+msgstr "Latitud"
 
 #: app/templates/api/map.html:48
 msgid "Longitude"
-msgstr ""
+msgstr "Longitud"
 
 #: app/templates/api/map.html:54
 #, python-format
 msgid "%(name)s"
-msgstr ""
+msgstr "%(name)s"
 
 #: app/templates/api/map.html:55
 #, python-format
 msgid "%(address)s"
-msgstr ""
+msgstr "%(address)s"
 
 #: app/templates/api/map.html:56
 #, python-format
 msgid "%(type)s"
-msgstr ""
+msgstr "%(type)s"
 
 #: app/templates/api/map.html:57
 #, python-format
 msgid "%(statut)s"
-msgstr ""
+msgstr "%(statut)s"
 
 #: app/templates/api/map.html:58
 #, python-format
 msgid "%(date_statut)s"
-msgstr ""
+msgstr "%(date_statut)s"
 
 #: app/templates/api/map.html:59
 #, python-format
 msgid "%(latitude)s"
-msgstr ""
+msgstr "%(latitude)s"
 
 #: app/templates/api/map.html:60
 #, python-format
 msgid "%(longitude)s"
-msgstr ""
+msgstr "%(longitude)s"
 
 #: app/templates/auth/login.html:15
 msgid "New user?"
-msgstr ""
+msgstr "¿Nuevo usuario?"
 
 #: app/templates/auth/login.html:15
 msgid "Click to register!"
-msgstr ""
+msgstr "¡Haz clic para registrarte!"
 
 #: app/templates/auth/login.html:16
 msgid "Forgot your password?"
-msgstr ""
+msgstr "¿Olvidaste tu contraseña?"
 
 #: app/templates/auth/login.html:16
 msgid "Click to reset"
-msgstr ""
+msgstr "Haz clic para restablecer"
 
 #: app/templates/auth/login.html:23
 msgid ""
 "On this page, you can create an account, login, reset your password, \n"
 "                interact with other, follow each other and have a main "
-"feed.<br><br>\n"
-"                To prevent abuse, only 2 account can be created so you "
-"can test it."
+"feed."
 msgstr ""
+"En esta página, puedes crear una cuenta, iniciar sesión, restablecer tu contraseña, \n"
+"                interactuar con otros, seguirse mutuamente y tener un feed principal."
 
 #: app/templates/auth/reset_password.html:5
 msgid "Reset your password"
-msgstr ""
+msgstr "Restablecer tu contraseña"
 
 #: app/templates/auth/reset_password_request.html:5
 msgid "Reset password"
-msgstr ""
+msgstr "Restablecer contraseña"
 
 #: app/templates/errors/404.html:4
 msgid "File not Found"
-msgstr ""
+msgstr "Archivo no encontrado"
 
 #: app/templates/errors/500.html:4
 msgid "An unexpected error has occurred"
-msgstr ""
+msgstr "Ha ocurrido un error inesperado"
 
 #: app/templates/errors/500.html:5
 msgid "The administrator has been notified. Sorry for the inconvenience!"
-msgstr ""
+msgstr "El administrador ha sido notificado. ¡Disculpa las molestias!"
 
 #~ msgid "Hi, %(username)s!"
 #~ msgstr ""
@@ -559,5 +576,18 @@ msgstr ""
 #~ "Réaliser des animations sur la gestion"
 #~ " du stress auprès d'un groupe "
 #~ "d'adulte"
+#~ msgstr ""
+
+#~ msgid "Thank you and enjoy your visit! :)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "On this page, you can create an account, login, reset your password, \n"
+#~ "                interact with other, follow"
+#~ " each other and have a main "
+#~ "feed.<br><br>\n"
+#~ "                To prevent abuse, only 2"
+#~ " account can be created so you "
+#~ "can test it."
 #~ msgstr ""
 

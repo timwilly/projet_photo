@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-02-22 16:37-0500\n"
+"POT-Creation-Date: 2025-02-22 17:33-0500\n"
 "PO-Revision-Date: 2022-12-30 14:06-0500\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -146,7 +146,7 @@ msgstr "Déconnexion"
 msgid "Language"
 msgstr "Langage"
 
-#: app/templates/base.html:129
+#: app/templates/base.html:130
 msgid "Error: Could not contact server."
 msgstr "Erreur: le serveur ne peut être contacté"
 
@@ -271,106 +271,111 @@ msgstr ""
 "de Montréal et leur état et finalement changer la langue.\n"
 
 #: app/templates/about_me/about_me.html:28
-msgid "Thank you and enjoy your visit! :)"
-msgstr "Merci de votre visite! :)"
+msgid "Thank you and enjoy your visit!"
+msgstr "Merci de votre visite!"
 
-#: app/templates/about_me/about_me.html:34
+#: app/templates/about_me/about_me.html:35
 msgid "My skills"
 msgstr "Mes compétences"
 
-#: app/templates/about_me/about_me.html:38
+#: app/templates/about_me/about_me.html:39
 msgid "Python"
 msgstr ""
 
-#: app/templates/about_me/about_me.html:44
+#: app/templates/about_me/about_me.html:46
 msgid "August 2014"
 msgstr "Août 2014"
 
-#: app/templates/about_me/about_me.html:50
+#: app/templates/about_me/about_me.html:52
 msgid "Social Science"
 msgstr "Sciences Humaines"
 
-#: app/templates/about_me/about_me.html:52
+#: app/templates/about_me/about_me.html:54
 msgid "Montmorency College"
 msgstr "Collège Montmorency"
 
-#: app/templates/about_me/about_me.html:58
+#: app/templates/about_me/about_me.html:60
 msgid "Bachelor of Career Development"
 msgstr "Baccalauréat en Développement de Carrière"
 
-#: app/templates/about_me/about_me.html:60
-#: app/templates/about_me/about_me.html:87
+#: app/templates/about_me/about_me.html:62
+#: app/templates/about_me/about_me.html:89
 msgid "University of Quebec At Montreal"
 msgstr "Université de Québec à Montréal"
 
-#: app/templates/about_me/about_me.html:64
+#: app/templates/about_me/about_me.html:66
 msgid "Member of the National Employment Fair in 2016"
 msgstr "Membre du salon national de l'emploi en 2016"
 
-#: app/templates/about_me/about_me.html:65
+#: app/templates/about_me/about_me.html:67
 msgid ""
 "Facilitation on jobs accessible to inmates in a correctional facility in "
 "Laval"
-msgstr "Atelier sur les emplois à la portée des détenus dans un centre "
+msgstr ""
+"Atelier sur les emplois à la portée des détenus dans un centre "
 "correctionnel à Laval"
 
-#: app/templates/about_me/about_me.html:66
+#: app/templates/about_me/about_me.html:68
 msgid "Animator on stress management for a group of adults"
 msgstr "Animateur sur la gestion du stress auprès d'un groupe d'adultes"
 
-#: app/templates/about_me/about_me.html:74
+#: app/templates/about_me/about_me.html:76
 msgid "August 2016"
 msgstr "Août 2016"
 
-#: app/templates/about_me/about_me.html:79
+#: app/templates/about_me/about_me.html:81
 msgid "August 2019"
 msgstr "Août 2019"
 
-#: app/templates/about_me/about_me.html:85
+#: app/templates/about_me/about_me.html:87
 msgid "Bachelor of Computer Science and Software Engineering"
 msgstr "Baccalauréat en informatique et génie logiciel"
 
-#: app/templates/about_me/about_me.html:100
+#: app/templates/about_me/about_me.html:102
 msgid "May 2022"
 msgstr "Mai 2022"
 
-#: app/templates/about_me/about_me.html:105
+#: app/templates/about_me/about_me.html:107
 msgid "Photography"
 msgstr "Photographie"
 
-#: app/templates/about_me/about_me.html:109
+#: app/templates/about_me/about_me.html:108
+msgid "I'm a passionate photographer and here is a few of my photos"
+msgstr "Je suis passionné de photographie et voici quelques-unes de mes photos"
+
+#: app/templates/about_me/about_me.html:112
 msgid "Photo 1"
 msgstr ""
 
-#: app/templates/about_me/about_me.html:110
+#: app/templates/about_me/about_me.html:113
 msgid "Photo 2"
 msgstr ""
 
-#: app/templates/about_me/about_me.html:111
+#: app/templates/about_me/about_me.html:114
 msgid "Photo 3"
 msgstr ""
 
-#: app/templates/about_me/about_me.html:112
+#: app/templates/about_me/about_me.html:115
 msgid "Photo 4"
 msgstr ""
 
-#: app/templates/about_me/about_me.html:113
+#: app/templates/about_me/about_me.html:116
 msgid "Photo 5"
 msgstr ""
 
-#: app/templates/about_me/about_me.html:114
+#: app/templates/about_me/about_me.html:117
 msgid "Photo 6"
 msgstr ""
 
-#: app/templates/about_me/about_me.html:115
+#: app/templates/about_me/about_me.html:118
 msgid "Photo 7"
 msgstr ""
 
-#: app/templates/about_me/about_me.html:116
+#: app/templates/about_me/about_me.html:119
 msgid "Photo 8"
 msgstr ""
 
-#: app/templates/about_me/about_me.html:126
+#: app/templates/about_me/about_me.html:129
 msgid "Image Preview"
 msgstr "Aperçu de l'image"
 
@@ -382,7 +387,9 @@ msgstr "Recherche d'établissement à Montréal"
 msgid ""
 "Please write the name of the establishment you would like information "
 "about."
-msgstr "Écrivez le nom de l'établissement que vous souhaitez obtenir de l'information"
+msgstr ""
+"Écrivez le nom de l'établissement que vous souhaitez obtenir de "
+"l'information"
 
 #: app/templates/api/map.html:15
 msgid "Update"
@@ -468,18 +475,15 @@ msgid "Click to reset"
 msgstr "Cliquez pour réinitialiser"
 
 #: app/templates/auth/login.html:23
+#, fuzzy
 msgid ""
 "On this page, you can create an account, login, reset your password, \n"
 "                interact with other, follow each other and have a main "
-"feed.<br><br>\n"
-"                To prevent abuse, only 2 account can be created so you "
-"can test it."
-msgstr ""
-"Sur cette page, vous pouvez créer un compte, vous connecter, "
+"feed."
+msgstr "Sur cette page, vous pouvez créer un compte, vous connecter, "
 "Réinitialiservotre mot de passe, intéragir avec d'autres utilisateur, "
 "suivre d'autres utilisateurs et consulter votre fil "
-"d'actualité.<br><br>Pour éviter les abus, deux comptes ne peuvent qu'être"
-" crée pour tester."
+"d'actualité."
 
 #: app/templates/auth/reset_password.html:5
 msgid "Reset your password"

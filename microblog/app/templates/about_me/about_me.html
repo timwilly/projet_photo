@@ -90,13 +90,7 @@
 
 
     <div class="timeline__component timeline__component--bottom timeline__component--bg">
-      <h2 class="timeline__title">Fin</h2>
-      <p class="timeline__paragraph">
-        {{ _("test")}}
-      </p>
-      <p class="timeline__paragraph">
-        {{ _("test")}}
-      </p>
+
     </div>
     <div class="timeline__middle">
       <div class="timeline__point"></div>
@@ -105,11 +99,54 @@
     <div class="timeline__component timeline__component--bottom">
       <div class="timeline__date">{{ _("May 2022")}}</div>
     </div>
+    
   </div> 
+  <div class="row glass-effect" id="information">
+    <h1>{{ _("Photography")}}</h1>
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <div class="photo-gallery">
+          <img src="{{ image_file_photography_1 }}" alt="{{ _('Photo 1') }}" class="gallery-image" data-image="{{ image_file_photography_1 }}" data-toggle="modal" data-target="#imageModal">
+          <img src="{{ image_file_photography_2 }}" alt="{{ _('Photo 2') }}" class="gallery-image" data-image="{{ image_file_photography_2 }}" data-toggle="modal" data-target="#imageModal">
+          <img src="{{ image_file_photography_3 }}" alt="{{ _('Photo 3') }}" class="gallery-image" data-image="{{ image_file_photography_3 }}" data-toggle="modal" data-target="#imageModal">
+          <img src="{{ image_file_photography_4 }}" alt="{{ _('Photo 4') }}" class="gallery-image" data-image="{{ image_file_photography_4 }}" data-toggle="modal" data-target="#imageModal">
+          <img src="{{ image_file_photography_5 }}" alt="{{ _('Photo 5') }}" class="gallery-image" data-image="{{ image_file_photography_5 }}" data-toggle="modal" data-target="#imageModal">
+          <img src="{{ image_file_photography_6 }}" alt="{{ _('Photo 6') }}" class="gallery-image" data-image="{{ image_file_photography_6 }}" data-toggle="modal" data-target="#imageModal">
+          <img src="{{ image_file_photography_7 }}" alt="{{ _('Photo 7') }}" class="gallery-image" data-image="{{ image_file_photography_7 }}" data-toggle="modal" data-target="#imageModal">
+          <img src="{{ image_file_photography_8 }}" alt="{{ _('Photo 8') }}" class="gallery-image" data-image="{{ image_file_photography_8 }}" data-toggle="modal" data-target="#imageModal">
+        </div>
+    </div>
+  </div>
 
+  <!-- Modale pour l'aperçu de l'image -->
+  <div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="imageModalLabel">{{ _("Image Preview") }}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <img id="modal-image" src="" class="img-fluid" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
 
 {% endblock %}
 
 {% block scripts %}
     {{ super() }}
+    <script>
+      // Script pour changer l'image dans la modale
+      $(document).ready(function() {
+        $('.gallery-image').click(function() {
+          var imageSrc = $(this).data('image');
+          $('#modal-image').attr('src', imageSrc);
+          $('#imageModal').modal('show');
+        });
+      });
+    </script>
 {% endblock %}

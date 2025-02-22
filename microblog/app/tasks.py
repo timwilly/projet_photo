@@ -32,7 +32,6 @@ def example2():
 # TODO: à effacer à la fin les print!
 # Possible que ça puisse prendre du temps à charger, trouver solution
 def import_data_business_montreal():
-    print('BONJOUR!')
     try:
         """
         import_data_to_csv("https://donnees.montreal.ca/dataset/c1d65779-d3cb"

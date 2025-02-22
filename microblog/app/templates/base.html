@@ -92,7 +92,7 @@
         {% endif %}
         {% endwith %}
         
-        {# application content needs to be provided in the app_content block #}
+        {# Contenu de l'application #}
         {% block app_content %}{% endblock %}
     </div>
 {% endblock %}
@@ -111,6 +111,10 @@
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <!--<script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
     <script src="{{ url_for('static', filename='js/base.js') }}"></script>
     <script>
         function translate(sourceElem, destElem, sourceLang, destLang) {

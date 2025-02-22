@@ -3,6 +3,7 @@ import logging
 import os
 import tweepy
 import rq
+import subprocess
 from app.shared import db, migrate, mail, bootstrap, moment, babel, login, \
                        scheduler
 from app.bgscheduler import scheduler
@@ -58,10 +59,10 @@ def create_app(config_class=Config):
     scheduler.start()
     
     # Importe les données, à enlever lors de la mise en production
-    from app.tasks import import_data_business_montreal
-    @app.before_first_request
-    def test():
-       import_data_business_montreal()
+    #from app.tasks import import_data_business_montreal
+    #@app.before_first_request
+    #def test():
+    #   import_data_business_montreal()
 
     #from app.tasks import clear_users_related_tables
     #@app.before_first_request

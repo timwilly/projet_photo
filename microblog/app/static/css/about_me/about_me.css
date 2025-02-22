@@ -136,4 +136,30 @@ body {
   height: auto; /* Laissez la hauteur s'ajuster automatiquement pour maintenir les proportions */
   position: relative;
 }
-  
+
+.photo-gallery {
+  display: flex;
+  height: auto;
+  flex-wrap: wrap; /* Permet de passer à la ligne suivante lorsque l'espace est insuffisant */
+  justify-content: center; /* Centre les images horizontalement */
+  margin: 20px; /* Espacement au-dessus de la galerie */
+}
+
+.gallery-image {
+  width: calc(25% - 10px); /* Quatre images par ligne avec un espacement de 10px */
+  margin: 5px; /* Espacement entre les images */
+  border-radius: 8px; /* Arrondir les coins des images */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Ombre portée pour un effet de profondeur */
+  transition: transform 0.3s; /* Animation lors du survol */
+}
+
+.gallery-image:hover {
+  transform: scale(1.15); /* Légère augmentation de taille au survol */
+}
+
+#modal-image {
+  display: block;
+  margin: auto; /* Centre l'image */
+  max-width: 100%; /* Empêche l'image de dépasser la largeur de la modale */
+  height: auto; /* Maintient le ratio de l'image */
+}

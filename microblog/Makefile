@@ -1,3 +1,4 @@
+ELASTICSEARCH_BAT = elasticsearch-8.5.3/bin/elasticsearch.bat
 export FLASK_APP=microblog.py
 
 all: run

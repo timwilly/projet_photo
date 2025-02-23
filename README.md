@@ -20,7 +20,9 @@ Portfolio with various features. Although it is not done yet and need to be test
 - Switch the language to English, French or Spanish
 
 ## Installation
-To view the project you can click [here](https://projet-photo.onrender.com)
+To view the project you can click [here](https://projet-photo.onrender.com)  
+  
+⚠️ It is normal for the link to be slow at first due to the free plan from render.com. After navigating through the website, the request times should improve.
 
 or
 

@@ -18,7 +18,8 @@ class Config(object):
     
     # Localisation du database de l'application...
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or 'sqlite:///' + \
-                              os.path.join(basedir, 'app.db')
+                              os.path.join(basedir, 'app.db') or \
+                              os.getenv("DATABASE_URL", "mysql+pymysql://user:password@db/microblog")
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     # Email à envoyer

@@ -1,5 +1,5 @@
 # Spécifie le conteneur de base dans lequel l'image sera crée. Nom:tag
-FROM python:slim
+FROM python:3.10.6-slim
 
 # Créer un utilisateur nommé 'microblog'
 RUN useradd microblog
@@ -18,7 +18,7 @@ COPY microblog.py config.py boot.sh ./
 RUN chmod +x boot.sh
 
 # Environnement de variable pour utilisé les commandes Flask
-ENV FLASK_APP microblog.py
+ENV FLASK_APP=microblog.py
 # On définit l'utilisateur 'microblog' au lieu de root (qui est par défaut)
 RUN chown -R microblog:microblog ./
 USER microblog

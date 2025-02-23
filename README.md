@@ -6,6 +6,7 @@
 - [Description](#description)
 - [Functionnality](#functionnality)
 - [Installation](#installation)
+- [Notes](#notes)
 
 ## Description
 Portfolio with various features. Although it is not done yet and need to be tested further, the features are most likely functionnal.
@@ -32,3 +33,7 @@ source venv/bin/activate
 pip install -r requirements.txt
 make run
 ```
+
+## Notes
+
+You can access a testing account with the username: 'test' and the password: 'test'

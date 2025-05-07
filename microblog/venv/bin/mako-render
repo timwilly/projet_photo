@@ -1,4 +1,6 @@
-#!/mnt/c/Users/willw/Documents/GitHub/projet_photo/microblog/venv/bin/python3
+#!/bin/sh
+'''exec' "/Users/willy/Documents/Projets informatique/projet_photo/microblog/venv/bin/python3" "$0" "$@"
+' '''
 # -*- coding: utf-8 -*-
 import re
 import sys
